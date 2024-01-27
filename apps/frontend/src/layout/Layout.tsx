@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/navbar/Navbar";
 
 interface LayoutProps {
     name?: string;
@@ -7,10 +8,10 @@ interface LayoutProps {
 
 const Layout = function (props: LayoutProps): React.ReactNode {
     return (
-        <div>
-            <div>Navbar</div>
+        <>
+            <Navbar />
             <main>{props.children}</main>
-        </div>
+        </>
     );
 };
 
