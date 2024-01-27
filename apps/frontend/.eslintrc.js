@@ -7,5 +7,6 @@ module.exports = {
     },
     rules: {
         "react/function-component-definition": "off",
+        "unicorn/filename-case": "off",
     },
 };
