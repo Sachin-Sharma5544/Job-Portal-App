@@ -1,7 +1,10 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
+import { Link } from "@repo/ui";
+import { ListsComponents } from "@repo/ui";
 
 const Navbar = (): React.ReactNode => {
+    const array = ["Test", "Test2", "Test3"];
     return (
         <div className="w-full  bg-slate-600 h-20 ">
             <div className="flex place-items-center border h-full">
@@ -25,6 +28,7 @@ const Navbar = (): React.ReactNode => {
                     {/* <Link href="/home">Home</Link>
                     {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
                     {/* <Link>Home</Link> */}
+                    <ListsComponents>{array}</ListsComponents>
                 </div>
             </div>
         </div>
