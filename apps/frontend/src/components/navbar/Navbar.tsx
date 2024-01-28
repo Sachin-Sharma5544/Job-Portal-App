@@ -1,4 +1,4 @@
-import { Link, LinkReactRouter } from "@repo/ui";
+// import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
 
 const Navbar = (): React.ReactNode => {
@@ -22,9 +22,9 @@ const Navbar = (): React.ReactNode => {
                     <div className="text-white text-xl pl-2">WorkWise</div>
                 </div>
                 <div>
-                    <Link href="/home">Home</Link>
+                    {/* <Link href="/home">Home</Link>
                     {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
-                    <Link>Home</Link>
+                    {/* <Link>Home</Link> */}
                 </div>
             </div>
         </div>
