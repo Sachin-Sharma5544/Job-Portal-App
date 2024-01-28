@@ -1,5 +1,6 @@
-import { Link, LinkReactRouter } from "@repo/ui";
+// import { Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = (): React.ReactNode => {
     return (
@@ -22,9 +23,11 @@ const Navbar = (): React.ReactNode => {
                     <div className="text-white text-xl pl-2">WorkWise</div>
                 </div>
                 <div>
-                    <Link href="/home">Home</Link>
+                    {/* <Link href="/home">Home</Link> */}
                     {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
-                    <Link>Home</Link>
+                    {/* <Link href="/new">test</Link> */}
+                    {/* <a href="/home">Home</a> */}
+                    <Link to="Test">test</Link>
                 </div>
             </div>
         </div>
