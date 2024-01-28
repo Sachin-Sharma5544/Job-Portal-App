@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface ListsComponentProps {
-    data: string[];
+    data?: string[];
     children: string[];
 }
 export function ListsComponents(props: ListsComponentProps): JSX.Element {
