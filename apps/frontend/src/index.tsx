@@ -5,7 +5,7 @@ import Layout from "./layout/Layout";
 
 function App(): JSX.Element {
     return (
-        <div className="w-100">
+        <div className="bg-red-300">
             <BrowserRouter>
                 <Layout>
                     <Routes>
