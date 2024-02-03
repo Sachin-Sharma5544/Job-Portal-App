@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles.css";
-import Layout from "./layout/Layout";
+import Layout from "./layout/appLayout/AppLayout";
 
 function App(): JSX.Element {
     return (
