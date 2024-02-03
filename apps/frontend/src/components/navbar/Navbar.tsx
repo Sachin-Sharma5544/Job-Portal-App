@@ -67,7 +67,7 @@ const Navbar = (): JSX.Element => {
                                         className="pl-2"
                                         to="/test"
                                     >
-                                        Employers/Post Job
+                                        Employers/Post Jobs
                                     </LinkReactRouter>
                                 </div>
                             </div>
