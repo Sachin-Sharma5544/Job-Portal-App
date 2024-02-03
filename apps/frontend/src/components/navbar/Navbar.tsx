@@ -56,7 +56,7 @@ const Navbar = (): JSX.Element => {
                         </div>
 
                         <div className="h-full flex text-xs">
-                            <div className="flex px-5 text-[8px]">
+                            <div className="flex text-[8px]">
                                 <div className="text-white">
                                     <LinkReactRouter className="" to="/">
                                         Login
