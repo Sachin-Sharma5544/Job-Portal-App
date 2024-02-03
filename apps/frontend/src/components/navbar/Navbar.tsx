@@ -1,7 +1,18 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
 import { LinkReactRouter } from "@repo/ui";
-import { HOME, WORK, WISE, COMPANY, SALARY } from "@repo/constants";
+import {
+    HOME,
+    WORK,
+    WISE,
+    COMPANY,
+    SALARY,
+    homePath,
+    companyPath,
+    salaryPath,
+    loginPath,
+    employerPath,
+} from "@repo/constants";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 
 const Navbar = (): JSX.Element => {
@@ -10,7 +21,7 @@ const Navbar = (): JSX.Element => {
             <div className="h-full m-0 p-0 flex items-center justify-between">
                 <div className="h-full flex text-xs">
                     <div className="flex">
-                        <LinkReactRouter className="flex" to="/">
+                        <LinkReactRouter className="flex" to={homePath}>
                             <div className="text-white">
                                 <span className="text-orange-200">{WORK}</span>
                                 <span className="text-sky-200">{WISE}</span>
@@ -35,17 +46,17 @@ const Navbar = (): JSX.Element => {
                     </div>
                     <div className="flex px-5 text-[8px]">
                         <div className="text-white">
-                            <LinkReactRouter className="" to="/">
+                            <LinkReactRouter className="" to={homePath}>
                                 {HOME}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to="/company">
+                            <LinkReactRouter className="pl-2" to={companyPath}>
                                 {COMPANY}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to="/salary">
+                            <LinkReactRouter className="pl-2" to={salaryPath}>
                                 {SALARY}
                             </LinkReactRouter>
                         </div>
@@ -55,12 +66,12 @@ const Navbar = (): JSX.Element => {
                 <div className="h-full flex text-xs">
                     <div className="flex text-[8px]">
                         <div className="text-white">
-                            <LinkReactRouter className="" to="/login">
+                            <LinkReactRouter className="" to={loginPath}>
                                 Login
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to="/employer">
+                            <LinkReactRouter className="pl-2" to={employerPath}>
                                 Employers/Post Job
                             </LinkReactRouter>
                         </div>
