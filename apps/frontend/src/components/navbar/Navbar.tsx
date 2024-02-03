@@ -1,6 +1,7 @@
 // import { Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { LinkReactRouter } from "@repo/ui";
 
 const Navbar = (): React.ReactNode => {
     return (
@@ -24,10 +25,10 @@ const Navbar = (): React.ReactNode => {
                 </div>
                 <div>
                     {/* <Link href="/home">Home</Link> */}
-                    {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
+                    <LinkReactRouter to="/new">Test</LinkReactRouter>
                     {/* <Link href="/new">test</Link> */}
                     {/* <a href="/home">Home</a> */}
-                    <Link to="Test">test</Link>
+                    {/* <Link to="Test">test</Link> */}
                 </div>
             </div>
         </div>
