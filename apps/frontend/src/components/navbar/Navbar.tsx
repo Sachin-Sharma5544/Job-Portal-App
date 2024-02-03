@@ -28,7 +28,7 @@ const Navbar = (): React.ReactNode => {
                     {/* <Link href="/home">Home</Link>
                     {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
                     {/* <Link>Home</Link> */}
-                    <ListsComponents>{array}</ListsComponents>
+                    {/* <ListsComponents>{array}</ListsComponents> */}
                 </div>
             </div>
         </div>

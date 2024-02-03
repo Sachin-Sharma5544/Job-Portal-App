@@ -10,6 +10,7 @@ function App(): JSX.Element {
             <BrowserRouter>
                 <Layout>
                     <Routes>
+                        <Route element={<h1>New children</h1>} path="/" />
                         <Route element={<h1>children</h1>} path="/test" />
                     </Routes>
                 </Layout>
