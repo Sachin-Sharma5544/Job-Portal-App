@@ -1,7 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles.css";
-import { CounterButton, Link } from "@repo/ui";
 import Layout from "./layout/Layout";
 
 function App(): JSX.Element {
@@ -14,7 +13,6 @@ function App(): JSX.Element {
                         <Route element={<h1>children</h1>} path="/test" />
                     </Routes>
                 </Layout>
-                <CounterButton />
             </BrowserRouter>
         </div>
     );

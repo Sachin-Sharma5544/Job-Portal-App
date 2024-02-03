@@ -1,7 +1,6 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
 import React from "react";
-import { Link } from "@repo/ui";
-import { ListsComponents } from "@repo/ui";
+import { Link, ListsComponents, LinkReactRouter } from "@repo/ui";
 
 const Navbar = (): React.ReactNode => {
     const array = ["Test", "Test2", "Test3"];
@@ -25,8 +24,9 @@ const Navbar = (): React.ReactNode => {
                     <div className="text-white text-xl pl-2">WorkWise</div>
                 </div>
                 <div>
-                    {/* <Link href="/home">Home</Link>
-                    {/* <LinkReactRouter to="/new">Test</LinkReactRouter> */}
+                    {/* <Link href="/home">Home</Link>*/}
+                    <LinkReactRouter to="/">Home</LinkReactRouter>
+                    <LinkReactRouter to="/test">Test</LinkReactRouter>
                     {/* <Link>Home</Link> */}
                     {/* <ListsComponents>{array}</ListsComponents> */}
                 </div>
