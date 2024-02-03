@@ -4,8 +4,8 @@ import { LinkReactRouter } from "@repo/ui";
 
 const Navbar = (): React.ReactNode => {
     return (
-        <div className="w-full  bg-slate-600 h-20 ">
-            <div className="flex place-items-center border h-full">
+        <div className="w-full  bg-slate-700 h-20  border-slate-700">
+            <div className="flex place-items-center h-full border-0">
                 <div className=" flex place-items-center ">
                     <div className="text-white text-xl pr-2">WorkWise</div>
                     <div className="pr-10">
