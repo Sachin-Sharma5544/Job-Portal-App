@@ -1,5 +1,5 @@
-export const homePath: string = "/";
-export const companyPath: string = "/company";
-export const salaryPath: string = "/salary";
-export const loginPath: string = "/login";
-export const employerPath: string = "/employer";
+export const homePath = "/";
+export const companyPath = "/company";
+export const salaryPath = "/salary";
+export const loginPath = "/login";
+export const employerPath = "/employer";
