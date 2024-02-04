@@ -2,10 +2,13 @@
     "extends": "@repo/typescript-config/base.json",
     "compilerOptions": {
         "lib": ["ES2015"],
+        "types": ["jest", "node"],
         "noEmit": false,
-        "allowImportingTsExtensions": false
+        "allowImportingTsExtensions": false,
+        "outDir": "./dist",
+        "rootDir": "./src"
         // "declarationMap": false
     },
     "include": ["."],
-    "exclude": ["node_modules", "dist"]
+    "exclude": ["node_modules", "dist", "tsup.config.ts"]
 }

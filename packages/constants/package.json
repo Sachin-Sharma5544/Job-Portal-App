@@ -5,8 +5,8 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "dev": "tsup --watch",
-        "build": "tsup ",
+        "dev": "",
+        "build": "tsc",
         "clean": "rm -rf dist",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
