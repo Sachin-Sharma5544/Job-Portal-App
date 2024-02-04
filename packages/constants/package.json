@@ -9,5 +9,8 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "tsup": "^8.0.1"
+    }
 }
