@@ -5,7 +5,7 @@ import {
     HOME,
     WORK,
     WISE,
-    COMPANY,
+    // COMPANY,
     SALARY,
     homePath,
     companyPath,
@@ -52,7 +52,7 @@ const Navbar = (): JSX.Element => {
                         </div>
                         <div className="text-white">
                             <LinkReactRouter className="pl-2" to={companyPath}>
-                                {COMPANY}
+                                {"COMPANY"}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
@@ -71,7 +71,10 @@ const Navbar = (): JSX.Element => {
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to={employerPath}>
+                            <LinkReactRouter
+                                className="pl-2"
+                                to="http://localhost:5002/status"
+                            >
                                 Employers/Post Job
                             </LinkReactRouter>
                         </div>

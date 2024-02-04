@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface LinkProps {
     to: string;
     children?: React.ReactNode;
-    className: string;
+    className?: string;
 }
 export function LinkReactRouter(props: LinkProps): JSX.Element {
     return (
