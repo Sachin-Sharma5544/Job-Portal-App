@@ -6,9 +6,9 @@ const SignInPage = (): JSX.Element => {
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <div className="flex items-center justify-center">
-                    <div className="text-white">
-                        <span className="text-orange-200">{WORK}</span>
-                        <span className="text-sky-200">{WISE}</span>
+                    <div className="text-white mx-2">
+                        <span className="text-orange-300">{WORK}</span>
+                        <span className="text-sky-400 ">{WISE}</span>
                     </div>
 
                     <div className="h-4">
