@@ -1,16 +1,19 @@
 {
-  "name": "database",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mongoose": "^8.1.1",
-    "tsup": "^8.0.1"
-  }
+    "name": "@repo/database",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsup",
+        "clean": "rm -rf dist",
+        "watch": "tsup --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "mongoose": "^8.1.1",
+        "tsup": "^8.0.1"
+    }
 }
