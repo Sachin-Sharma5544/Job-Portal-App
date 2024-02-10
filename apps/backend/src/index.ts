@@ -1,6 +1,9 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
 import { createServer } from "./server";
+import { config } from "dotenv";
+
+config();
 
 const port = process.env.PORT || 5002;
 const server = createServer();

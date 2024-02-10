@@ -3,7 +3,8 @@
     "compilerOptions": {
         "outDir": "./dist",
         "lib": ["ES2015"],
-        "types": ["jest", "node"]
+        "types": ["jest", "node"],
+        "resolveJsonModule": true
     },
     "include": ["."],
     "exclude": ["node_modules"]
