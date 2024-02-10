@@ -1,5 +1,7 @@
-export const HOME: string = "Home";
-export const COMPANY: string = "Company";
-export const SALARY: string = "Salary";
-export const WORK: string = "Work";
-export const WISE: string = "Wise";
+export const HOME = "Home";
+export const COMPANY = "Company";
+export const SALARY = "Salary";
+export const WORK = "Work";
+export const WISE = "Wise";
+export const LOGIN = "Login";
+export const EMPLOYERS = "Employers/ Post Job";

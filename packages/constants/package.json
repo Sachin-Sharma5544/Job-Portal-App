@@ -5,9 +5,14 @@
     "main": "src/index.ts",
     "types": "src/index.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsup",
+        "clean": "rm -rf dist"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "tsup": "^8.0.1"
+    }
 }

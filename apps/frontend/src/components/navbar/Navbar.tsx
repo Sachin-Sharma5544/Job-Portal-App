@@ -7,11 +7,13 @@ import {
     WISE,
     COMPANY,
     SALARY,
+    LOGIN,
     homePath,
     companyPath,
     salaryPath,
     loginPath,
     employerPath,
+    EMPLOYERS,
 } from "@repo/constants";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 
@@ -67,12 +69,12 @@ const Navbar = (): JSX.Element => {
                     <div className="flex text-[8px]">
                         <div className="text-white">
                             <LinkReactRouter className="" to={loginPath}>
-                                Login
+                                {LOGIN}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
                             <LinkReactRouter className="pl-2" to={employerPath}>
-                                Employers/Post Job
+                                {EMPLOYERS}
                             </LinkReactRouter>
                         </div>
                     </div>
