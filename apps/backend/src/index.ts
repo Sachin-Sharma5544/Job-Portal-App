@@ -4,9 +4,9 @@ import { createServer } from "./server";
 
 const port = process.env.PORT || 5002;
 const server = createServer();
-const dbUrl = process.env.MONGO_DB_URL!;
+const dbName = process.env.DB_NAME!;
 
-connectDatabase(dbUrl)
+connectDatabase(dbName)
     .then(() => {
         log("Database connected successfully");
         server.listen(port, () => {
