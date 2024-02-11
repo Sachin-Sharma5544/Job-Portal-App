@@ -2,14 +2,24 @@ import React from "react";
 import { WORK, WISE, loginPath } from "@repo/constants";
 import { Button, LinkReactRouter } from "@repo/ui";
 import axios from "axios";
+import { UserType } from "@repo/datatypes";
 
 const SignUpPage = (): JSX.Element => {
-    const handleRegisterClick = async () => {
-        const response = await axios.post("http://localhost:5002/signup", {
-            email: "Sachin",
-            password: "Hi",
-            confPassword: "Hi",
-        });
+    const handleRegisterClick = async (): Promise<void> => {
+        try {
+            const payload: UserType = {
+                email: "Sachin.Sharma@gmail.com",
+                password: "Hi",
+            };
+            const response = await axios.post(
+                "http://localhost:5002/signup",
+                payload
+            );
+
+            console.log("Response", response);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

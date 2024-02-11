@@ -1,6 +1,6 @@
-import { z } from "zod";
+import { ZodObject, z } from "zod";
 
-const user = z.object({
+export const user = z.object({
     email: z.string().email(),
     password: z
         .string()
