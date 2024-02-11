@@ -1,6 +1,7 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
 import { createServer } from "./server";
+import { Request, Response } from "express";
 
 const port = 5002;
 const server = createServer();
@@ -10,6 +11,10 @@ const url = process.env
     .MONGO_DB_URL!.replace("${MONGO_USERNAME}", process.env.MONGO_USERNAME!)
     .replace("${MONGO_PASSWORD}", process.env.MONGO_PASSWORD!)
     .replace("${DB_NAME}", process.env.DB_NAME!);
+
+server.use("/signup", (req: Request, res: Response) => {
+    res.status(201).send("Hello");
+});
 
 connectDatabase(url)
     .then(() => {

@@ -7,7 +7,13 @@ interface ButtonProps {
 }
 export function Button(props: ButtonProps): JSX.Element {
     return (
-        <button className={props.className} type="button">
+        <button
+            className={props.className}
+            onClick={() => {
+                props.onClick ? props.onClick() : {};
+            }}
+            type="button"
+        >
             {props.children}
         </button>
     );

@@ -1,8 +1,17 @@
 import React from "react";
 import { WORK, WISE, loginPath } from "@repo/constants";
 import { Button, LinkReactRouter } from "@repo/ui";
+import axios from "axios";
 
 const SignUpPage = (): JSX.Element => {
+    const handleRegisterClick = async () => {
+        const response = await axios.post("http://localhost:5002/signup", {
+            email: "Sachin",
+            password: "Hi",
+            confPassword: "Hi",
+        });
+    };
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -98,7 +107,10 @@ const SignUpPage = (): JSX.Element => {
                     </div>
 
                     <div>
-                        <Button className="flex bg-indigo-500 rounded-md text-white w-full py-1.5 px-3 justify-center font-semibold leading-6 text-sm">
+                        <Button
+                            className="flex bg-indigo-500 hover:bg-indigo-600 rounded-md text-white w-full py-1.5 px-3 justify-center font-semibold leading-6 text-sm"
+                            onClick={handleRegisterClick}
+                        >
                             Register
                         </Button>
                     </div>
@@ -107,7 +119,7 @@ const SignUpPage = (): JSX.Element => {
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Already a menber?{" "}
                     <LinkReactRouter
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                        className="font-semibold text-indigo-500 hover:text-indigo-600"
                         to={loginPath}
                     >
                         Login
