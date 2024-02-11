@@ -1,6 +1,5 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
-
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
 
