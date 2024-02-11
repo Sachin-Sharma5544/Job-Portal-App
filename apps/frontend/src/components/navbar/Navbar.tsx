@@ -24,12 +24,12 @@ const Navbar = (): JSX.Element => {
                 <div className="h-full flex text-xs">
                     <div className="flex">
                         <LinkReactRouter className="flex" to={homePath}>
-                            <div className="text-white">
+                            <div className="text-white text-[24px]">
                                 <span className="text-orange-200">{WORK}</span>
                                 <span className="text-sky-200">{WISE}</span>
                             </div>
 
-                            <div className="h-4">
+                            <div className="h-5">
                                 <svg
                                     className="h-full"
                                     fill="white"
@@ -46,19 +46,19 @@ const Navbar = (): JSX.Element => {
                             </div>
                         </LinkReactRouter>
                     </div>
-                    <div className="flex px-5 text-[8px]">
+                    <div className="flex px-5 text-[14px]">
                         <div className="text-white">
                             <LinkReactRouter className="" to={homePath}>
                                 {HOME}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to={companyPath}>
+                            <LinkReactRouter className="pl-4" to={companyPath}>
                                 {COMPANY}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to={salaryPath}>
+                            <LinkReactRouter className="pl-4" to={salaryPath}>
                                 {SALARY}
                             </LinkReactRouter>
                         </div>
@@ -66,14 +66,14 @@ const Navbar = (): JSX.Element => {
                 </div>
 
                 <div className="h-full flex text-xs">
-                    <div className="flex text-[8px]">
+                    <div className="flex text-[14px]">
                         <div className="text-white">
                             <LinkReactRouter className="" to={loginPath}>
                                 {LOGIN}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-2" to={employerPath}>
+                            <LinkReactRouter className="pl-4" to={employerPath}>
                                 {EMPLOYERS}
                             </LinkReactRouter>
                         </div>

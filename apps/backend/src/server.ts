@@ -15,6 +15,10 @@ export const createServer = (): Express => {
         })
         .get("/status", (_, res) => {
             return res.json({ ok: true });
+        })
+        .use((req, res, next) => {
+            console.log(req.method, req.path);
+            next();
         });
 
     return app;

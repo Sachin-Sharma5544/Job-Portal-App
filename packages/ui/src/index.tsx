@@ -1,4 +1,5 @@
-export { Link } from "./Link";
-export { CounterButton } from "./CounterButton";
-export { LinkReactRouter } from "./LinkReactRouter";
-export { ListsComponents } from "./ListsComp";
+export * from "./Link";
+export * from "./CounterButton";
+export * from "./LinkReactRouter";
+export * from "./ListsComp";
+export * from "./Button";

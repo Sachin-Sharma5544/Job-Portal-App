@@ -1,8 +1,16 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles.css";
-import { homePath, companyPath, salaryPath, loginPath } from "@repo/constants";
+import {
+    homePath,
+    companyPath,
+    salaryPath,
+    loginPath,
+    signupPath,
+} from "@repo/constants";
 import Layout from "./layout/appLayout/AppLayout";
+import SignInPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App(): JSX.Element {
     return (
@@ -19,7 +27,8 @@ function App(): JSX.Element {
                             element={<h1>Salary Page</h1>}
                             path={salaryPath}
                         />
-                        <Route element={<h1>Login Page</h1>} path={loginPath} />
+                        <Route element={<SignInPage />} path={loginPath} />
+                        <Route element={<SignUpPage />} path={signupPath} />
                     </Routes>
                 </Layout>
             </BrowserRouter>
