@@ -3,15 +3,15 @@ import { WORK, WISE } from "@repo/constants";
 
 const SignInPage = (): JSX.Element => {
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
+            <div className="sm:mx-auto max-sm:min-w-44 ">
                 <div className="flex items-center justify-center">
-                    <div className="text-white mx-2">
+                    <div className="text-white mx-2 text-[24px]">
                         <span className="text-orange-300">{WORK}</span>
                         <span className="text-sky-400 ">{WISE}</span>
                     </div>
 
-                    <div className="h-4">
+                    <div className="h-6">
                         <svg
                             className="h-full"
                             fill="black"
@@ -34,7 +34,7 @@ const SignInPage = (): JSX.Element => {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6" action="#" method="POST">
+                <form className="space-y-6">
                     <div>
                         <label
                             htmlFor="email"
@@ -86,9 +86,9 @@ const SignInPage = (): JSX.Element => {
                     <div>
                         <button
                             type="submit"
-                            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            Sign in
+                            Login
                         </button>
                     </div>
                 </form>
@@ -99,7 +99,7 @@ const SignInPage = (): JSX.Element => {
                         href="#"
                         className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
                     >
-                        Start a 14 day free trial
+                        Sign Up
                     </a>
                 </p>
             </div>
