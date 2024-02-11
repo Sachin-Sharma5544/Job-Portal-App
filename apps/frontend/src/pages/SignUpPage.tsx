@@ -2,7 +2,7 @@ import React from "react";
 import { WORK, WISE } from "@repo/constants";
 import { Button } from "@repo/ui";
 
-const SignInPage = (): JSX.Element => {
+const SignUpPage = (): JSX.Element => {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -30,7 +30,7 @@ const SignInPage = (): JSX.Element => {
                 </div>
 
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                    Sign in to your account
+                    Register Here
                 </h2>
             </div>
 
@@ -105,4 +105,4 @@ const SignInPage = (): JSX.Element => {
     );
 };
 
-export default SignInPage;
+export default SignUpPage;
