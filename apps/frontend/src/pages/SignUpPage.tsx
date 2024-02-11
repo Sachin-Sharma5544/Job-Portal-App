@@ -1,6 +1,6 @@
 import React from "react";
-import { WORK, WISE } from "@repo/constants";
-import { Button } from "@repo/ui";
+import { WORK, WISE, loginPath } from "@repo/constants";
+import { Button, LinkReactRouter } from "@repo/ui";
 
 const SignUpPage = (): JSX.Element => {
     return (
@@ -30,7 +30,7 @@ const SignUpPage = (): JSX.Element => {
                 </div>
 
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                    Register Here
+                    Create your Account
                 </h2>
             </div>
 
@@ -63,14 +63,6 @@ const SignUpPage = (): JSX.Element => {
                             >
                                 Password
                             </label>
-                            <div className="text-sm">
-                                <a
-                                    href="#"
-                                    className="font-semibold text-indigo-600 hover:text-indigo-500"
-                                >
-                                    Forgot password?
-                                </a>
-                            </div>
                         </div>
                         <div className="mt-2">
                             <input
@@ -86,19 +78,19 @@ const SignUpPage = (): JSX.Element => {
 
                     <div>
                         <Button className="flex bg-indigo-500 rounded-md text-white w-full py-1.5 px-3 justify-center font-semibold leading-6 text-sm">
-                            Login
+                            Register
                         </Button>
                     </div>
                 </form>
 
                 <p className="mt-10 text-center text-sm text-gray-500">
-                    Not a member?{" "}
-                    <a
-                        href="#"
-                        className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                    Already a menber?{" "}
+                    <LinkReactRouter
+                        to={loginPath}
+                        className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
-                        Sign Up
-                    </a>
+                        Login
+                    </LinkReactRouter>
                 </p>
             </div>
         </div>

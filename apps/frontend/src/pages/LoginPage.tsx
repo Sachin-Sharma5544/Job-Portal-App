@@ -1,6 +1,6 @@
 import React from "react";
-import { WORK, WISE } from "@repo/constants";
-import { Button } from "@repo/ui";
+import { WORK, WISE, signupPath } from "@repo/constants";
+import { Button, LinkReactRouter } from "@repo/ui";
 
 const SignInPage = (): JSX.Element => {
     return (
@@ -93,12 +93,12 @@ const SignInPage = (): JSX.Element => {
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     Not a member?{" "}
-                    <a
-                        href="#"
-                        className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                    <LinkReactRouter
+                        to={signupPath}
+                        className="font-semibold text-indigo-600 hover:text-indigo-500"
                     >
-                        Sign Up
-                    </a>
+                        Register Here
+                    </LinkReactRouter>
                 </p>
             </div>
         </div>
