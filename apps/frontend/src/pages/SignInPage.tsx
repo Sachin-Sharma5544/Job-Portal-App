@@ -3,8 +3,8 @@ import { WORK, WISE } from "@repo/constants";
 
 const SignInPage = (): JSX.Element => {
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
-            <div className="sm:mx-auto max-sm:min-w-44 ">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <div className="flex items-center justify-center">
                     <div className="text-white mx-2 text-[24px]">
                         <span className="text-orange-300">{WORK}</span>
