@@ -1,7 +1,8 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
+
+import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
-import { Request, Response } from "express";
 
 const port = 5002;
 const server = createServer();
@@ -12,9 +13,7 @@ const url = process.env
     .replace("${MONGO_PASSWORD}", process.env.MONGO_PASSWORD!)
     .replace("${DB_NAME}", process.env.DB_NAME!);
 
-server.use("/signup", (req: Request, res: Response) => {
-    res.status(201).send("Hello");
-});
+server.use("/signup", authRouter);
 
 connectDatabase(url)
     .then(() => {
