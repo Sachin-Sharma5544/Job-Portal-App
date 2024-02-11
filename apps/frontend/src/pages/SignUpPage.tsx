@@ -2,14 +2,15 @@ import React from "react";
 import { WORK, WISE, loginPath } from "@repo/constants";
 import { Button, LinkReactRouter } from "@repo/ui";
 import axios from "axios";
-import { UserType } from "@repo/datatypes";
+import { type UserType } from "@repo/datatypes";
 
 const SignUpPage = (): JSX.Element => {
     const handleRegisterClick = async (): Promise<void> => {
         try {
-            const payload: UserType = {
+            const payload = {
                 email: "Sachin.Sharma@gmail.com",
-                password: "Hi",
+                password: "Hiatataaa",
+                age: 25,
             };
             const response = await axios.post(
                 "http://localhost:5002/signup",
@@ -18,7 +19,7 @@ const SignUpPage = (): JSX.Element => {
 
             console.log("Response", response);
         } catch (error) {
-            console.log(error);
+            console.log(error, "***");
         }
     };
 

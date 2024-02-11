@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
 
-const Schema = mongoose.Schema;
-
-export default Schema;
+export const Schema = mongoose.Schema;
+export const model = mongoose.model;
