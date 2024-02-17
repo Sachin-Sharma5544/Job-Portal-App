@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { WORK, WISE, loginPath } from "@repo/constants";
 import { Button, LinkReactRouter } from "@repo/ui";
 import axios from "axios";
 import { type UserType } from "@repo/datatypes";
+import SignupForm from "../components/forms/signUp/SignupForm";
 
 const SignUpPage = (): JSX.Element => {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -37,89 +42,20 @@ const SignUpPage = (): JSX.Element => {
                 </h2>
             </div>
 
-            <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6">
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                        >
-                            Email address
-                        </label>
-                        <div className="mt-2">
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
-                                required
-                                className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="flex items-center justify-between">
-                            <label
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                                htmlFor="password"
-                            >
-                                Password
-                            </label>
-                        </div>
-                        <div className="mt-2">
-                            <input
-                                autoComplete="current-password"
-                                className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                id="password"
-                                name="password"
-                                required
-                                type="password"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="flex items-center justify-between">
-                            <label
-                                className="block text-sm font-medium leading-6 text-gray-900"
-                                htmlFor="password"
-                            >
-                                Confirm Password
-                            </label>
-                        </div>
-                        <div className="mt-2">
-                            <input
-                                autoComplete="current-password"
-                                className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                id="cnf-password"
-                                name="cnf-password"
-                                required
-                                type="password"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <Button
-                            className="flex bg-indigo-500 hover:bg-indigo-600 rounded-md text-white w-full py-1.5 px-3 justify-center font-semibold leading-6 text-sm"
-                            onClick={handleRegisterClick}
-                        >
-                            Register
-                        </Button>
-                    </div>
-                </form>
-
-                <p className="mt-10 text-center text-sm text-gray-500">
-                    Already a menber?{" "}
-                    <LinkReactRouter
-                        className="font-semibold text-indigo-500 hover:text-indigo-600"
-                        to={loginPath}
-                    >
-                        Login
-                    </LinkReactRouter>
-                </p>
-            </div>
+            <SignupForm
+                confirmPassword={confirmPassword}
+                email={email}
+                handleConfirmPassword={(e) => {
+                    setPassword(e.target.value);
+                }}
+                handleEmail={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setEmail(e.target.value);
+                }}
+                handlePassword={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setConfirmPassword(e.target.value);
+                }}
+                password={password}
+            />
         </div>
     );
 };
