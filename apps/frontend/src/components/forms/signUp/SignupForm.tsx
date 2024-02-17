@@ -11,8 +11,19 @@ const SignupForm = (): JSX.Element => {
 
     const handleRegisterClick = async (): Promise<void> => {
         const data: UserType = { email, password };
-        const response = await axios.post("http://localhost:5002/signup", data);
-        console.log("Post response", response);
+        if (confirmPassword !== password) {
+            return alert("Password and Confirm Password are not same");
+        }
+
+        try {
+            const response = await axios.post(
+                "http://localhost:5002/signup",
+                data
+            );
+            console.log("Post response", response);
+        } catch (error) {
+            console.log("Post response", error);
+        }
     };
 
     return (
@@ -60,7 +71,9 @@ const SignupForm = (): JSX.Element => {
                 />
                 <Button
                     className="flex bg-indigo-500 hover:bg-indigo-600 rounded-md text-white w-full py-1.5 px-3 justify-center font-semibold leading-6 text-sm"
-                    onClick={handleRegisterClick}
+                    onClick={async () => {
+                        await handleRegisterClick();
+                    }}
                 >
                     Register
                 </Button>
