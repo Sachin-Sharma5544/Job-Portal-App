@@ -1,6 +1,7 @@
 import { type Request, type Response } from "express";
 import { type UserType, user } from "@repo/datatypes";
 import { UserModel } from "../models/userModel";
+import bcrypt, { genSalt, hash } from "bcrypt";
 
 export const postSignup = async (
     req: Request,
@@ -19,10 +20,14 @@ export const postSignup = async (
             throw new Error("User already exists with the email");
         }
 
+        //Encrypting Password prior to creating user
+        const salt = await genSalt(10);
+        const hashPass = await hash(userData.password, salt);
+
         //Creating user when user doesnot exists in data base
         const createdUser = await UserModel.create({
             email: userData.email.toLowerCase(),
-            password: userData.password,
+            password: hashPass,
         });
 
         res.status(201).send({ user: createdUser });
