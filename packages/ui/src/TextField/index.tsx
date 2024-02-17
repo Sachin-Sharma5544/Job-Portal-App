@@ -11,7 +11,7 @@ interface TextFieldProps {
     inputChangeHandler: (a: string) => void;
 }
 
-const index = (props: TextFieldProps): JSX.Element => {
+function TextField(props: TextFieldProps): JSX.Element {
     return (
         <div>
             <label
@@ -34,6 +34,6 @@ const index = (props: TextFieldProps): JSX.Element => {
             </div>
         </div>
     );
-};
+}
 
-export default index;
+export default TextField;

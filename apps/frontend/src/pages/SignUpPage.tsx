@@ -5,24 +5,6 @@ import axios from "axios";
 import { type UserType } from "@repo/datatypes";
 
 const SignUpPage = (): JSX.Element => {
-    const handleRegisterClick = async (): Promise<void> => {
-        try {
-            const payload = {
-                email: "Sachin.Sharma@gmail.com",
-                password: "Hiatataaa",
-                age: 25,
-            };
-            const response = await axios.post(
-                "http://localhost:5002/signup",
-                payload
-            );
-
-            console.log("Response", response);
-        } catch (error) {
-            console.log(error, "***");
-        }
-    };
-
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -48,6 +30,7 @@ const SignUpPage = (): JSX.Element => {
                         </svg>
                     </div>
                 </div>
+                <p className="text-center">Job Seekers</p>
 
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Create your Account
