@@ -3,7 +3,7 @@ import { WORK, WISE, loginPath } from "@repo/constants";
 import { Button, TextField, LinkReactRouter } from "..";
 
 interface AuthFormProps {
-    onButtonClick: (a: string, b: string, c: string) => void;
+    onButtonClick: (a: string, b: string, c?: string) => void;
     isSignup: true | false;
     roleType: string;
     formHeader: string;

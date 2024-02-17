@@ -13,9 +13,10 @@ const SignupForm = (): JSX.Element => {
     const handleRegisterClick = async (
         email: string,
         password: string,
-        confirmPassword: string
+        confirmPassword: string | undefined
     ): Promise<void> => {
-        console.log(email, password, confirmPassword);
+        console.log(email, password, confirmPassword, " Sign up component");
+
     };
 
     return (

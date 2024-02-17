@@ -14,10 +14,10 @@ import { LinkReactRouter, Button, TextField, AuthForm } from "@repo/ui";
 const SigninForm = () => {
     const handleLoginClick = async (
         email: string,
-        password: string,
-        confirmPassword: string
+        password: string
     ): Promise<void> => {
-        console.log(email, password, confirmPassword);
+        console.log(email, password, "Login Component");
+
     };
     return (
         <AuthForm
