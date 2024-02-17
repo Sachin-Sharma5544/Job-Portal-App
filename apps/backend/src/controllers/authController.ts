@@ -1,7 +1,7 @@
 import { type Request, type Response } from "express";
 import { type UserType, user } from "@repo/datatypes";
+import { genSalt, hash } from "bcrypt";
 import { UserModel } from "../models/userModel";
-import bcrypt, { genSalt, hash } from "bcrypt";
 
 export const postSignup = async (
     req: Request,
