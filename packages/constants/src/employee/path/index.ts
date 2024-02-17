@@ -3,4 +3,4 @@ export const companyPath = "/company";
 export const salaryPath = "/salary";
 export const loginPath = "/login";
 export const employerPath = "/employer";
-export const signupPath = "/register";
+export const signupPath = "/signup";
