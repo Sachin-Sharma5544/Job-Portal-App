@@ -17,7 +17,7 @@ export const postSignup = async (
 
         //Throwing error when user already exists in the database
         if (newUser) {
-            throw new Error("User already exists with the email");
+            throw new Error("User already exists with this email");
         }
 
         //Encrypting Password prior to creating user
@@ -32,6 +32,6 @@ export const postSignup = async (
 
         res.status(201).send({ user: createdUser });
     } catch (error: any) {
-        res.status(400).send({ error: error });
+        res.status(400).send({ error: error.message });
     }
 };

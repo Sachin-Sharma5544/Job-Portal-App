@@ -5,10 +5,6 @@ import { type UserType } from "@repo/datatypes";
 import SignupForm from "../components/forms/signUp/SignupForm";
 
 const SignUpPage = (): JSX.Element => {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPassword, setConfirmPassword] = useState<string>("");
-
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -41,22 +37,7 @@ const SignUpPage = (): JSX.Element => {
                 </h2>
             </div>
 
-            <SignupForm
-                confirmPassword={confirmPassword}
-                email={email}
-                handleConfirmPassword={(
-                    e: React.ChangeEvent<HTMLInputElement>
-                ) => {
-                    setConfirmPassword(e.target.value);
-                }}
-                handleEmail={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setEmail(e.target.value);
-                }}
-                handlePassword={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setPassword(e.target.value);
-                }}
-                password={password}
-            />
+            <SignupForm />
         </div>
     );
 };
