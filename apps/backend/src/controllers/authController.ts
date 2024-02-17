@@ -1,9 +1,9 @@
 import { type Request, type Response } from "express";
 import { type UserType, user } from "@repo/datatypes";
 import { genSalt, hash } from "bcrypt";
-import { UserModel } from "../models/userModel";
 import { log } from "@repo/logger";
 import { sign } from "jsonwebtoken";
+import { UserModel } from "../models/userModel";
 
 const createToken = (_id: any) => {
     return sign({ _id }, process.env.JWT_SECRET_KEY!, {
@@ -56,7 +56,6 @@ export const postSignup = async (
         //Encrypting Password prior to creating user
         const salt = await genSalt(10);
         const hashPass = await hash(userData.password, salt);
-
         //Creating user when user doesnot exists in data base
         const createdUser = await UserModel.create({
             email: userData.email.toLowerCase(),
