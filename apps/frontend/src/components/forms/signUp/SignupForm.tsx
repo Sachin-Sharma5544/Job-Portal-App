@@ -16,17 +16,13 @@ const SignupForm = (): JSX.Element => {
         confirmPassword: string | undefined
     ): Promise<void> => {
         console.log(email, password, confirmPassword, " Sign up component");
-
     };
 
     return (
         <AuthForm
             buttonText={REGISTER_BUTTON_TEXT}
-            formHeader={CREATE_ACCOUNT}
             isSignup
             onButtonClick={handleRegisterClick}
-            redirectLink={loginPath}
-            redirectLinkText={LOGIN_LINK_TEXT}
             roleType={JOB_SEEKERS}
         />
     );

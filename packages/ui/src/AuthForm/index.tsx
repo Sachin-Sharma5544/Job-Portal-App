@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import { WORK, WISE, loginPath } from "@repo/constants";
+import {
+    WORK,
+    WISE,
+    ALREADY_MEMBER,
+    NOT_MEMBER,
+    CREATE_ACCOUNT,
+    LOGIN_ACCOUNT,
+    loginPath,
+    signupPath,
+    LOGIN_LINK_TEXT,
+    REGISTER_LINK_TEXT,
+} from "@repo/constants";
 import { Button, TextField, LinkReactRouter } from "..";
 
 interface AuthFormProps {
     onButtonClick: (a: string, b: string, c?: string) => void;
     isSignup: true | false;
     roleType: string;
-    formHeader: string;
     buttonText: string;
-    redirectLink: string;
-    redirectLinkText: string;
 }
 
 export function AuthForm(props: AuthFormProps): JSX.Element {
@@ -45,7 +53,7 @@ export function AuthForm(props: AuthFormProps): JSX.Element {
                 <p className="text-center">{props.roleType}</p>
 
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                    {props.formHeader}
+                    {props.isSignup ? CREATE_ACCOUNT : LOGIN_ACCOUNT}
                 </h2>
             </div>
 
@@ -114,12 +122,12 @@ export function AuthForm(props: AuthFormProps): JSX.Element {
                 </form>
 
                 <p className="mt-10 text-center text-sm text-gray-500">
-                    Already a menber?{" "}
+                    {props.isSignup ? ALREADY_MEMBER : NOT_MEMBER}{" "}
                     <LinkReactRouter
                         className="font-semibold text-indigo-500 hover:text-indigo-600"
-                        to={props.redirectLink}
+                        to={props.isSignup ? loginPath : signupPath}
                     >
-                        {props.redirectLinkText}
+                        {props.isSignup ? LOGIN_LINK_TEXT : REGISTER_LINK_TEXT}
                     </LinkReactRouter>
                 </p>
             </div>

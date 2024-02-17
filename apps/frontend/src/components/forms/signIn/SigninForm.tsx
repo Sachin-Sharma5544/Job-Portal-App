@@ -17,16 +17,12 @@ const SigninForm = () => {
         password: string
     ): Promise<void> => {
         console.log(email, password, "Login Component");
-
     };
     return (
         <AuthForm
             buttonText={LOGIN_BUTTON_TEXT}
-            formHeader={LOGIN_ACCOUNT}
             isSignup={false}
             onButtonClick={handleLoginClick}
-            redirectLink={signupPath}
-            redirectLinkText={REGISTER_LINK_TEXT}
             roleType={JOB_SEEKERS}
         />
     );
