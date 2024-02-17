@@ -1,17 +1,8 @@
 import React from "react";
-import {
-    JOB_SEEKERS,
-    CREATE_ACCOUNT,
-    REGISTER_BUTTON_TEXT,
-    LOGIN_LINK_TEXT,
-    REGISTER_LINK_TEXT,
-    signupPath,
-    LOGIN_ACCOUNT,
-    LOGIN_BUTTON_TEXT,
-} from "@repo/constants";
-import { LinkReactRouter, Button, TextField, AuthForm } from "@repo/ui";
+import { JOB_SEEKERS, LOGIN_BUTTON_TEXT } from "@repo/constants";
+import { AuthForm } from "@repo/ui";
 
-const SigninForm = () => {
+const SigninForm = (): JSX.Element => {
     const handleLoginClick = async (
         email: string,
         password: string
