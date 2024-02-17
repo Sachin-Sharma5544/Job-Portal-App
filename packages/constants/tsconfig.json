@@ -1,9 +1,8 @@
 {
     "extends": "@repo/typescript-config/base.json",
     "compilerOptions": {
-        "lib": ["ES2015"],
         "outDir": "./dist",
-        "types": ["jest", "node"]
+        "types": ["node"]
     },
     "include": ["."],
     "exclude": ["node_modules", "dist"]
