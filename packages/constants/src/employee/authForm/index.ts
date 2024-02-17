@@ -5,3 +5,5 @@ export const REGISTER_BUTTON_TEXT = "Register";
 export const LOGIN_BUTTON_TEXT = "Login";
 export const REGISTER_LINK_TEXT = "Register here";
 export const LOGIN_LINK_TEXT = "Login";
+export const ALREADY_MEMBER = "Already a Member?";
+export const NOT_MEMBER = "Not a Member?";
