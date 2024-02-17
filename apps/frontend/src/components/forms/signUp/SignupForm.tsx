@@ -1,12 +1,6 @@
 import React from "react";
 import { AuthForm } from "@repo/ui";
-import {
-    loginPath,
-    JOB_SEEKERS,
-    CREATE_ACCOUNT,
-    REGISTER_BUTTON_TEXT,
-    LOGIN_LINK_TEXT,
-} from "@repo/constants";
+import { JOB_SEEKERS, REGISTER_BUTTON_TEXT } from "@repo/constants";
 import axios from "axios";
 
 const SignupForm = (): JSX.Element => {

@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { WORK, WISE } from "@repo/constants";
-import axios from "axios";
-import { type UserType } from "@repo/datatypes";
+import React from "react";
 import SignupForm from "../components/forms/signUp/SignupForm";
 
 const SignUpPage = (): JSX.Element => {
