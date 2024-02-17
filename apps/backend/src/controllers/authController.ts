@@ -2,6 +2,7 @@ import { type Request, type Response } from "express";
 import { type UserType, user } from "@repo/datatypes";
 import { genSalt, hash } from "bcrypt";
 import { UserModel } from "../models/userModel";
+import { ZodError } from "zod";
 
 export const postSignup = async (
     req: Request,
@@ -23,7 +24,6 @@ export const postSignup = async (
         //Encrypting Password prior to creating user
         const salt = await genSalt(10);
         const hashPass = await hash(userData.password, salt);
-
         //Creating user when user doesnot exists in data base
         const createdUser = await UserModel.create({
             email: userData.email.toLowerCase(),
@@ -32,6 +32,14 @@ export const postSignup = async (
 
         res.status(201).send({ user: createdUser });
     } catch (error: any) {
-        res.status(400).send({ error: error.message });
+        if (error.hasOwnProperty("issues")) {
+            res.status(400).send({
+                error,
+            });
+        } else {
+            res.status(400).send({
+                error: error.message,
+            });
+        }
     }
 };
