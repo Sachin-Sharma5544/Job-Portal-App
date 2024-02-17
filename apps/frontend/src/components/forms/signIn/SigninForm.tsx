@@ -17,6 +17,7 @@ const SigninForm = () => {
         password: string
     ): Promise<void> => {
         console.log(email, password, "Login Component");
+
     };
     return (
         <AuthForm

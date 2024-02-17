@@ -16,6 +16,7 @@ const SignupForm = (): JSX.Element => {
         confirmPassword: string | undefined
     ): Promise<void> => {
         console.log(email, password, confirmPassword, " Sign up component");
+
     };
 
     return (
