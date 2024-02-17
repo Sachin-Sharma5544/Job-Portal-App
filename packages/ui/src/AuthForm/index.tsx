@@ -11,7 +11,9 @@ import {
     LOGIN_LINK_TEXT,
     REGISTER_LINK_TEXT,
 } from "@repo/constants";
-import { Button, TextField, LinkReactRouter } from "..";
+import { Button } from "../Button";
+import { TextField } from "../TextField";
+import { LinkReactRouter } from "../LinkReactRouter";
 
 interface AuthFormProps {
     onButtonClick: (a: string, b: string, c?: string) => void;
