@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { WORK, WISE, loginPath } from "@repo/constants";
-import { Button, LinkReactRouter } from "@repo/ui";
+import { WORK, WISE } from "@repo/constants";
 import axios from "axios";
 import { type UserType } from "@repo/datatypes";
 import SignupForm from "../components/forms/signUp/SignupForm";
@@ -9,10 +8,6 @@ const SignUpPage = (): JSX.Element => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
-
-    // console.log("email", email);
-    console.log("Password", password);
-    // console.log("cnf passsword", confirmPassword);
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -49,14 +44,16 @@ const SignUpPage = (): JSX.Element => {
             <SignupForm
                 confirmPassword={confirmPassword}
                 email={email}
-                handleConfirmPassword={(e) => {
-                    setPassword(e.target.value);
+                handleConfirmPassword={(
+                    e: React.ChangeEvent<HTMLInputElement>
+                ) => {
+                    setConfirmPassword(e.target.value);
                 }}
                 handleEmail={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setEmail(e.target.value);
                 }}
                 handlePassword={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setConfirmPassword(e.target.value);
+                    setPassword(e.target.value);
                 }}
                 password={password}
             />
