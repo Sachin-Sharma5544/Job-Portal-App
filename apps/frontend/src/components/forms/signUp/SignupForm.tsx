@@ -4,11 +4,11 @@ import { JOB_SEEKERS, REGISTER_BUTTON_TEXT } from "@repo/constants";
 import axios from "axios";
 
 const SignupForm = (): JSX.Element => {
-    const handleRegisterClick = async (
+    const handleRegisterClick = (
         email: string,
         password: string,
         confirmPassword: string | undefined
-    ): Promise<void> => {
+    ): void => {
         console.log(email, password, confirmPassword, " Sign up component");
     };
     return (
@@ -19,7 +19,7 @@ const SignupForm = (): JSX.Element => {
             roleType={JOB_SEEKERS}
         />
     );
-    return <div>Sign Up Form</div>;
+    // return <div>Sign Up Form</div>;
 };
 
 export default SignupForm;

@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import {
-    JOB_SEEKERS,
-    LOGIN_BUTTON_TEXT,
-    WORK,
-    WISE,
-    LOGIN_ACCOUNT,
-    ALREADY_MEMBER,
-    NOT_MEMBER,
-    LOGIN_LINK_TEXT,
-    REGISTER_LINK_TEXT,
-    loginPath,
-    signupPath,
-} from "@repo/constants";
+import { JOB_SEEKERS, LOGIN_BUTTON_TEXT } from "@repo/constants";
 import { TextField, Button, LinkReactRouter, AuthForm } from "@repo/ui";
 
 export default function SigninForm(): JSX.Element {
