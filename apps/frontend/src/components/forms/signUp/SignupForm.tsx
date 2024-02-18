@@ -11,7 +11,6 @@ const SignupForm = (): JSX.Element => {
     ): Promise<void> => {
         console.log(email, password, confirmPassword, " Sign up component");
     };
-
     return (
         <AuthForm
             buttonText={REGISTER_BUTTON_TEXT}
@@ -20,6 +19,7 @@ const SignupForm = (): JSX.Element => {
             roleType={JOB_SEEKERS}
         />
     );
+    return <div>Sign Up Form</div>;
 };
 
 export default SignupForm;
