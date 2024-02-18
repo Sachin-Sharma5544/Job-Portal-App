@@ -25,7 +25,7 @@ const Navbar = (): JSX.Element => {
                     <div className="flex">
                         <LinkReactRouter className="flex" to={homePath}>
                             <div className="text-white text-[24px]">
-                                <span className="text-orange-200">{WORK}</span>
+                                <span className="text-orange-200">{WORK}S</span>
                                 <span className="text-sky-200">{WISE}</span>
                             </div>
 
