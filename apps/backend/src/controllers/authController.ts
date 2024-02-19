@@ -70,7 +70,7 @@ export const postSignup = async (
             });
         } else {
             res.status(400).send({
-                error: error.message,
+                error: { issues: [{ message: error.message }] },
             });
         }
     }
