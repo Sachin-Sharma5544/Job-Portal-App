@@ -1,7 +1,7 @@
 import React from "react";
 import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
-import instance from "../../../axios/axios";
+import { axiosAuthInstance } from "../../../axios/axios";
 
 export default function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -112,7 +112,10 @@ export default function SigninForm(): JSX.Element {
         email: string,
         password: string
     ): Promise<void> => {
-        const data = await instance.post(loginPath, { email, password });
+        const data = await axiosAuthInstance.post(loginPath, {
+            email,
+            password,
+        });
         console.log(data);
     };
 
