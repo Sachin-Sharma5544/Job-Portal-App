@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { JOB_SEEKERS, LOGIN_BUTTON_TEXT } from "@repo/constants";
-import { TextField, Button, LinkReactRouter, AuthForm } from "@repo/ui";
+import React from "react";
+import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
+import { AuthForm } from "@repo/ui";
+import { axiosAuthInstance } from "../../../axios/axios";
 
 export default function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -107,12 +108,15 @@ export default function SigninForm(): JSX.Element {
     //     </div>
     // );
 
-    const handleLoginClick = (
+    const handleLoginClick = async (
         email: string,
-        password: string,
-        confirmPassword: string | undefined
-    ): void => {
-        console.log(email, password, confirmPassword, " Sign up component");
+        password: string
+    ): Promise<void> => {
+        const data = await axiosAuthInstance.post(loginPath, {
+            email,
+            password,
+        });
+        console.log(data);
     };
 
     return (
