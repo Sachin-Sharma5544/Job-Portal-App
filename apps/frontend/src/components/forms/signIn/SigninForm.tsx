@@ -1,9 +1,9 @@
 import React from "react";
 import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
-import { axiosAuthInstance } from "../../../axios/axios";
+import { axiosAuthInstance } from "../../../axios";
 
-export default function SigninForm(): JSX.Element {
+export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
     // const [confirmPassword, setConfirmPassword] = useState<string>("");

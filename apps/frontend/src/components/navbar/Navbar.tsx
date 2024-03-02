@@ -17,7 +17,7 @@ import {
 } from "@repo/constants";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 
-const Navbar = (): JSX.Element => {
+export const Navbar = (): JSX.Element => {
     return (
         <NavbarLayout>
             <div className="h-full m-0 p-0 flex items-center justify-between">
@@ -83,5 +83,3 @@ const Navbar = (): JSX.Element => {
         </NavbarLayout>
     );
 };
-
-export default Navbar;
