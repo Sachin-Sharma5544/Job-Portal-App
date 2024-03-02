@@ -31,8 +31,10 @@ export const postLogin = async (req: Request, res: Response): Promise<void> => {
             email: userData.email,
             token,
         });
-    } catch (error) {
-        log(error);
+    } catch (error: any) {
+        res.status(400).send({
+            error: error.message,
+        });
     }
 };
 
