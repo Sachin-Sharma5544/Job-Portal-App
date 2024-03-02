@@ -10,8 +10,7 @@ import {
 } from "@repo/constants";
 import AuthProvider from "react-auth-kit/AuthProvider";
 import Layout from "./layout/appLayout/AppLayout";
-import SignInPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
+import { HomePage, SignInPage, SignUpPage } from "./pages";
 import { store } from "./auth";
 
 function App(): JSX.Element {
@@ -21,10 +20,7 @@ function App(): JSX.Element {
                 <BrowserRouter>
                     <Layout>
                         <Routes>
-                            <Route
-                                element={<h1>Home Page</h1>}
-                                path={homePath}
-                            />
+                            <Route element={<HomePage />} path={homePath} />
                             <Route
                                 element={<h1>Company Page</h1>}
                                 path={companyPath}
