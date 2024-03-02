@@ -58,10 +58,12 @@ export const postSignup = async (
         //Encrypting Password prior to creating user
         const salt = await genSalt(10);
         const hashPass = await hash(userData.password, salt);
+
         //Creating user when user doesnot exists in data base
         const createdUser = await UserModel.create({
             email: userData.email.toLowerCase(),
             password: hashPass,
+            isEmployer: false,
         });
 
         res.status(201).send({ user: createdUser });
