@@ -24,9 +24,9 @@ export const Navbar = (): JSX.Element => {
     const authFlag = useIsAuthenticated();
     const signOut = useSignOut();
 
-    const handleLogout = async (): Promise<void> => {
+    const handleLogout = (): void => {
         console.log("Logout Clicked");
-        await signOut();
+        signOut();
     };
     return (
         <NavbarLayout>
