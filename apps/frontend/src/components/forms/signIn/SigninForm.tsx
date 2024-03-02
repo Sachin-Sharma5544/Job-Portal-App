@@ -1,6 +1,7 @@
 import React from "react";
 import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { axiosAuthInstance } from "../../../axios";
 
 export function SigninForm(): JSX.Element {
@@ -108,18 +109,20 @@ export function SigninForm(): JSX.Element {
     //     </div>
     // );
 
+    const signIn = useSignIn();
+    
     const handleLoginClick = async (
         email: string,
         password: string
     ): Promise<void> => {
         try {
-            const data = await axiosAuthInstance.post(loginPath, {
+            const response = await axiosAuthInstance.post(loginPath, {
                 email,
                 password,
             });
-            console.log(data);
-        } catch (error) {
-            console.log("error from backedn", error);
+            console.log(response);
+        } catch (error: any) {
+            console.log("error from backedn", error.response);
         }
     };
 
