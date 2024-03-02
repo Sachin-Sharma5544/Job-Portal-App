@@ -11,7 +11,7 @@ import {
 import AuthProvider from "react-auth-kit/AuthProvider";
 import Layout from "./layout/appLayout/AppLayout";
 import { HomePage, SignInPage, SignUpPage } from "./pages";
-import { store } from "./auth";
+import { store } from "./authStore";
 
 function App(): JSX.Element {
     return (
