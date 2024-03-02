@@ -1,8 +1,14 @@
 import React from "react";
-import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
+import {
+    JOB_SEEKERS,
+    LOGIN_BUTTON_TEXT,
+    homePath,
+    loginPath,
+} from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { axiosAuthInstance } from "../../../axios";
+import { useNavigate } from "react-router-dom";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -110,7 +116,8 @@ export function SigninForm(): JSX.Element {
     // );
 
     const signIn = useSignIn();
-    
+    const navigate = useNavigate();
+
     const handleLoginClick = async (
         email: string,
         password: string
@@ -121,6 +128,16 @@ export function SigninForm(): JSX.Element {
                 password,
             });
             console.log(response);
+
+            signIn({
+                auth: {
+                    token: response.data.token,
+                    type: "Bearer",
+                },
+                userState: { email: response.data.email },
+            });
+
+            navigate(homePath);
         } catch (error: any) {
             console.log("error from backedn", error.response);
         }
