@@ -14,10 +14,20 @@ import {
     loginPath,
     employerPath,
     EMPLOYERS,
+    SIGN_OUT,
 } from "@repo/constants";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import useSignOut from "react-auth-kit/hooks/useSignOut";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 
 export const Navbar = (): JSX.Element => {
+    const authFlag = useIsAuthenticated();
+    const signOut = useSignOut();
+
+    const handleLogout = async (): Promise<void> => {
+        console.log("Logout Clicked");
+        await signOut();
+    };
     return (
         <NavbarLayout>
             <div className="h-full m-0 p-0 flex items-center justify-between">
@@ -25,7 +35,7 @@ export const Navbar = (): JSX.Element => {
                     <div className="flex">
                         <LinkReactRouter className="flex" to={homePath}>
                             <div className="text-white text-[24px]">
-                                <span className="text-orange-200">{WORK}S</span>
+                                <span className="text-orange-200">{WORK}</span>
                                 <span className="text-sky-200">{WISE}</span>
                             </div>
 
@@ -67,16 +77,36 @@ export const Navbar = (): JSX.Element => {
 
                 <div className="h-full flex text-xs">
                     <div className="flex text-[14px]">
-                        <div className="text-white">
-                            <LinkReactRouter className="" to={loginPath}>
-                                {LOGIN}
-                            </LinkReactRouter>
-                        </div>
-                        <div className="text-white">
-                            <LinkReactRouter className="pl-4" to={employerPath}>
-                                {EMPLOYERS}
-                            </LinkReactRouter>
-                        </div>
+                        {!authFlag() ? (
+                            <div className="text-white">
+                                <LinkReactRouter className="" to={loginPath}>
+                                    {LOGIN}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
+                        {!authFlag() ? (
+                            <div className="text-white">
+                                <LinkReactRouter
+                                    className="pl-4"
+                                    to={employerPath}
+                                >
+                                    {EMPLOYERS}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
+                        {authFlag() ? (
+                            <div className="text-white">
+                                <LinkReactRouter
+                                    className=""
+                                    onClick={() => {
+                                        handleLogout();
+                                    }}
+                                    to="#"
+                                >
+                                    {SIGN_OUT}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
