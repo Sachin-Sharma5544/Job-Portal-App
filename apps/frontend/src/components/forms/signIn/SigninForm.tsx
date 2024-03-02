@@ -112,11 +112,15 @@ export function SigninForm(): JSX.Element {
         email: string,
         password: string
     ): Promise<void> => {
-        const data = await axiosAuthInstance.post(loginPath, {
-            email,
-            password,
-        });
-        console.log(data);
+        try {
+            const data = await axiosAuthInstance.post(loginPath, {
+                email,
+                password,
+            });
+            console.log(data);
+        } catch (error) {
+            console.log("error from backedn", error);
+        }
     };
 
     return (
