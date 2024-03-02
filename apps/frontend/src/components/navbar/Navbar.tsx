@@ -1,5 +1,5 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LinkReactRouter } from "@repo/ui";
 import {
     HOME,
@@ -18,16 +18,22 @@ import {
 } from "@repo/constants";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
+import { useSelector, useDispatch } from "react-redux";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 
 export const Navbar = (): JSX.Element => {
+    const [isloggedIn, setIsloggedIn] = useState<boolean>(false);
     const authFlag = useIsAuthenticated();
     const signOut = useSignOut();
 
+    const isAuth = useSelector((state) => state);
+
+    console.log("Redux isAuth", isAuth);
+
     const handleLogout = (): void => {
-        console.log("Logout Clicked");
         signOut();
     };
+
     return (
         <NavbarLayout>
             <div className="h-full m-0 p-0 flex items-center justify-between">
@@ -77,14 +83,14 @@ export const Navbar = (): JSX.Element => {
 
                 <div className="h-full flex text-xs">
                     <div className="flex text-[14px]">
-                        {!authFlag() ? (
+                        {!isloggedIn ? (
                             <div className="text-white">
                                 <LinkReactRouter className="" to={loginPath}>
                                     {LOGIN}
                                 </LinkReactRouter>
                             </div>
                         ) : null}
-                        {!authFlag() ? (
+                        {!isloggedIn ? (
                             <div className="text-white">
                                 <LinkReactRouter
                                     className="pl-4"
@@ -94,7 +100,7 @@ export const Navbar = (): JSX.Element => {
                                 </LinkReactRouter>
                             </div>
                         ) : null}
-                        {authFlag() ? (
+                        {isloggedIn ? (
                             <div className="text-white">
                                 <LinkReactRouter
                                     className=""

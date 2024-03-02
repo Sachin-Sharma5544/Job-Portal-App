@@ -9,6 +9,8 @@ import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
 import { axiosAuthInstance } from "../../../axios";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../../redux";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -117,6 +119,7 @@ export function SigninForm(): JSX.Element {
 
     const signIn = useSignIn();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleLoginClick = async (
         email: string,
@@ -127,17 +130,18 @@ export function SigninForm(): JSX.Element {
                 email,
                 password,
             });
-            console.log(response);
 
-            signIn({
-                auth: {
-                    token: response.data.token,
-                    type: "Bearer",
-                },
-                userState: { email: response.data.email },
-            });
+            // signIn({
+            //     auth: {
+            //         token: response.data.token,
+            //         type: "Bearer",
+            //     },
+            //     userState: { email: response.data.email },
+            // });
 
-            navigate(homePath);
+            dispatch({ type: "Login" });
+
+            // navigate(homePath);
         } catch (error: any) {
             console.log("error from backedn", error.response);
         }
