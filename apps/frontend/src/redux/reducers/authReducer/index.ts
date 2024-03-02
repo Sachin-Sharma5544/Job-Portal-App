@@ -1,12 +1,17 @@
-// reducers/authReducer.js
 const initialState = {
     isAuthenticated: false,
-    // token: null,
-    // user: null,
 };
 
-export const authReducer = (action: any, state = initialState): any => {
-    switch (action?.type) {
+interface ActionType {
+    type?: string;
+    payload?: string;
+}
+
+export const authReducer = (
+    state = initialState,
+    action: ActionType
+): typeof initialState => {
+    switch (action.type) {
         case "LOGIN":
             return {
                 ...state,

@@ -20,18 +20,21 @@ import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
+import { logout } from "../../redux";
 
 export const Navbar = (): JSX.Element => {
     const [isloggedIn, setIsloggedIn] = useState<boolean>(false);
     const authFlag = useIsAuthenticated();
     const signOut = useSignOut();
+    const dispatch = useDispatch();
 
-    const isAuth = useSelector((state) => state);
+    const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
     console.log("Redux isAuth", isAuth);
 
     const handleLogout = (): void => {
         signOut();
+        dispatch(logout());
     };
 
     return (
@@ -83,14 +86,14 @@ export const Navbar = (): JSX.Element => {
 
                 <div className="h-full flex text-xs">
                     <div className="flex text-[14px]">
-                        {!isloggedIn ? (
+                        {!isAuth ? (
                             <div className="text-white">
                                 <LinkReactRouter className="" to={loginPath}>
                                     {LOGIN}
                                 </LinkReactRouter>
                             </div>
                         ) : null}
-                        {!isloggedIn ? (
+                        {!isAuth ? (
                             <div className="text-white">
                                 <LinkReactRouter
                                     className="pl-4"
@@ -100,7 +103,7 @@ export const Navbar = (): JSX.Element => {
                                 </LinkReactRouter>
                             </div>
                         ) : null}
-                        {isloggedIn ? (
+                        {isAuth ? (
                             <div className="text-white">
                                 <LinkReactRouter
                                     className=""

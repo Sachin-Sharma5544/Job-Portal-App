@@ -139,7 +139,7 @@ export function SigninForm(): JSX.Element {
             //     userState: { email: response.data.email },
             // });
 
-            dispatch({ type: "Login" });
+            dispatch(login());
 
             // navigate(homePath);
         } catch (error: any) {
