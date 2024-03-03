@@ -19,6 +19,7 @@ export function TextField(props: TextFieldProps): JSX.Element {
             </label>
             <div className="mt-2">
                 <input
+                    autoComplete="on"
                     className={props.inputBoxClass}
                     id={props.inputBoxId}
                     onChange={props.changeHandler}
