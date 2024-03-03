@@ -6,3 +6,4 @@ export const employerPath = "/employer";
 export const signupPath = "/signup";
 export const API = "/api";
 export const AUTH = "/auth";
+export const profliePath = "/profile";

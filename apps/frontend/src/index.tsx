@@ -7,20 +7,24 @@ import {
     salaryPath,
     loginPath,
     signupPath,
+    profliePath,
 } from "@repo/constants";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
-import { HomePage, SignInPage, SignUpPage } from "./pages";
-import { store } from "./authStore";
-import { login } from "./redux";
+import { HomePage, SignInPage, SignUpPage, ProfilePage } from "./pages";
+import { RootState, login } from "./redux";
 
 function App(): JSX.Element {
     const isAuthenticated = useIsAuthenticated();
     const dispatch = useDispatch();
+    // const isLoggedIn = useSelector(
+    //     (state: RootState) => state.auth.isAuthenticated
+    // );
     if (isAuthenticated()) {
         dispatch(login());
     }
+
     return (
         <div>
             <BrowserRouter>
@@ -37,6 +41,7 @@ function App(): JSX.Element {
                         />
                         <Route element={<SignInPage />} path={loginPath} />
                         <Route element={<SignUpPage />} path={signupPath} />
+                        <Route element={<ProfilePage />} path={profliePath} />
                     </Routes>
                 </Layout>
             </BrowserRouter>

@@ -15,6 +15,8 @@ import {
     employerPath,
     EMPLOYERS,
     SIGN_OUT,
+    PROFILE,
+    profliePath,
 } from "@repo/constants";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
@@ -76,6 +78,11 @@ export const Navbar = (): JSX.Element => {
                         <div className="text-white">
                             <LinkReactRouter className="pl-4" to={salaryPath}>
                                 {SALARY}
+                            </LinkReactRouter>
+                        </div>
+                        <div className="text-white">
+                            <LinkReactRouter className="pl-4" to={profliePath}>
+                                {PROFILE}
                             </LinkReactRouter>
                         </div>
                     </div>

@@ -6,3 +6,4 @@ export const WISE = "Wise";
 export const LOGIN = "Login";
 export const EMPLOYERS = "Employers/ Post Job";
 export const SIGN_OUT = "Sign Out";
+export const PROFILE = "Profile";
