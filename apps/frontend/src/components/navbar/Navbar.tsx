@@ -18,6 +18,8 @@ import {
     SIGN_OUT,
     PROFILE,
     profliePath,
+    SIGNUP,
+    signupPath,
 } from "@repo/constants";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
@@ -100,6 +102,17 @@ export const Navbar = (): JSX.Element => {
                             <div className="text-white">
                                 <LinkReactRouter className="" to={loginPath}>
                                     {LOGIN}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
+
+                        {!isAuth ? (
+                            <div className="text-white">
+                                <LinkReactRouter
+                                    className="pl-4"
+                                    to={signupPath}
+                                >
+                                    {SIGNUP}
                                 </LinkReactRouter>
                             </div>
                         ) : null}

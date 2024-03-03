@@ -1,14 +1,15 @@
 import React from "react";
 import { HeaderElement, ParaElement } from "@repo/ui";
+import { HOME_HEADING_TEXT, HOME_JOB_EXPLORE_TEXT } from "@repo/constants";
 
 export const Heading = (): JSX.Element => {
     return (
         <div className="py-20">
             <HeaderElement className="text-center text-4xl font-bold">
-                Find your dream role now
+                {HOME_HEADING_TEXT}
             </HeaderElement>
             <ParaElement className="text-center py-3">
-                Multiple jobs for you to explore
+                {HOME_JOB_EXPLORE_TEXT}
             </ParaElement>
         </div>
     );
