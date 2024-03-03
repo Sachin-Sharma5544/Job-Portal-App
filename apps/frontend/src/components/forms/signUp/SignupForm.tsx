@@ -2,9 +2,9 @@ import React from "react";
 import { AuthForm } from "@repo/ui";
 import { JOB_SEEKERS, REGISTER_BUTTON_TEXT } from "@repo/constants";
 // import axios from "axios";
-import { axiosAuthInstance } from "../../../axios/axios";
+import { axiosAuthInstance } from "../../../axios";
 
-const SignupForm = (): JSX.Element => {
+export const SignupForm = (): JSX.Element => {
     const handleRegisterClick = async (
         email: string,
         password: string,
@@ -26,5 +26,3 @@ const SignupForm = (): JSX.Element => {
     );
     // return <div>Sign Up Form</div>;
 };
-
-export default SignupForm;

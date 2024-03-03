@@ -1,9 +1,9 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
+import { type Request, type Response } from "express";
 import { loginPath, signupPath, API, AUTH } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
-import { NextFunction, Request, Response } from "express";
 
 const port = 5002;
 const server = createServer();

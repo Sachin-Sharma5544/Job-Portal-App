@@ -1,9 +1,18 @@
 import React from "react";
-import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, loginPath } from "@repo/constants";
+import {
+    JOB_SEEKERS,
+    LOGIN_BUTTON_TEXT,
+    homePath,
+    loginPath,
+} from "@repo/constants";
 import { AuthForm } from "@repo/ui";
-import { axiosAuthInstance } from "../../../axios/axios";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { useNavigate } from "react-router-dom";
+import { axiosAuthInstance } from "../../../axios";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../../redux";
 
-export default function SigninForm(): JSX.Element {
+export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
     // const [password, setPassword] = useState<string>("");
     // const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -108,15 +117,34 @@ export default function SigninForm(): JSX.Element {
     //     </div>
     // );
 
+    const signIn = useSignIn();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const handleLoginClick = async (
         email: string,
         password: string
     ): Promise<void> => {
-        const data = await axiosAuthInstance.post(loginPath, {
-            email,
-            password,
-        });
-        console.log(data);
+        try {
+            const response = await axiosAuthInstance.post(loginPath, {
+                email,
+                password,
+            });
+
+            // signIn({
+            //     auth: {
+            //         token: response.data.token,
+            //         type: "Bearer",
+            //     },
+            //     userState: { email: response.data.email },
+            // });
+
+            dispatch(login());
+
+            // navigate(homePath);
+        } catch (error: any) {
+            console.log("error from backedn", error.response);
+        }
     };
 
     return (

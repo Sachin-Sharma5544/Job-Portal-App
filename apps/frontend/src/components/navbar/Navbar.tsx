@@ -1,5 +1,5 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LinkReactRouter } from "@repo/ui";
 import {
     HOME,
@@ -14,10 +14,29 @@ import {
     loginPath,
     employerPath,
     EMPLOYERS,
+    SIGN_OUT,
 } from "@repo/constants";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import useSignOut from "react-auth-kit/hooks/useSignOut";
+import { useSelector, useDispatch } from "react-redux";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
+import { logout } from "../../redux";
 
-const Navbar = (): JSX.Element => {
+export const Navbar = (): JSX.Element => {
+    const [isloggedIn, setIsloggedIn] = useState<boolean>(false);
+    const authFlag = useIsAuthenticated();
+    const signOut = useSignOut();
+    const dispatch = useDispatch();
+
+    const isAuth = useSelector((state) => state.auth.isAuthenticated);
+
+    console.log("Redux isAuth", isAuth);
+
+    const handleLogout = (): void => {
+        signOut();
+        dispatch(logout());
+    };
+
     return (
         <NavbarLayout>
             <div className="h-full m-0 p-0 flex items-center justify-between">
@@ -25,7 +44,7 @@ const Navbar = (): JSX.Element => {
                     <div className="flex">
                         <LinkReactRouter className="flex" to={homePath}>
                             <div className="text-white text-[24px]">
-                                <span className="text-orange-200">{WORK}S</span>
+                                <span className="text-orange-200">{WORK}</span>
                                 <span className="text-sky-200">{WISE}</span>
                             </div>
 
@@ -67,21 +86,39 @@ const Navbar = (): JSX.Element => {
 
                 <div className="h-full flex text-xs">
                     <div className="flex text-[14px]">
-                        <div className="text-white">
-                            <LinkReactRouter className="" to={loginPath}>
-                                {LOGIN}
-                            </LinkReactRouter>
-                        </div>
-                        <div className="text-white">
-                            <LinkReactRouter className="pl-4" to={employerPath}>
-                                {EMPLOYERS}
-                            </LinkReactRouter>
-                        </div>
+                        {!isAuth ? (
+                            <div className="text-white">
+                                <LinkReactRouter className="" to={loginPath}>
+                                    {LOGIN}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
+                        {!isAuth ? (
+                            <div className="text-white">
+                                <LinkReactRouter
+                                    className="pl-4"
+                                    to={employerPath}
+                                >
+                                    {EMPLOYERS}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
+                        {isAuth ? (
+                            <div className="text-white">
+                                <LinkReactRouter
+                                    className=""
+                                    onClick={() => {
+                                        handleLogout();
+                                    }}
+                                    to="#"
+                                >
+                                    {SIGN_OUT}
+                                </LinkReactRouter>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
         </NavbarLayout>
     );
 };
-
-export default Navbar;

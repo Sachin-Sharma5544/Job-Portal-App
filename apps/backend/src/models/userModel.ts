@@ -10,6 +10,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        isEmployer: {
+            type: Boolean,
+            required: true,
+        },
     },
     { timestamps: true }
 );
