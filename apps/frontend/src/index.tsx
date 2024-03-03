@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./styles.css";
 import {
     homePath,
@@ -18,9 +18,9 @@ import { RootState, login } from "./redux";
 function App(): JSX.Element {
     const isAuthenticated = useIsAuthenticated();
     const dispatch = useDispatch();
-    // const isLoggedIn = useSelector(
-    //     (state: RootState) => state.auth.isAuthenticated
-    // );
+    const isLoggedIn = useSelector(
+        (state: RootState) => state.auth.isAuthenticated
+    );
     if (isAuthenticated()) {
         dispatch(login());
     }
@@ -39,9 +39,27 @@ function App(): JSX.Element {
                             element={<h1>Salary Page</h1>}
                             path={salaryPath}
                         />
-                        <Route element={<SignInPage />} path={loginPath} />
+                        <Route
+                            element={
+                                !isAuthenticated() ? (
+                                    <SignInPage />
+                                ) : (
+                                    <ProfilePage />
+                                )
+                            }
+                            path={loginPath}
+                        />
                         <Route element={<SignUpPage />} path={signupPath} />
-                        <Route element={<ProfilePage />} path={profliePath} />
+                        <Route
+                            element={
+                                isAuthenticated() ? (
+                                    <ProfilePage />
+                                ) : (
+                                    <Navigate to={loginPath} />
+                                )
+                            }
+                            path={profliePath}
+                        />
                     </Routes>
                 </Layout>
             </BrowserRouter>

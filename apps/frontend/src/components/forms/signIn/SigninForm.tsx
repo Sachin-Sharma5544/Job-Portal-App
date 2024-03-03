@@ -4,6 +4,7 @@ import {
     LOGIN_BUTTON_TEXT,
     homePath,
     loginPath,
+    profliePath,
 } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
@@ -142,7 +143,7 @@ export function SigninForm(): JSX.Element {
 
             dispatch(login());
 
-            // navigate(homePath);
+            navigate(profliePath);
         } catch (error: any) {
             console.log("error from backedn", error.response);
         }

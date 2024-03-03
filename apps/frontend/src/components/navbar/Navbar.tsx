@@ -81,9 +81,14 @@ export const Navbar = (): JSX.Element => {
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-4" to={profliePath}>
-                                {PROFILE}
-                            </LinkReactRouter>
+                            {isAuth ? (
+                                <LinkReactRouter
+                                    className="pl-4"
+                                    to={profliePath}
+                                >
+                                    {PROFILE}
+                                </LinkReactRouter>
+                            ) : null}
                         </div>
                     </div>
                 </div>
