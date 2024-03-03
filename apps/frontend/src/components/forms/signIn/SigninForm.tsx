@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { axiosAuthInstance } from "../../../axios";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../../redux";
+import { RootState } from "../../../redux";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -131,13 +132,13 @@ export function SigninForm(): JSX.Element {
                 password,
             });
 
-            // signIn({
-            //     auth: {
-            //         token: response.data.token,
-            //         type: "Bearer",
-            //     },
-            //     userState: { email: response.data.email },
-            // });
+            signIn({
+                auth: {
+                    token: response.data.token,
+                    type: "Bearer",
+                },
+                userState: { email: response.data.email },
+            });
 
             dispatch(login());
 

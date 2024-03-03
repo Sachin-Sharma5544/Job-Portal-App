@@ -1,5 +1,5 @@
 // import { CounterButton, Link, LinkReactRouter } from "@repo/ui";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { LinkReactRouter } from "@repo/ui";
 import {
     HOME,
@@ -16,21 +16,18 @@ import {
     EMPLOYERS,
     SIGN_OUT,
 } from "@repo/constants";
-import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
-import { logout } from "../../redux";
+import { logout, type RootState } from "../../redux";
 
 export const Navbar = (): JSX.Element => {
-    const [isloggedIn, setIsloggedIn] = useState<boolean>(false);
-    const authFlag = useIsAuthenticated();
     const signOut = useSignOut();
     const dispatch = useDispatch();
 
-    const isAuth = useSelector((state) => state.auth.isAuthenticated);
-
-    console.log("Redux isAuth", isAuth);
+    const isAuth = useSelector(
+        (state: RootState) => state.auth.isAuthenticated
+    );
 
     const handleLogout = (): void => {
         signOut();

@@ -8,34 +8,39 @@ import {
     loginPath,
     signupPath,
 } from "@repo/constants";
-import AuthProvider from "react-auth-kit/AuthProvider";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+import { useDispatch } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
 import { HomePage, SignInPage, SignUpPage } from "./pages";
 import { store } from "./authStore";
+import { login } from "./redux";
 
 function App(): JSX.Element {
+    const isAuthenticated = useIsAuthenticated();
+    const dispatch = useDispatch();
+    if (isAuthenticated()) {
+        dispatch(login());
+    }
     return (
-        <AuthProvider store={store}>
-            <div>
-                <BrowserRouter>
-                    <Layout>
-                        <Routes>
-                            <Route element={<HomePage />} path={homePath} />
-                            <Route
-                                element={<h1>Company Page</h1>}
-                                path={companyPath}
-                            />
-                            <Route
-                                element={<h1>Salary Page</h1>}
-                                path={salaryPath}
-                            />
-                            <Route element={<SignInPage />} path={loginPath} />
-                            <Route element={<SignUpPage />} path={signupPath} />
-                        </Routes>
-                    </Layout>
-                </BrowserRouter>
-            </div>
-        </AuthProvider>
+        <div>
+            <BrowserRouter>
+                <Layout>
+                    <Routes>
+                        <Route element={<HomePage />} path={homePath} />
+                        <Route
+                            element={<h1>Company Page</h1>}
+                            path={companyPath}
+                        />
+                        <Route
+                            element={<h1>Salary Page</h1>}
+                            path={salaryPath}
+                        />
+                        <Route element={<SignInPage />} path={loginPath} />
+                        <Route element={<SignUpPage />} path={signupPath} />
+                    </Routes>
+                </Layout>
+            </BrowserRouter>
+        </div>
     );
 }
 
