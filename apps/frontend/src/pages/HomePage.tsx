@@ -1,8 +1,10 @@
 import React from "react";
-import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+import { Heading } from "../components/home";
 
 export const HomePage = (): JSX.Element => {
-    const user = useAuthUser();
-    console.log("Home page", user);
-    return <div>HomePage</div>;
+    return (
+        <>
+            <Heading />
+        </>
+    );
 };

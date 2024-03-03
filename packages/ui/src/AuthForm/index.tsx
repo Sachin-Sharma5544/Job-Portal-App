@@ -12,7 +12,7 @@ import {
     REGISTER_LINK_TEXT,
 } from "@repo/constants";
 import { Button } from "../Button";
-import { TextField } from "../TextField";
+import { TextField } from "../InputWithLabelField";
 import { LinkReactRouter } from "../LinkReactRouter";
 
 interface AuthFormProps {
