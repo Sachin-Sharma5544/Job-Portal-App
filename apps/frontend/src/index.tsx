@@ -8,12 +8,30 @@ import {
     loginPath,
     signupPath,
     profliePath,
+    aboutUsPath,
+    careersPath,
+    employersHomePath,
+    fraudAlertPath,
+    privacyPolicyPath,
+    reportIssuePath,
+    termsPath,
+    trustAndSafetyPath,
 } from "@repo/constants";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
 import { HomePage, SignInPage, SignUpPage, ProfilePage } from "./pages";
-import { RootState, login } from "./redux";
+import {
+    AboutUs,
+    Careers,
+    EmployersHome,
+    FraudAlert,
+    PrivacyPolicy,
+    ReportIssue,
+    TermsAndConditions,
+    TrustAndSafety,
+} from "./components";
+import { type RootState, login } from "./redux";
 
 function App(): JSX.Element {
     const isAuthenticated = useIsAuthenticated();
@@ -59,6 +77,29 @@ function App(): JSX.Element {
                                 )
                             }
                             path={profliePath}
+                        />
+                        <Route element={<AboutUs />} path={aboutUsPath} />
+                        <Route element={<Careers />} path={careersPath} />
+                        <Route
+                            element={<EmployersHome />}
+                            path={employersHomePath}
+                        />
+                        <Route element={<FraudAlert />} path={fraudAlertPath} />
+                        <Route
+                            element={<PrivacyPolicy />}
+                            path={privacyPolicyPath}
+                        />
+                        <Route
+                            element={<ReportIssue />}
+                            path={reportIssuePath}
+                        />
+                        <Route
+                            element={<TermsAndConditions />}
+                            path={termsPath}
+                        />
+                        <Route
+                            element={<TrustAndSafety />}
+                            path={trustAndSafetyPath}
                         />
                     </Routes>
                 </Layout>

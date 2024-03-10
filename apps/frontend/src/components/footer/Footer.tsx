@@ -1,7 +1,18 @@
+import { BrandLogo, LinkReactRouter } from "@repo/ui";
 import React from "react";
+import { FooterLinks } from "./footerLinks/FooterLinks";
 
 export function Footer(): JSX.Element {
     return (
-        <div className="bg-slate-500 w-full h-20 text-white mt-10">Footer</div>
+        <div className=" w-full h-20 text-white mt-20">
+            <div className="flex items-center w-full">
+                <div className="flex items-center">
+                    <BrandLogo bagFill="black" />
+                </div>
+                <div className="text-black pl-10 w-full">
+                    <FooterLinks />
+                </div>
+            </div>
+        </div>
     );
 }
