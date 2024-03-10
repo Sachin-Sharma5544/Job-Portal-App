@@ -15,30 +15,42 @@ export function FooterLinks(): JSX.Element {
     return (
         <div className="w-full">
             <div className="flex justify-around w-full">
-                <LinkReactRouter className="" to={aboutUsPath}>
+                <LinkReactRouter className="text-slate-200" to={aboutUsPath}>
                     About Us
                 </LinkReactRouter>
-                <LinkReactRouter className="" to={careersPath}>
+                <LinkReactRouter className="text-slate-200" to={careersPath}>
                     Careers
                 </LinkReactRouter>
-                <LinkReactRouter className="" to={employersHomePath}>
+                <LinkReactRouter
+                    className="text-slate-200"
+                    to={employersHomePath}
+                >
                     Employers Home
                 </LinkReactRouter>
-                <LinkReactRouter className="" to={fraudAlertPath}>
+                <LinkReactRouter className="text-slate-200" to={fraudAlertPath}>
                     Fraud Alert
                 </LinkReactRouter>
             </div>
-            <div className=" flex justify-around pt-5">
-                <LinkReactRouter className=" " to={privacyPolicyPath}>
+            <div className=" flex justify-around pt-4">
+                <LinkReactRouter
+                    className="text-slate-200"
+                    to={privacyPolicyPath}
+                >
                     Privacy Policy
                 </LinkReactRouter>
-                <LinkReactRouter className=" " to={reportIssuePath}>
+                <LinkReactRouter
+                    className="text-slate-200"
+                    to={reportIssuePath}
+                >
                     Report an Issue
                 </LinkReactRouter>
-                <LinkReactRouter className=" " to={termsPath}>
+                <LinkReactRouter className="text-slate-200" to={termsPath}>
                     Terms and Conditions
                 </LinkReactRouter>
-                <LinkReactRouter className=" " to={trustAndSafetyPath}>
+                <LinkReactRouter
+                    className="text-slate-200"
+                    to={trustAndSafetyPath}
+                >
                     Trust and Safety
                 </LinkReactRouter>
             </div>
