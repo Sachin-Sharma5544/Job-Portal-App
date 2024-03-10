@@ -8,7 +8,6 @@ import {
     COMPANY,
     SALARY,
     LOGIN,
-    JOBS,
     homePath,
     companyPath,
     salaryPath,

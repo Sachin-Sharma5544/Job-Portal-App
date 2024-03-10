@@ -15,6 +15,7 @@ export const TrendingJobs = (): JSX.Element => {
                 <li className="w-52 h-20 m-2 border-2"></li>
                 <li className="w-52 h-20 m-2 border-2"></li>
                 <li className="w-52 h-20 m-2 border-2"></li>
+                <li className="w-52 h-20 m-2 border-2"></li>
             </ul>
         </div>
     );
