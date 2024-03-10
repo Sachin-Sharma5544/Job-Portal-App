@@ -6,3 +6,4 @@ export * from "./Button";
 export * from "./InputWithLabelField";
 export * from "./AuthForm";
 export * from "./DisplayText";
+export * from "./BrandLogo";
