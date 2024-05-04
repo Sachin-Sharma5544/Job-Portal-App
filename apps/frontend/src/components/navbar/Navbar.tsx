@@ -20,12 +20,14 @@ import {
 } from "@repo/constants";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 import { logout, type RootState } from "../../redux";
 
 export const Navbar = (): JSX.Element => {
     const signOut = useSignOut();
     const dispatch = useDispatch();
+    const authUser = useAuthUser();
 
     const isAuth = useSelector(
         (state: RootState) => state.auth.isAuthenticated
@@ -105,17 +107,24 @@ export const Navbar = (): JSX.Element => {
                             </div>
                         ) : null}
                         {isAuth ? (
-                            <div className="text-white">
-                                <LinkReactRouter
-                                    className=""
-                                    onClick={() => {
-                                        handleLogout();
-                                    }}
-                                    to="#"
-                                >
-                                    {SIGN_OUT}
-                                </LinkReactRouter>
-                            </div>
+                            <>
+                                <div className="text-white ">
+                                    <LinkReactRouter className="pr-4" to="#">
+                                        {authUser.email}
+                                    </LinkReactRouter>
+                                </div>
+                                <div className="text-white">
+                                    <LinkReactRouter
+                                        className=""
+                                        onClick={() => {
+                                            handleLogout();
+                                        }}
+                                        to="#"
+                                    >
+                                        {SIGN_OUT}
+                                    </LinkReactRouter>
+                                </div>
+                            </>
                         ) : null}
                     </div>
                 </div>
