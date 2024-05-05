@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { type RootState } from "../../../redux/store";
+import TrendingJobIcon from "./TrendingJobIcon";
 
 export const TrendingJobs = (): JSX.Element => {
     const trendingJobs = useSelector(
@@ -16,9 +17,9 @@ export const TrendingJobs = (): JSX.Element => {
                         className="w-36 h-16 border-2 mb-5 mr-2 rounded-lg border-zinc-300"
                         key={job.id}
                     >
-                        <div className="flex justify-between items-center h-full ml-2 mr-2">
+                        <div className="flex justify-around items-center h-full ml-2 mr-2">
+                            <TrendingJobIcon companyName={job.jobName} />
                             <h4>{job.jobName}</h4>
-                            <span>{">"}</span>
                         </div>
                     </li>
                 ))}
