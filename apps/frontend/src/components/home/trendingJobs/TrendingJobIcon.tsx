@@ -74,24 +74,19 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
-                    fill="currentColor"
+                    className="w-6 h-6 text-gray-800"
+                    fill="none"
                     height="24"
                     viewBox="0 0 24 24"
                     width="24"
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     <path
-                        clipRule="evenodd"
-                        d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z"
-                        fillRule="evenodd"
+                        d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeWidth="2"
                     />
-                    <path
-                        clipRule="evenodd"
-                        d="M2 11a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-7Zm7.5 1a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"
-                        fillRule="evenodd"
-                    />
-                    <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
                 </svg>
             );
 
