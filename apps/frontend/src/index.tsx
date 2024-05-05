@@ -31,16 +31,14 @@ import {
     TermsAndConditions,
     TrustAndSafety,
 } from "./components";
-import { type RootState, login } from "./redux";
+import { loginSuccess } from "./redux/slices/authSlice";
 
 function App(): JSX.Element {
     const isAuthenticated = useIsAuthenticated();
     const dispatch = useDispatch();
-    const isLoggedIn = useSelector(
-        (state: RootState) => state.auth.isAuthenticated
-    );
+    const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
     if (isAuthenticated()) {
-        dispatch(login());
+        dispatch(loginSuccess());
     }
 
     return (

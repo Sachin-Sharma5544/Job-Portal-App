@@ -11,8 +11,7 @@ import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
 import { axiosAuthInstance } from "../../../axios";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../../redux";
-import { RootState } from "../../../redux";
+import { loginSuccess } from "../../../redux/slices/authSlice";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -141,7 +140,7 @@ export function SigninForm(): JSX.Element {
                 userState: { email: response.data.email },
             });
 
-            dispatch(login());
+            dispatch(loginSuccess());
 
             navigate(profliePath);
         } catch (error: any) {

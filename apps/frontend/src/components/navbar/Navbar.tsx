@@ -22,7 +22,7 @@ import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
-import { logout, type RootState } from "../../redux";
+import { logoutSuccess } from "../../redux/slices/authSlice";
 
 export const Navbar = (): JSX.Element => {
     const signOut = useSignOut();
@@ -35,7 +35,7 @@ export const Navbar = (): JSX.Element => {
 
     const handleLogout = (): void => {
         signOut();
-        dispatch(logout());
+        dispatch(logoutSuccess());
     };
 
     return (
