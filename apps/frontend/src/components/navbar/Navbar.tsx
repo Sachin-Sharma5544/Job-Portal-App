@@ -23,6 +23,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import NavbarLayout from "../../layout/navbarLayout/NavbarLayout";
 import { logoutSuccess } from "../../redux/slices/authSlice";
+import { type RootState } from "../../redux/store";
 
 export const Navbar = (): JSX.Element => {
     const signOut = useSignOut();
