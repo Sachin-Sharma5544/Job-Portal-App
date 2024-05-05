@@ -10,7 +10,7 @@ const Layout = function (props: LayoutProps): React.ReactNode {
     return (
         <>
             <Navbar />
-            <div className="px-44 bg-gradient-to-tr from-slate-500 to-cyan-100 ">
+            <div className="px-32 bg-gradient-to-tr from-slate-500 to-cyan-100 ">
                 <main>{props.children}</main>
             </div>
             <div className="px-24 py-8 bg-gradient-to-tr from-slate-900 to-cyan-700 ">
