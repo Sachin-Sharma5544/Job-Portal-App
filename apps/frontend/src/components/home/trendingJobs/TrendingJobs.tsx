@@ -14,7 +14,7 @@ export const TrendingJobs = (): JSX.Element => {
             <ul className="flex justify-around flex-wrap">
                 {trendingJobs.map((job) => (
                     <li
-                        className="w-40 h-16 border-2 mb-5 mr-2 rounded-lg border-zinc-300"
+                        className="w-40 h-16 border-2 mb-5 mr-2 rounded-lg border-zinc-300 hover:scale-105 hover:cursor-pointer"
                         key={job.id}
                     >
                         <div className="flex justify-around items-center h-full ml-2 mr-2">
