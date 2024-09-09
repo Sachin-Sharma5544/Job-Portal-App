@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../../components";
+import { Navbar, Footer } from "../../components";
 
 interface LayoutProps {
     name?: string;
@@ -10,7 +10,12 @@ const Layout = function (props: LayoutProps): React.ReactNode {
     return (
         <>
             <Navbar />
-            <main className="px-4 py-2 ">{props.children}</main>
+            <div className="px-32 bg-gradient-to-tr from-slate-500 to-cyan-100 ">
+                <main>{props.children}</main>
+            </div>
+            <div className="px-24 py-8 bg-gradient-to-tr from-slate-900 to-cyan-700 ">
+                <Footer />
+            </div>
         </>
     );
 };

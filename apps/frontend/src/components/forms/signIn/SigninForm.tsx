@@ -4,13 +4,14 @@ import {
     LOGIN_BUTTON_TEXT,
     homePath,
     loginPath,
+    profliePath,
 } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
 import { axiosAuthInstance } from "../../../axios";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../../redux";
+import { loginSuccess } from "../../../redux/slices/authSlice";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -131,17 +132,17 @@ export function SigninForm(): JSX.Element {
                 password,
             });
 
-            // signIn({
-            //     auth: {
-            //         token: response.data.token,
-            //         type: "Bearer",
-            //     },
-            //     userState: { email: response.data.email },
-            // });
+            signIn({
+                auth: {
+                    token: response.data.token,
+                    type: "Bearer",
+                },
+                userState: { email: response.data.email },
+            });
 
-            dispatch(login());
+            dispatch(loginSuccess());
 
-            // navigate(homePath);
+            navigate(profliePath);
         } catch (error: any) {
             console.log("error from backedn", error.response);
         }
