@@ -527,6 +527,12 @@ video {
 .h-16 {
   height: 4rem;
 }
+.h-28 {
+  height: 7rem;
+}
+.h-36 {
+  height: 9rem;
+}
 .h-4 {
   height: 1rem;
 }
@@ -542,11 +548,20 @@ video {
 .min-h-full {
   min-height: 100%;
 }
-.w-36 {
-  width: 9rem;
+.w-40 {
+  width: 10rem;
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-\[300px\] {
+  width: 300px;
+}
+.w-\[500px\] {
+  width: 500px;
+}
+.w-\[90\%\] {
+  width: 90%;
 }
 .w-full {
   width: 100%;
@@ -638,9 +653,9 @@ video {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
-.px-44 {
-  padding-left: 11rem;
-  padding-right: 11rem;
+.px-32 {
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -673,9 +688,6 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-.pb-20 {
-  padding-bottom: 5rem;
 }
 .pl-10 {
   padding-left: 2.5rem;
@@ -792,6 +804,14 @@ video {
 .placeholder\:text-gray-400::placeholder {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
 }
 .hover\:bg-indigo-600:hover {
   --tw-bg-opacity: 1;
