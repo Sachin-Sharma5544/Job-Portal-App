@@ -1,8 +1,6 @@
 import React from "react";
-import SignupForm from "../components/forms/signUp/SignupForm";
+import { SignupForm } from "../components";
 
-const SignUpPage = (): JSX.Element => {
+export const SignUpPage = (): JSX.Element => {
     return <SignupForm />;
 };
-
-export default SignUpPage;

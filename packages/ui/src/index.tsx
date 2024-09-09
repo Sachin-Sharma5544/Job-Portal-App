@@ -3,5 +3,7 @@ export * from "./CounterButton";
 export * from "./LinkReactRouter";
 export * from "./ListsComp";
 export * from "./Button";
-export * from "./TextField";
+export * from "./InputWithLabelField";
 export * from "./AuthForm";
+export * from "./DisplayText";
+export * from "./BrandLogo";

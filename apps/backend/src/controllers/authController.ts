@@ -31,8 +31,10 @@ export const postLogin = async (req: Request, res: Response): Promise<void> => {
             email: userData.email,
             token,
         });
-    } catch (error) {
-        log(error);
+    } catch (error: any) {
+        res.status(400).send({
+            error: error.message,
+        });
     }
 };
 
@@ -56,10 +58,12 @@ export const postSignup = async (
         //Encrypting Password prior to creating user
         const salt = await genSalt(10);
         const hashPass = await hash(userData.password, salt);
+
         //Creating user when user doesnot exists in data base
         const createdUser = await UserModel.create({
             email: userData.email.toLowerCase(),
             password: hashPass,
+            isEmployer: false,
         });
 
         res.status(201).send({ user: createdUser });

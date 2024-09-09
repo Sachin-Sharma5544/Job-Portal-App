@@ -12,8 +12,9 @@ import {
     REGISTER_LINK_TEXT,
 } from "@repo/constants";
 import { Button } from "../Button";
-import { TextField } from "../TextField";
+import { TextField } from "../InputWithLabelField";
 import { LinkReactRouter } from "../LinkReactRouter";
+import { BrandLogo } from "../BrandLogo";
 
 interface AuthFormProps {
     onButtonClick: (a: string, b: string, c?: string) => void;
@@ -28,29 +29,10 @@ export function AuthForm(props: AuthFormProps): JSX.Element {
     const [confirmPassword, setConfirmPassword] = useState<string>("");
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
+            <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
                 <div className="flex items-center justify-center">
-                    <div className="text-white mx-2 text-[24px]">
-                        <span className="text-orange-300">{WORK}</span>
-                        <span className="text-sky-400 ">{WISE}</span>
-                    </div>
-
-                    <div className="h-6">
-                        <svg
-                            className="h-full"
-                            fill="black"
-                            viewBox="0 0 16 16"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                clipRule="evenodd"
-                                d="M11 4V3a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v1H4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1ZM9 2.5H7a.5.5 0 0 0-.5.5v1h3V3a.5.5 0 0 0-.5-.5ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
-                                fillRule="evenodd"
-                            />
-                            <path d="M3 11.83V12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-.17c-.313.11-.65.17-1 .17H4c-.35 0-.687-.06-1-.17Z" />
-                        </svg>
-                    </div>
+                    <BrandLogo bagFill="black" />
                 </div>
                 <p className="text-center">{props.roleType}</p>
 
@@ -60,7 +42,7 @@ export function AuthForm(props: AuthFormProps): JSX.Element {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form className="space-y-6">
+                <form className="space-y-6 ">
                     {/* Email Field */}
                     <TextField
                         changeHandler={(
