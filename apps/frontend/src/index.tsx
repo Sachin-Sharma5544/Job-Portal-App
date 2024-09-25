@@ -42,67 +42,57 @@ function App(): JSX.Element {
     }
 
     return (
-        <div>
-            <BrowserRouter>
-                <Layout>
-                    <Routes>
-                        <Route element={<HomePage />} path={homePath} />
-                        <Route
-                            element={<h1>Company Page</h1>}
-                            path={companyPath}
-                        />
-                        <Route
-                            element={<h1>Salary Page</h1>}
-                            path={salaryPath}
-                        />
-                        <Route
-                            element={
-                                !isAuthenticated() ? (
-                                    <SignInPage />
-                                ) : (
-                                    <ProfilePage />
-                                )
-                            }
-                            path={loginPath}
-                        />
-                        <Route element={<SignUpPage />} path={signupPath} />
-                        <Route
-                            element={
-                                isAuthenticated() ? (
-                                    <ProfilePage />
-                                ) : (
-                                    <Navigate to={loginPath} />
-                                )
-                            }
-                            path={profliePath}
-                        />
-                        <Route element={<AboutUs />} path={aboutUsPath} />
-                        <Route element={<Careers />} path={careersPath} />
-                        <Route
-                            element={<EmployersHome />}
-                            path={employersHomePath}
-                        />
-                        <Route element={<FraudAlert />} path={fraudAlertPath} />
-                        <Route
-                            element={<PrivacyPolicy />}
-                            path={privacyPolicyPath}
-                        />
-                        <Route
-                            element={<ReportIssue />}
-                            path={reportIssuePath}
-                        />
-                        <Route
-                            element={<TermsAndConditions />}
-                            path={termsPath}
-                        />
-                        <Route
-                            element={<TrustAndSafety />}
-                            path={trustAndSafetyPath}
-                        />
-                    </Routes>
-                </Layout>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <Layout>
+                <Routes>
+                    <Route element={<HomePage />} path={homePath} />
+                    <Route element={<h1>Company Page</h1>} path={companyPath} />
+                    <Route element={<h1>Salary Page</h1>} path={salaryPath} />
+                    <Route
+                        element={
+                            !isAuthenticated() ? (
+                                <SignInPage />
+                            ) : (
+                                <ProfilePage />
+                            )
+                        }
+                        path={loginPath}
+                    />
+                    <Route element={<SignUpPage />} path={signupPath} />
+                    <Route
+                        element={
+                            isAuthenticated() ? (
+                                <ProfilePage />
+                            ) : (
+                                <Navigate to={loginPath} />
+                            )
+                        }
+                        path={profliePath}
+                    />
+                    <Route element={<AboutUs />} path={aboutUsPath} />
+                    <Route element={<Careers />} path={careersPath} />
+                    <Route
+                        element={<EmployersHome />}
+                        path={employersHomePath}
+                    />
+                    <Route element={<FraudAlert />} path={fraudAlertPath} />
+                    <Route
+                        element={<PrivacyPolicy />}
+                        path={privacyPolicyPath}
+                    />
+                    <Route element={<ReportIssue />} path={reportIssuePath} />
+                    <Route element={<TermsAndConditions />} path={termsPath} />
+                    <Route
+                        element={<TrustAndSafety />}
+                        path={trustAndSafetyPath}
+                    />
+                    <Route
+                        element={<h5>Trending jobs Page</h5>}
+                        path="/trending-jobs/:job"
+                    />
+                </Routes>
+            </Layout>
+        </BrowserRouter>
     );
 }
 
