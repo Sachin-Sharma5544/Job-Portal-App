@@ -20,6 +20,7 @@ server.use(`${API}${AUTH}`, authRouter);
 server.use("*", (req: Request, res: Response) => {
     res.status(422).send({ message: "Path not found" });
 });
+
 connectDatabase(url)
     .then(() => {
         log("Database connected successfully");
