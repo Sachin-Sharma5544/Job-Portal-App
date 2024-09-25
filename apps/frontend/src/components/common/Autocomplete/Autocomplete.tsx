@@ -62,7 +62,6 @@ export default function AutoCompleteComponent(
             isOptionEqualToValue={(option, value) =>
                 option.title === value.title
             }
-            popupIcon={<SearchIcon />}
             loading={loading}
             onClose={() => {
                 setOpen(false);
@@ -72,6 +71,7 @@ export default function AutoCompleteComponent(
             }}
             open={open}
             options={options}
+            popupIcon={<SearchIcon />}
             renderInput={(params) => {
                 console.log(params, "JJJJ");
                 return (
@@ -96,6 +96,14 @@ export default function AutoCompleteComponent(
                         }}
                     />
                 );
+            }}
+            sx={{
+                "& .MuiAutocomplete-popupIndicator": {
+                    transform: "none", // Prevent rotation
+                },
+                "& .MuiAutocomplete-popupIndicatorOpen": {
+                    transform: "none", // Prevent rotation when open
+                },
             }}
         />
     );
