@@ -21,15 +21,20 @@ export const TrendingJobs = (): JSX.Element => {
             <ul className="flex justify-around flex-wrap">
                 {trendingJobs.map((job) => (
                     <li
-                        className="w-40 h-16 border-2 mb-5 mr-2 rounded-lg border-zinc-300 hover:scale-105 hover:cursor-pointer"
+                        className="w-40 h-16 border-2 border-sky-950 mb-5 mr-2 rounded-lg border-zinc-300 hover:scale-105 hover:cursor-pointer"
                         key={job.id}
                         onClick={() => {
                             handleIconClick(job.jobName);
                         }}
                     >
                         <div className="flex justify-around items-center h-full ml-2 mr-2">
-                            <TrendingJobIcon companyName={job.jobName} />
-                            <h4 className="font-bold">{job.jobName}</h4>
+                            <TrendingJobIcon
+                                classes="text-sky-950 test"
+                                companyName={job.jobName}
+                            />
+                            <h4 className="font-bold text-sky-950 ">
+                                {job.jobName}
+                            </h4>
                         </div>
                     </li>
                 ))}
