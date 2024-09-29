@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
 
+type Operation = "SAVE" | "EDIT";
+
 const Details = (): JSX.Element => {
     const [isEdit, setIsEdit] = useState(false);
 
-    const handleEditClick = (): void => {
-        setIsEdit(true);
-    };
-
-    const handleSaveClick = (): void => {
-        setIsEdit(false);
+    const handleEditSaveClick = (operation: Operation): void => {
+        operation === "SAVE" ? setIsEdit(false) : setIsEdit(true);
     };
 
     if (isEdit) {
@@ -28,7 +26,9 @@ const Details = (): JSX.Element => {
                         <div className="pt-10">
                             <button
                                 className="border-2 border-slate-500 px-8 py-1 rounded-md text-slate-500 font-bold hover:cursor-pointer"
-                                onClick={handleSaveClick}
+                                onClick={() => {
+                                    handleEditSaveClick("SAVE");
+                                }}
                                 type="button"
                             >
                                 Save
@@ -175,7 +175,9 @@ const Details = (): JSX.Element => {
                     <div className="pt-10">
                         <button
                             className="border-2 border-slate-500 px-8 py-1 rounded-md text-slate-500 font-bold hover:cursor-pointer"
-                            onClick={handleEditClick}
+                            onClick={() => {
+                                handleEditSaveClick("EDIT");
+                            }}
                             type="button"
                         >
                             Edit
