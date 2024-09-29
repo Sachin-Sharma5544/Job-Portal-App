@@ -20,7 +20,13 @@ import {
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
-import { HomePage, SignInPage, SignUpPage, ProfilePage } from "./pages";
+import {
+    HomePage,
+    SignInPage,
+    SignUpPage,
+    ProfilePage,
+    CompanyPage,
+} from "./pages";
 import {
     AboutUs,
     Careers,
@@ -46,7 +52,7 @@ function App(): JSX.Element {
             <Layout>
                 <Routes>
                     <Route element={<HomePage />} path={homePath} />
-                    <Route element={<h1>Company Page</h1>} path={companyPath} />
+                    <Route element={<CompanyPage />} path={companyPath} />
                     <Route element={<h1>Salary Page</h1>} path={salaryPath} />
                     <Route
                         element={
