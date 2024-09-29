@@ -53,7 +53,7 @@ const CardSlider: React.FC = () => {
 
             {/* Next Button */}
             <button
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
+                className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
                 onClick={() => {
                     handleScroll("next");
                 }}
