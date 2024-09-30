@@ -1,21 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
+
+interface Industry {
+    _id: string;
+    companyCount: number;
+    industryType: string;
+}
+
+interface IndustryType {
+    industryType: Industry[];
+}
+
+interface ResData extends AxiosResponse {
+    data: IndustryType;
+}
 
 const CardSlider: React.FC = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
+    const [industryType, setIndustryType] = useState<Industry[]>([]);
 
     useEffect(() => {
-        axios
-            .post("http://localhost:5002/api/industry-type", {
-                industryType: "",
-            })
-            .then((data) => {
-                console.log("data ", data);
-            })
-            .catch((err) => {
-                console.log("data ", err);
-            });
+        const fetchIndustryData = async (): Promise<void> => {
+            try {
+                const { data }: ResData = await axios.post(
+                    "http://localhost:5002/api/industry-type"
+                );
+
+                setIndustryType(data.industryType);
+            } catch (err) {
+                setIndustryType([]);
+            }
+        };
+
+        void fetchIndustryData();
     }, []);
 
     const handleScroll = (direction: "next" | "prev"): void => {
@@ -55,12 +73,12 @@ const CardSlider: React.FC = () => {
                 style={{ scrollBehavior: "smooth" }}
             >
                 {/* Render Cards */}
-                {Array.from({ length: 30 }).map((_, index) => (
+                {industryType.map((item) => (
                     <div
                         className="min-w-[180px] max-w-[200px] min-h-[90px] max-h-[100px] bg-gray-300 rounded-lg shadow-md p-4 flex items-center justify-center"
-                        key={`${index}`}
+                        key={item._id}
                     >
-                        <p>Card {index + 1}</p>
+                        <p>{item.industryType}</p>
                     </div>
                 ))}
             </div>
