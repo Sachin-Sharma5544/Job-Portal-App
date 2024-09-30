@@ -1,8 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 const CardSlider: React.FC = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
+
+    useEffect(() => {
+        axios
+            .post("http://localhost:5002/api/industry-type", {
+                industryType: "",
+            })
+            .then((data) => {
+                console.log("data ", data);
+            })
+            .catch((err) => {
+                console.log("data ", err);
+            });
+    }, []);
 
     const handleScroll = (direction: "next" | "prev"): void => {
         if (sliderRef.current) {
