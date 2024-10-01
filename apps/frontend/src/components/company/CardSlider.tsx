@@ -19,6 +19,7 @@ const CardSlider: React.FC = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
     const [industryType, setIndustryType] = useState<Industry[]>([]);
+    const [selectedIndex, setSelectedIndex] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchIndustryData = async (): Promise<void> => {
@@ -34,6 +35,10 @@ const CardSlider: React.FC = () => {
         };
 
         void fetchIndustryData();
+
+        return () => {
+            setIndustryType([]);
+        };
     }, []);
 
     const handleScroll = (direction: "next" | "prev"): void => {
@@ -51,6 +56,22 @@ const CardSlider: React.FC = () => {
 
             setScrollPosition(newScrollPosition);
         }
+    };
+
+    const handleCardClick = (id: string): void => {
+        setSelectedIndex(id);
+    };
+
+    const showCardCount = (count: number): string => {
+        if (count === 1) return `${count} Company >`;
+        if (count < 1000) return `${count} Companies >`;
+        const result = (count / 1000).toFixed(3);
+        const formattedResult = parseFloat(result).toFixed(1);
+
+        if (parseFloat(result) % 1 !== 0) {
+            return `${formattedResult}K+ Companies >`;
+        }
+        return `${formattedResult}K Companies >`;
     };
 
     return (
@@ -74,12 +95,29 @@ const CardSlider: React.FC = () => {
             >
                 {/* Render Cards */}
                 {industryType.map((item) => (
-                    <div
-                        className="min-w-[180px] max-w-[200px] min-h-[90px] max-h-[100px] bg-gray-300 rounded-lg shadow-md p-4 flex items-center justify-center"
+                    <button
+                        className={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-white rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
+                            selectedIndex === item._id
+                                ? "border-[1px] border-black"
+                                : ""
+                        }`}
                         key={item._id}
+                        onClick={() => {
+                            handleCardClick(item._id);
+                        }}
+                        type="button"
                     >
-                        <p>{item.industryType}</p>
-                    </div>
+                        <p className="text-xl font-bold">{item.industryType}</p>
+                        <p className="pt-2 text-blue-600">
+                            {showCardCount(item.companyCount)}
+                        </p>
+
+                        <input
+                            checked={item._id === selectedIndex}
+                            className=" w-3 h-3 text-black rounded-full absolute right-3 top-3 bg-black"
+                            type="checkbox"
+                        />
+                    </button>
                 ))}
             </div>
 
