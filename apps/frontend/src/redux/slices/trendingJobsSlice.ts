@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TRENDING_JOBS } from "@repo/constants";
 
 const initialState = {
     jobs: [],

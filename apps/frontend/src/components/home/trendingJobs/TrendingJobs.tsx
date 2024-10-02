@@ -1,13 +1,20 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { type RootState } from "../../../redux/store";
-import TrendingJobIcon from "./TrendingJobIcon";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { type RootState } from "../../../redux/store";
+import { fetchTrendingJobsRequest } from "../../../redux/slices/trendingJobsSlice";
+import TrendingJobIcon from "./TrendingJobIcon";
 
 export const TrendingJobs = (): JSX.Element => {
     const trendingJobs = useSelector(
         (state: RootState) => state.trendingJobs.jobs
     );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTrendingJobsRequest());
+    }, [dispatch]);
 
     const navigate = useNavigate();
 
@@ -22,7 +29,7 @@ export const TrendingJobs = (): JSX.Element => {
                 {trendingJobs.map((job) => (
                     <li
                         className="w-40 h-16 border-2 border-sky-950 mb-5 mr-2 rounded-lg border-zinc-300 hover:scale-105 hover:cursor-pointer"
-                        key={job.id}
+                        key={job._id}
                         onClick={() => {
                             handleIconClick(job.jobName);
                         }}
