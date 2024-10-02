@@ -24,8 +24,8 @@ const CardSlider: React.FC = () => {
     useEffect(() => {
         const fetchIndustryData = async (): Promise<void> => {
             try {
-                const { data }: ResData = await axios.post(
-                    "http://localhost:5002/api/industry-type"
+                const { data }: ResData = await axios.get(
+                    `http://localhost:5002/api/industry-type/${selectedIndex}`
                 );
 
                 setIndustryType(data.industryType);
@@ -39,7 +39,7 @@ const CardSlider: React.FC = () => {
         return () => {
             setIndustryType([]);
         };
-    }, []);
+    }, [selectedIndex]);
 
     const handleScroll = (direction: "next" | "prev"): void => {
         if (sliderRef.current) {
@@ -112,11 +112,14 @@ const CardSlider: React.FC = () => {
                             {showCardCount(item.companyCount)}
                         </p>
 
-                        <input
-                            checked={item._id === selectedIndex}
-                            className=" w-3 h-3 text-black rounded-full absolute right-3 top-3 bg-black"
-                            type="checkbox"
-                        />
+                        {selectedIndex !== null &&
+                        selectedIndex === item._id ? (
+                            <input
+                                checked={item._id === selectedIndex}
+                                className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
+                                type="checkbox"
+                            />
+                        ) : null}
                     </button>
                 ))}
             </div>

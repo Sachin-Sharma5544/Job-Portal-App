@@ -5,7 +5,7 @@ export const getIndustryType = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    const { industryType }: { industryType: string } = req.body;
+    const { industryType } = req.params;
 
     try {
         const industryTypeData = await IndustryModel.find({});
