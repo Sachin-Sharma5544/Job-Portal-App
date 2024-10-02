@@ -1,26 +1,40 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
 import {
     fetchTrendingJobsRequest,
     fetchTrendingJobsSuccess,
     fetchTrendingJobsFailure,
 } from "../../slices/trendingJobsSlice";
 
-const fetchTrendingJobsApi = async () => {
-    const response = await axios.get("http://localhost:5002/api/trending-jobs");
+interface TrendingJob {
+    _id: string;
+    jobName: string;
+}
+
+interface TrendingJobs {
+    trendingJobs: TrendingJob[];
+}
+
+interface ResponseData extends AxiosResponse {
+    data: TrendingJobs;
+}
+
+const fetchTrendingJobsApi = async (): Promise<TrendingJob[]> => {
+    const response: ResponseData = await axios.get<TrendingJobs>(
+        "http://localhost:5002/api/trending-jobs"
+    );
     return response.data.trendingJobs;
 };
 
-function* trendingJobsSaga() {
+function* trendingJobsSaga(): Generator {
     try {
         const trendingJobs = yield call(fetchTrendingJobsApi); // Call the API
-        console.log("Trennding Jobs", trendingJobs);
         yield put(fetchTrendingJobsSuccess(trendingJobs)); // Dispatch success action
     } catch (error) {
         yield put(fetchTrendingJobsFailure()); // Dispatch failure action
     }
 }
 
-export function* watchFetchTrendingJobs() {
-    yield takeLatest(fetchTrendingJobsRequest.type, trendingJobsSaga);
+export function* watchFetchTrendingJobs(): Generator {
+    yield takeLatest(fetchTrendingJobsRequest, trendingJobsSaga);
 }
