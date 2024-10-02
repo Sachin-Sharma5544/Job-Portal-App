@@ -5,6 +5,7 @@ import { loginPath, signupPath, API, AUTH } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
 import { industryTypeRouter } from "./routes/industryTypeRoute";
+import { trendingJobsRouter } from "./routes/trendingJobsRoute";
 
 const port = 5002;
 const server = createServer();
@@ -16,7 +17,8 @@ const url = process.env
     .replace("${DB_NAME}", process.env.DB_NAME!);
 
 server.use(`${API}${AUTH}`, authRouter);
-server.use("/api/industry-type", industryTypeRouter);
+server.use(`${API}/industry-type`, industryTypeRouter);
+server.use(`${API}/trending-jobs`, trendingJobsRouter);
 //Handling invalid path requests
 server.use("*", (req: Request, res: Response) => {
     res.status(422).send({ message: "Path not found" });
