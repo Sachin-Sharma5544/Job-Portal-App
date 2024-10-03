@@ -23,6 +23,7 @@ const fetchTrendingJobsApi = async (): Promise<TrendingJob[]> => {
     const response: ResponseData = await axios.get<TrendingJobs>(
         "http://localhost:5002/api/trending-jobs"
     );
+
     return response.data.trendingJobs;
 };
 
@@ -36,5 +37,5 @@ function* trendingJobsSaga(): Generator {
 }
 
 export function* watchFetchTrendingJobs(): Generator {
-    yield takeLatest(fetchTrendingJobsRequest, trendingJobsSaga);
+    yield takeLatest(fetchTrendingJobsRequest.type, trendingJobsSaga);
 }

@@ -1,17 +1,11 @@
 import React from "react";
-import {
-    JOB_SEEKERS,
-    LOGIN_BUTTON_TEXT,
-    homePath,
-    loginPath,
-    profliePath,
-} from "@repo/constants";
+import { JOB_SEEKERS, LOGIN_BUTTON_TEXT, profliePath } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
-import { axiosAuthInstance } from "../../../axios";
 import { useSelector, useDispatch } from "react-redux";
-import { loginSuccess } from "../../../redux/slices/authSlice";
+import { loginRequest, loginSuccess } from "../../../redux/slices/authSlice";
+import { type RootState } from "../../../redux/store";
 
 export function SigninForm(): JSX.Element {
     // const [email, setEmail] = useState<string>("");
@@ -121,26 +115,25 @@ export function SigninForm(): JSX.Element {
     const signIn = useSignIn();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const authState = useSelector((state: RootState) => state.auth);
 
-    const handleLoginClick = async (
-        email: string,
-        password: string
-    ): Promise<void> => {
+    console.log(authState);
+
+    const handleLoginClick = (email: string, password: string): void => {
         try {
-            const response = await axiosAuthInstance.post(loginPath, {
-                email,
-                password,
-            });
+            dispatch(loginRequest({ email, password }));
 
-            signIn({
-                auth: {
-                    token: response.data.token,
-                    type: "Bearer",
-                },
-                userState: { email: response.data.email },
-            });
+            // signIn({
+            //     auth: {
+            //         token: authState.token,
+            //         type: "Bearer",
+            //     },
+            //     userState: { email: authState.email },
+            // });
 
-            dispatch(loginSuccess());
+            // dispatch(
+            //     loginSuccess({ email: authState.email, token: authState.token })
+            // );
 
             navigate(profliePath);
         } catch (error: any) {

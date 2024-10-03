@@ -30,6 +30,8 @@ export const Navbar = (): JSX.Element => {
     const dispatch = useDispatch();
     const authUser = useAuthUser();
 
+    console.log(authUser);
+
     const isAuth = useSelector(
         (state: RootState) => state.auth.isAuthenticated
     );
@@ -111,7 +113,7 @@ export const Navbar = (): JSX.Element => {
                             <>
                                 <div className="text-white ">
                                     <LinkReactRouter className="pr-4" to="#">
-                                        {authUser.email}
+                                        {authUser?.email}
                                     </LinkReactRouter>
                                 </div>
                                 <div className="text-white">

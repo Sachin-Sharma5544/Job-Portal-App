@@ -1,7 +1,7 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
 import { type Request, type Response } from "express";
-import { loginPath, signupPath, API, AUTH } from "@repo/constants";
+import { API, AUTH } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
 import { industryTypeRouter } from "./routes/industryTypeRoute";

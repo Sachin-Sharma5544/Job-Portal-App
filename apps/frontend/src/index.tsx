@@ -47,6 +47,8 @@ function App(): JSX.Element {
         dispatch(loginSuccess());
     }
 
+    console.log(isAuthenticated());
+
     return (
         <BrowserRouter>
             <Layout>
