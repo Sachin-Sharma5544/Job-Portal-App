@@ -38,11 +38,14 @@ import {
     TrustAndSafety,
 } from "./components";
 import { loginSuccess } from "./redux/slices/authSlice";
+import { type RootState } from "./redux/store";
 
 function App(): JSX.Element {
     const isAuthenticated = useIsAuthenticated();
     const dispatch = useDispatch();
-    const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
+    const isLoggedIn = useSelector(
+        (state: RootState) => state.auth.isAuthenticated
+    );
     if (isAuthenticated()) {
         dispatch(loginSuccess());
     }

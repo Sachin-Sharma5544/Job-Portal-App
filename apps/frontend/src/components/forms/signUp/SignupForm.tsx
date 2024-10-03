@@ -24,5 +24,4 @@ export const SignupForm = (): JSX.Element => {
             roleType={JOB_SEEKERS}
         />
     );
-    // return <div>Sign Up Form</div>;
 };
