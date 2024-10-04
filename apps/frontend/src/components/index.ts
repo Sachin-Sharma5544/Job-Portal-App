@@ -5,4 +5,4 @@ export * from "./home";
 export * from "./footer";
 export * from "./common";
 export * from "./profile";
-export * from "./company/CardSlider";
+export * from "./company/IndustryTypeSlider";
