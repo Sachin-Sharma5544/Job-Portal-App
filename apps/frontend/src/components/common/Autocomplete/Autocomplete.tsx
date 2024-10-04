@@ -2,6 +2,7 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
+import SearchIcon from "@mui/icons-material/Search";
 
 interface AutocompleteProps {
     placeHolder: string;
@@ -62,7 +63,6 @@ export default function AutoCompleteComponent(
                 option.title === value.title
             }
             loading={loading}
-            multiple
             onClose={() => {
                 setOpen(false);
             }}
@@ -71,28 +71,40 @@ export default function AutoCompleteComponent(
             }}
             open={open}
             options={options}
-            renderInput={(params) => (
-                <TextField
-                    {...params}
-                    placeholder={props.placeHolder}
-                    slotProps={{
-                        input: {
-                            ...params.InputProps,
-                            endAdornment: (
-                                <>
-                                    {loading ? (
-                                        <CircularProgress
-                                            color="inherit"
-                                            size={20}
-                                        />
-                                    ) : null}
-                                    {params.InputProps.endAdornment}
-                                </>
-                            ),
-                        },
-                    }}
-                />
-            )}
+            popupIcon={<SearchIcon />}
+            renderInput={(params) => {
+                console.log(params, "JJJJ");
+                return (
+                    <TextField
+                        {...params}
+                        placeholder={props.placeHolder}
+                        slotProps={{
+                            input: {
+                                ...params.InputProps,
+                                endAdornment: (
+                                    <>
+                                        {loading ? (
+                                            <CircularProgress
+                                                color="inherit"
+                                                size={20}
+                                            />
+                                        ) : null}
+                                        {params.InputProps.endAdornment}
+                                    </>
+                                ),
+                            },
+                        }}
+                    />
+                );
+            }}
+            sx={{
+                "& .MuiAutocomplete-popupIndicator": {
+                    transform: "none", // Prevent rotation
+                },
+                "& .MuiAutocomplete-popupIndicatorOpen": {
+                    transform: "none", // Prevent rotation when open
+                },
+            }}
         />
     );
 }

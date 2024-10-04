@@ -1,6 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
+import { fetchTrendingJobsRequest } from "../../../redux/slices/trendingJobsSlice";
 import TrendingJobIcon from "./TrendingJobIcon";
 
 export const TrendingJobs = (): JSX.Element => {
@@ -8,20 +10,41 @@ export const TrendingJobs = (): JSX.Element => {
         (state: RootState) => state.trendingJobs.jobs
     );
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTrendingJobsRequest());
+    }, [dispatch]);
+
+    const navigate = useNavigate();
+
+    const handleIconClick = (jobName: string): void => {
+        navigate(`/trending-jobs/${jobName.toLowerCase()}`);
+    };
+
     return (
         <>
             <h1 className="text-2xl mt-10 mb-10 font-bold">Trending Jobs</h1>
             <ul className="flex justify-around flex-wrap">
-                {trendingJobs.map((job) => (
-                    <li
-                        className="w-40 h-16 border-2 mb-5 mr-2 rounded-lg border-zinc-300 hover:scale-105 hover:cursor-pointer"
-                        key={job.id}
+                {trendingJobs.map((job: { _id: string; jobName: string }) => (
+                    <button
+                        className="w-40 h-16 border-[1px] border-zinc-300 bg-zinc-100 mb-5 mr-2 rounded-lg  hover:scale-105 hover:cursor-pointer"
+                        key={job._id}
+                        onClick={() => {
+                            handleIconClick(job.jobName);
+                        }}
+                        type="button"
                     >
                         <div className="flex justify-around items-center h-full ml-2 mr-2">
-                            <TrendingJobIcon companyName={job.jobName} />
-                            <h4 className="font-bold">{job.jobName}</h4>
+                            <TrendingJobIcon
+                                classes="text-sky-950 test"
+                                companyName={job.jobName}
+                            />
+                            <h4 className="font-bold text-sky-950 ">
+                                {job.jobName}
+                            </h4>
                         </div>
-                    </li>
+                    </button>
                 ))}
             </ul>
         </>

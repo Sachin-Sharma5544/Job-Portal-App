@@ -4,6 +4,9 @@ import { type Request, type Response } from "express";
 import { loginPath, signupPath, API, AUTH } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
+import { industryTypeRouter } from "./routes/industryTypeRoute";
+import { trendingJobsRouter } from "./routes/trendingJobsRoute";
+import { companyRouter } from "./routes/companyRoute";
 
 const port = 5002;
 const server = createServer();
@@ -15,11 +18,14 @@ const url = process.env
     .replace("${DB_NAME}", process.env.DB_NAME!);
 
 server.use(`${API}${AUTH}`, authRouter);
-
+server.use(`${API}/industry-type`, industryTypeRouter);
+server.use(`${API}/trending-jobs`, trendingJobsRouter);
+server.use(`${API}/companies`, companyRouter);
 //Handling invalid path requests
 server.use("*", (req: Request, res: Response) => {
     res.status(422).send({ message: "Path not found" });
 });
+
 connectDatabase(url)
     .then(() => {
         log("Database connected successfully");

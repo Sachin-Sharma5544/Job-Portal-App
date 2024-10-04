@@ -2,15 +2,14 @@ import React from "react";
 import {
     JOB_SEEKERS,
     LOGIN_BUTTON_TEXT,
-    homePath,
     loginPath,
     profliePath,
 } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { axiosAuthInstance } from "../../../axios";
-import { useSelector, useDispatch } from "react-redux";
 import { loginSuccess } from "../../../redux/slices/authSlice";
 
 export function SigninForm(): JSX.Element {
