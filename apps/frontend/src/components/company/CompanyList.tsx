@@ -5,15 +5,15 @@ const CompanyList = (): JSX.Element => {
         <div>
             <p>Showing 800 companies</p>
             {/* Card Container for companies*/}
-            <div className="border-2 overflow-scroll ">
-                <div className="max-h-[700px] py-2 flex flex-wrap justify-start gap-x-[98px] items-stretch">
-                    {new Array(10).fill(0).map((item) => (
-                        <div className="p-5 shadow-md rounded-lg bg-white my-4 max-h-40 max-w-[340px]">
+            <div className="overflow-scroll ">
+                <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] items-stretch pr-2">
+                    {new Array(11).fill(0).map((item) => (
+                        <div className="p-5 shadow-md rounded-lg bg-white my-4 max-h-40 sm:max-w-[370px] md:max-w-[455px]">
                             <h2 className="text-xl font-semibold">
                                 Company name
                             </h2>
                             <div className=" text-neutral-500">
-                                <div className="w-[300px] flex justify-stretch gap-6 my-4 ">
+                                <div className="w-[500px] flex justify-stretch gap-6 my-4 ">
                                     <p className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl">
                                         company type
                                     </p>
