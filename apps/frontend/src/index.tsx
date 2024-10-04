@@ -26,6 +26,7 @@ import {
     SignUpPage,
     ProfilePage,
     CompanyPage,
+    SalaryPage,
 } from "./pages";
 import {
     AboutUs,
@@ -56,7 +57,7 @@ function App(): JSX.Element {
                 <Routes>
                     <Route element={<HomePage />} path={homePath} />
                     <Route element={<CompanyPage />} path={companyPath} />
-                    <Route element={<h1>Salary Page</h1>} path={salaryPath} />
+                    <Route element={<SalaryPage />} path={salaryPath} />
                     <Route
                         element={
                             !isAuthenticated() ? (

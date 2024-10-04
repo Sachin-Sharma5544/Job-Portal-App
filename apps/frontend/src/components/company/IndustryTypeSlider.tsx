@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios, { type AxiosResponse } from "axios";
 import Card from "../common/card/Card";
 import CardSlider from "../common/card/CardSlider";
