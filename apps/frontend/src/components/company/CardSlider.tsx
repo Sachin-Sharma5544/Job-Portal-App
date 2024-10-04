@@ -75,66 +75,71 @@ const CardSlider: React.FC = () => {
     };
 
     return (
-        <div className="relative w-full py-20">
-            {/* Previous Button */}
-            <button
-                className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                onClick={() => {
-                    handleScroll("prev");
-                }}
-                type="button"
-            >
-                &lt;
-            </button>
+        <>
+            <div className="py-5" />
+            <div className="relative w-full py-5 px-8 bg-zinc-300 rounded-lg ">
+                {/* Previous Button */}
+                <button
+                    className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
+                    onClick={() => {
+                        handleScroll("prev");
+                    }}
+                    type="button"
+                >
+                    &lt;
+                </button>
 
-            {/* Card Slider */}
-            <div
-                className="flex overflow-x-scroll scrollbar-hide gap-4 w-full"
-                ref={sliderRef}
-                style={{ scrollBehavior: "smooth" }}
-            >
-                {/* Render Cards */}
-                {industryType.map((item) => (
-                    <button
-                        className={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-zinc-100 rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
-                            selectedIndex === item._id
-                                ? "border-[1px] border-black"
-                                : ""
-                        }`}
-                        key={item._id}
-                        onClick={() => {
-                            handleCardClick(item._id);
-                        }}
-                        type="button"
-                    >
-                        <p className="text-xl font-bold">{item.industryType}</p>
-                        <p className="pt-2 text-blue-600">
-                            {showCardCount(item.companyCount)}
-                        </p>
+                {/* Card Slider */}
+                <div
+                    className="flex overflow-x-scroll scrollbar-hide gap-4 w-full"
+                    ref={sliderRef}
+                    style={{ scrollBehavior: "smooth" }}
+                >
+                    {/* Render Cards */}
+                    {industryType.map((item) => (
+                        <button
+                            className={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-zinc-100 rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
+                                selectedIndex === item._id
+                                    ? "border-[1px] border-black"
+                                    : ""
+                            }`}
+                            key={item._id}
+                            onClick={() => {
+                                handleCardClick(item._id);
+                            }}
+                            type="button"
+                        >
+                            <p className="text-xl font-bold">
+                                {item.industryType}
+                            </p>
+                            <p className="pt-2 text-blue-600">
+                                {showCardCount(item.companyCount)}
+                            </p>
 
-                        {selectedIndex !== null &&
-                        selectedIndex === item._id ? (
-                            <input
-                                checked={item._id === selectedIndex}
-                                className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
-                                type="checkbox"
-                            />
-                        ) : null}
-                    </button>
-                ))}
+                            {selectedIndex !== null &&
+                            selectedIndex === item._id ? (
+                                <input
+                                    checked={item._id === selectedIndex}
+                                    className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
+                                    type="checkbox"
+                                />
+                            ) : null}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Next Button */}
+                <button
+                    className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
+                    onClick={() => {
+                        handleScroll("next");
+                    }}
+                    type="button"
+                >
+                    &gt;
+                </button>
             </div>
-
-            {/* Next Button */}
-            <button
-                className="absolute right-[-20px] top-1/2 transform -translate-y-1/2 bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 shadow-lg"
-                onClick={() => {
-                    handleScroll("next");
-                }}
-                type="button"
-            >
-                &gt;
-            </button>
-        </div>
+        </>
     );
 };
 

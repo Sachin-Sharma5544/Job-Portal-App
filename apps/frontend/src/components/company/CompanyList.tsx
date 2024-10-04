@@ -33,7 +33,7 @@ const CompanyList = (): JSX.Element => {
     }, []);
     return (
         <div>
-            <p>Showing {companies.length} companies</p>
+            <p className="pt-5">Showing {companies.length} companies</p>
             {/* Card Container for companies*/}
             <div className="overflow-scroll ">
                 <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] items-stretch pr-2">
