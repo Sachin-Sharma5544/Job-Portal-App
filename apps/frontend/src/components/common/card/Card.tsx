@@ -8,7 +8,10 @@ interface CardProp {
 
 const Card = (props: CardProp): JSX.Element => {
     return (
-        <div className={props.classes} onClick={props.clickHandler}>
+        <div
+            className={`rounded-2xl p-5 bg-zinc-100 hover:cursor-pointer shadow-md ${props.classes}`}
+            onClick={props.clickHandler}
+        >
             {props.children}
         </div>
     );

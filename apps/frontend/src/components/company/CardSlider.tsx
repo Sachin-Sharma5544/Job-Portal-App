@@ -99,7 +99,7 @@ const CardSlider: React.FC = () => {
                     {/* Render Cards */}
                     {industryType.map((item) => (
                         <Card
-                            classes={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-zinc-100 rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
+                            classes={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] relative ${
                                 selectedIndex === item._id
                                     ? "border-[1px] border-black"
                                     : ""

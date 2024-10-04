@@ -40,7 +40,7 @@ const CompanyList = (): JSX.Element => {
                 <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] pr-2">
                     {companies.map((company) => (
                         <Card
-                            classes="p-5 shadow-md rounded-lg my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] bg-zinc-100 hover:cursor-pointer"
+                            classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] "
                             key={company._id}
                         >
                             <>
