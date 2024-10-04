@@ -5,5 +5,5 @@ import {
 } from "../controllers/companyController";
 
 export const companyRouter: Router = Router();
-companyRouter.post("/", getAllCompanies);
-companyRouter.post("/:type", getCompaniesByType);
+companyRouter.get("/", getAllCompanies);
+companyRouter.get("/:type", getCompaniesByType);
