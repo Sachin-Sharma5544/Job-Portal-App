@@ -28,7 +28,7 @@ export const TrendingJobs = (): JSX.Element => {
             <ul className="flex justify-around flex-wrap">
                 {trendingJobs.map((job: { _id: string; jobName: string }) => (
                     <button
-                        className="w-40 h-16 border-2 border-zinc-300 mb-5 mr-2 rounded-lg  hover:scale-105 hover:cursor-pointer"
+                        className="w-40 h-16 border-[1px] border-zinc-300 bg-zinc-100 mb-5 mr-2 rounded-lg  hover:scale-105 hover:cursor-pointer"
                         key={job._id}
                         onClick={() => {
                             handleIconClick(job.jobName);

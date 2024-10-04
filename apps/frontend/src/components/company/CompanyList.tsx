@@ -39,7 +39,7 @@ const CompanyList = (): JSX.Element => {
                 <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] items-stretch pr-2">
                     {companies.map((company) => (
                         <div
-                            className="p-5 shadow-md rounded-lg my-4 max-h-40 sm:max-w-[370px] md:max-w-[455px] bg-white"
+                            className="p-5 shadow-md rounded-lg my-4 max-h-40 sm:max-w-[370px] md:max-w-[455px] bg-zinc-100"
                             key={company._id}
                         >
                             <h2 className="text-xl font-semibold">
