@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios, { type AxiosResponse } from "axios";
+import Card from "../common/card/Card";
 
 interface Industry {
     _id: string;
@@ -97,34 +98,35 @@ const CardSlider: React.FC = () => {
                 >
                     {/* Render Cards */}
                     {industryType.map((item) => (
-                        <button
-                            className={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-zinc-100 rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
+                        <Card
+                            classes={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] bg-zinc-100 rounded-xl shadow-md p-4 hover:cursor-pointer relative ${
                                 selectedIndex === item._id
                                     ? "border-[1px] border-black"
                                     : ""
                             }`}
-                            key={item._id}
-                            onClick={() => {
+                            clickHandler={() => {
                                 handleCardClick(item._id);
                             }}
-                            type="button"
+                            key={item._id}
                         >
-                            <p className="text-xl font-bold">
-                                {item.industryType}
-                            </p>
-                            <p className="pt-2 text-blue-600">
-                                {showCardCount(item.companyCount)}
-                            </p>
+                            <>
+                                <p className="text-xl font-bold">
+                                    {item.industryType}
+                                </p>
+                                <p className="pt-2 text-blue-600">
+                                    {showCardCount(item.companyCount)}
+                                </p>
 
-                            {selectedIndex !== null &&
-                            selectedIndex === item._id ? (
-                                <input
-                                    checked={item._id === selectedIndex}
-                                    className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
-                                    type="checkbox"
-                                />
-                            ) : null}
-                        </button>
+                                {selectedIndex !== null &&
+                                selectedIndex === item._id ? (
+                                    <input
+                                        checked={item._id === selectedIndex}
+                                        className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
+                                        type="checkbox"
+                                    />
+                                ) : null}
+                            </>
+                        </Card>
                     ))}
                 </div>
 
