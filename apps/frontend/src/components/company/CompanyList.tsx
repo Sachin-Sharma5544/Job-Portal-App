@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios, { type AxiosResponse } from "axios";
-import Card from "../common/card/Card";
+import { Card } from "@repo/ui";
 
 interface Company {
     _id: string;

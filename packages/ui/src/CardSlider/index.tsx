@@ -4,7 +4,7 @@ interface CardSliderProps {
     children: JSX.Element;
 }
 
-const CardSlider = (props: CardSliderProps): JSX.Element => {
+export function CardSlider(props: CardSliderProps): JSX.Element {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [scrollPosition, setScrollPosition] = useState<number>(0);
 
@@ -63,6 +63,4 @@ const CardSlider = (props: CardSliderProps): JSX.Element => {
             </div>
         </>
     );
-};
-
-export default CardSlider;
+}

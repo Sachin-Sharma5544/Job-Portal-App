@@ -6,7 +6,7 @@ interface CardProp {
     clickHandler?: () => void;
 }
 
-const Card = (props: CardProp): JSX.Element => {
+export function Card(props: CardProp): JSX.Element {
     return (
         <div
             className={`rounded-2xl p-5 bg-zinc-100 hover:cursor-pointer shadow-md ${props.classes}`}
@@ -15,6 +15,4 @@ const Card = (props: CardProp): JSX.Element => {
             {props.children}
         </div>
     );
-};
-
-export default Card;
+}
