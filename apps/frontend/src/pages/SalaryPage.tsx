@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading } from "../components/salary/Heading";
+import { SalaryHeading as Heading } from "../components";
 
 export const SalaryPage = (): JSX.Element => {
     return (

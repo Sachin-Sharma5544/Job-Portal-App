@@ -6,3 +6,4 @@ export * from "./footer";
 export * from "./common";
 export * from "./profile";
 export * from "./company/IndustryTypeSlider";
+export * from "./salary/SalaryHeading";
