@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios, { type AxiosResponse } from "axios";
+import { PORT } from "@repo/constants";
 import {
     fetchTrendingJobsRequest,
     fetchTrendingJobsSuccess,
@@ -21,7 +22,7 @@ interface ResponseData extends AxiosResponse {
 
 const fetchTrendingJobsApi = async (): Promise<TrendingJob[]> => {
     const response: ResponseData = await axios.get<TrendingJobs>(
-        "http://localhost:5002/api/trending-jobs"
+        `http://localhost:${PORT}/api/trending-jobs`
     );
     return response.data.trendingJobs;
 };

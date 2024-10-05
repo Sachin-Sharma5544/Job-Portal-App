@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardSlider } from "@repo/ui";
+import { PORT } from "@repo/constants";
 
 interface Industry {
     _id: string;
@@ -24,7 +25,7 @@ const IndustryTypeSlider: React.FC = () => {
         const fetchIndustryData = async (): Promise<void> => {
             try {
                 const { data }: ResData = await axios.get(
-                    `http://localhost:5002/api/industry-type/${selectedIndex}`
+                    `http://localhost:${PORT}/api/industry-type/${selectedIndex}`
                 );
 
                 setIndustryType(data.industryType);

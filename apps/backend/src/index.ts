@@ -1,14 +1,13 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
 import { type Request, type Response } from "express";
-import { loginPath, signupPath, API, AUTH } from "@repo/constants";
+import { loginPath, signupPath, API, AUTH, PORT } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
 import { industryTypeRouter } from "./routes/industryTypeRoute";
 import { trendingJobsRouter } from "./routes/trendingJobsRoute";
 import { companyRouter } from "./routes/companyRoute";
 
-const port = 5002;
 const server = createServer();
 const dbName = process.env.DB_NAME!;
 
@@ -29,8 +28,8 @@ server.use("*", (req: Request, res: Response) => {
 connectDatabase(url)
     .then(() => {
         log("Database connected successfully");
-        server.listen(port, () => {
-            log(`Server started on ${port}`);
+        server.listen(PORT, () => {
+            log(`Server started on ${PORT}`);
         });
     })
     .catch((error: Error) => {

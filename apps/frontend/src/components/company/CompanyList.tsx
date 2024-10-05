@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card } from "@repo/ui";
+import { PORT } from "@repo/constants";
 
 interface Company {
     _id: string;
@@ -24,7 +25,7 @@ const CompanyList = (): JSX.Element => {
     useEffect(() => {
         const fetchCompanyList = async (): Promise<void> => {
             const response: ResponseData = await axios.get(
-                "http://localhost:5002/api/companies"
+                `http://localhost:${PORT}/api/companies`
             );
 
             setCompanies(response.data.company);

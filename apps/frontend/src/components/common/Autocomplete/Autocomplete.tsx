@@ -46,7 +46,7 @@ const StyledTextField = styled(TextField)({
 export default function AutoCompleteComponent(
     props: AutocompleteProps
 ): JSX.Element {
-    const [value, setValue] = React.useState<string | null>(options[0]);
+    const [value, setValue] = React.useState<string | null>(null);
     const [inputValue, setInputValue] = React.useState("");
 
     return (
