@@ -30,29 +30,34 @@ export const SearchJobs = (): JSX.Element => {
         console.log(data);
     };
     return (
-        <div className="w-full h-36 border-2 flex justify-center items-center">
-            <div className="w-[90%] h-28 flex items-center justify-between">
+        <div className="w-full border-2 border-stone-400 flex justify-center items-center rounded-2xl h-18 bg-white">
+            <div className="w-[100%] flex items-center justify-between ">
                 {/*Search Skills*/}
-                <AutoCompleteComponent
-                    className="w-[500px]"
-                    placeHolder="Enter Skills / Designations / Companies"
-                />
+                <div className="w-1/2 px-[-10px] ">
+                    <AutoCompleteComponent
+                        displayLens
+                        placeHolder="Enter Skills / Designations / Companies"
+                    />
+                </div>
+
                 {/*Select  Experience*/}
-                <FormControl className="w-[200px]">
-                    <InputLabel id="demo-simple-select-label">
-                        Select an option
-                    </InputLabel>
-                    <Select displayEmpty>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                    </Select>
-                </FormControl>
+                <div className="w-[20%] border-l-2 border-r-2 border-stone-400">
+                    <FormControl className="w-full">
+                        <Select displayEmpty>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+
                 {/*Search Location*/}
-                <AutoCompleteComponent
-                    className="w-[300px]"
-                    placeHolder="Search Location"
-                />
+                <div className="w-[30%] ">
+                    <AutoCompleteComponent
+                        placeHolder="Search Location"
+                        displayLens
+                    />
+                </div>
             </div>
         </div>
     );
