@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Button } from "@repo/ui";
-import { HOME_HEADING_TEXT, HOME_JOB_EXPLORE_TEXT } from "@repo/constants";
 import axios from "axios";
-import AutoCompleteComponent from "../../common/Autocomplete/Autocomplete";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
+import AutoCompleteComponent from "../../common/autocomplete/Autocomplete";
+import { Dropdown } from "../../common/dropdown/Dropdown";
 
 export const SearchJobs = (): JSX.Element => {
     const [location, setLocation] = useState<string>("");
@@ -43,26 +40,7 @@ export const SearchJobs = (): JSX.Element => {
 
                 {/*Select  Experience*/}
                 <div className="w-[20%] border-l-2 border-r-2 border-stone-200">
-                    <FormControl className="w-full">
-                        <Select
-                            displayEmpty
-                            onChange={(e) => {
-                                setValue(e.target.value);
-                            }}
-                            renderValue={(selected) => {
-                                if (selected === "") {
-                                    return "Select Experience";
-                                }
-
-                                return selected;
-                            }}
-                            value={value}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
+                    <Dropdown placeholder="Select Experience" />
                 </div>
 
                 {/*Search Location*/}
