@@ -28,7 +28,7 @@ server.use("*", (req: Request, res: Response) => {
 connectDatabase(url)
     .then(() => {
         log("Database connected successfully");
-        server.listen(PORT, () => {
+        server.listen(5004, () => {
             log(`Server started on ${PORT}`);
         });
     })

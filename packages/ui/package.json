@@ -35,7 +35,10 @@
         "typescript": "^5.3.3"
     },
     "dependencies": {
-        "react-router-dom": "^6.21.3",
-        "@repo/constants": "*"
+        "@emotion/react": "^11.13.3",
+        "@emotion/styled": "^11.13.0",
+        "@mui/material": "^6.1.2",
+        "@repo/constants": "*",
+        "react-router-dom": "^6.21.3"
     }
 }

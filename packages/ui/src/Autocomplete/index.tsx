@@ -4,7 +4,18 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
-import { type AutocompleteProps, type TextFieldProps } from "../PropertyTypes";
+
+export interface TextFieldProps {
+    border: string;
+    hoverBorder: string;
+    focusedBorder: string;
+}
+export interface AutocompleteProps {
+    placeHolder: string;
+    className?: string;
+    displayLens?: boolean;
+    border: TextFieldProps;
+}
 
 const options = ["Option 1", "Option 2"];
 
@@ -40,17 +51,15 @@ const StyledTextField = styled(TextField)<TextFieldProps>((property) => ({
     },
 }));
 
-export default function AutoCompleteComponent(
-    props: AutocompleteProps
-): JSX.Element {
-    const [value, setValue] = React.useState<string | null>(null);
+export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
+    const [value, setValue] = React.useState<unknown>(null);
     const [inputValue, setInputValue] = React.useState("");
 
     return (
         <StyledAutocomplete
             id="controllable-states-demo"
             inputValue={inputValue}
-            onChange={(event: any, newValue: string | null) => {
+            onChange={(event: any, newValue: unknown) => {
                 setValue(newValue);
             }}
             onInputChange={(event, newInputValue) => {

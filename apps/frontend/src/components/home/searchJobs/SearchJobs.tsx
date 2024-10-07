@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "@repo/ui";
+import { Button, AutoCompleteComponent, Dropdown } from "@repo/ui";
 import axios from "axios";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import AutoCompleteComponent from "../../common/autocomplete/Autocomplete";
-import { Dropdown } from "../../common/dropdown/Dropdown";
 import { type TextFieldProps } from "../../common/PropertyTypes";
 
 const border: TextFieldProps = {
@@ -15,7 +11,7 @@ const border: TextFieldProps = {
 
 export const SearchJobs = (): JSX.Element => {
     const [location, setLocation] = useState<string>("");
-    const [value, setValue] = useState<number | string>("");
+    const [values, setValue] = useState<number | string>("");
 
     const handleLocation = async (
         e: React.ChangeEvent<HTMLInputElement>

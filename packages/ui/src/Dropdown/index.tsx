@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, isValidElement } from "react";
 import { styled } from "@mui/material/styles";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { type TextFieldProps, type DropdownProps } from "../PropertyTypes";
 
-const StyledDropdown = styled(Select)<TextFieldProps>((property) => ({
+export interface DropdownFieldProps {
+    border: string;
+    hoverBorder: string;
+    focusedBorder: string;
+}
+export interface DropdownProps {
+    placeHolder: string;
+    className?: string;
+    border: DropdownFieldProps;
+}
+
+const StyledDropdown = styled(Select)<DropdownFieldProps>((property) => ({
     backgroundColor: "White",
     height: "100%",
     "& .MuiOutlinedInput-notchedOutline": {
@@ -22,8 +32,8 @@ const StyledSpan = styled("span")({
     color: "#a2a2a2",
 });
 
-export const Dropdown = (props: DropdownProps): JSX.Element => {
-    const [value, setValue] = useState<number | string>("");
+export function Dropdown(props: DropdownProps): JSX.Element {
+    const [value, setValue] = useState<unknown>("");
     return (
         <StyledDropdown
             border={props.border.border}
@@ -34,11 +44,21 @@ export const Dropdown = (props: DropdownProps): JSX.Element => {
             onChange={(e) => {
                 setValue(e.target.value);
             }}
-            renderValue={(selected) => {
-                if (selected === "") {
-                    return <StyledSpan>{props.placeHolder}</StyledSpan>;
+            renderValue={(selected: unknown): JSX.Element | string => {
+                if (typeof selected === "string") {
+                    if (selected === "") {
+                        return <StyledSpan>{props.placeHolder}</StyledSpan>;
+                    }
+                    return selected; // `selected` is confirmed as a string
                 }
-                return selected;
+
+                // If selected is JSX.Element
+                if (isValidElement(selected)) {
+                    return selected; // Handle JSX.Element here
+                }
+
+                // Default case, return empty string or some fallback
+                return "";
             }}
             value={value}
         >
@@ -47,4 +67,4 @@ export const Dropdown = (props: DropdownProps): JSX.Element => {
             <MenuItem value={30}>Thirty</MenuItem>
         </StyledDropdown>
     );
-};
+}

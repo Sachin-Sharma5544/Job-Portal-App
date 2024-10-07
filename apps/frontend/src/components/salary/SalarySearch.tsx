@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "@repo/ui";
-import AutoCompleteComponent from "../common/autocomplete/Autocomplete";
+import { Button, AutoCompleteComponent } from "@repo/ui";
 import { type TextFieldProps } from "../common/PropertyTypes";
 
 const border: TextFieldProps = {
