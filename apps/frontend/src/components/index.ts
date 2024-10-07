@@ -7,3 +7,4 @@ export * from "./common";
 export * from "./profile";
 export * from "./company/IndustryTypeSlider";
 export * from "./salary/SalaryHeading";
+export * from "./salary/SearchSalary";

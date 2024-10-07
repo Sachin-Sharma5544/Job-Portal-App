@@ -5,6 +5,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import AutoCompleteComponent from "../../common/autocomplete/Autocomplete";
 import { Dropdown } from "../../common/dropdown/Dropdown";
+import { type TextFieldProps } from "../../common/autocomplete/AutocompleteTypes";
+
+const border: TextFieldProps = {
+    border: "none",
+    hoverBorder: "none",
+    focusedBorder: "none",
+};
 
 export const SearchJobs = (): JSX.Element => {
     const [location, setLocation] = useState<string>("");
@@ -33,6 +40,7 @@ export const SearchJobs = (): JSX.Element => {
                 {/*Search Skills*/}
                 <div className="w-[50%] px-[-10px] ">
                     <AutoCompleteComponent
+                        border={border}
                         displayLens
                         placeHolder="Enter Skills / Designations / Companies"
                     />
@@ -46,6 +54,7 @@ export const SearchJobs = (): JSX.Element => {
                 {/*Search Location*/}
                 <div className="w-[20%] border-r-2 border-stone-200">
                     <AutoCompleteComponent
+                        border={border}
                         displayLens
                         placeHolder="Search Location"
                     />

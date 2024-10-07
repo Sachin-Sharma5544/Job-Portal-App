@@ -4,19 +4,17 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
-
-interface AutocompleteProps {
-    placeHolder: string;
-    className?: string;
-    displayLens?: boolean;
-}
+import {
+    type AutocompleteProps,
+    type TextFieldProps,
+} from "./AutocompleteTypes";
 
 const options = ["Option 1", "Option 2"];
 
 const StyledAutocomplete = styled(Autocomplete)({
     width: "100%",
     height: "100%",
-    border: "white",
+    border: "black",
     "& .MuiAutocomplete-popupIndicator": {
         transform: "none", // Prevent the icon from rotating
     },
@@ -29,19 +27,21 @@ const StyledSearchIcon = styled(SearchIcon)({
     color: "grey",
 });
 
-const StyledTextField = styled(TextField)({
+const StyledTextField = styled(TextField)<TextFieldProps>((property) => ({
+    borderRadius: "16px",
     "& .MuiOutlinedInput-root": {
         "& fieldset": {
-            border: "none",
+            border: property.border,
+            borderRadius: "8px",
         },
         "&:hover fieldset": {
-            border: "none",
+            border: property.hoverBorder,
         },
         "&.Mui-focused fieldset": {
-            border: "none",
+            border: property.focusedBorder,
         },
     },
-});
+}));
 
 export default function AutoCompleteComponent(
     props: AutocompleteProps
@@ -65,6 +65,9 @@ export default function AutoCompleteComponent(
                 return (
                     <StyledTextField
                         {...params}
+                        border={props.border.border}
+                        focusedBorder={props.border.focusedBorder}
+                        hoverBorder={props.border.hoverBorder}
                         placeholder={props.placeHolder}
                     />
                 );
