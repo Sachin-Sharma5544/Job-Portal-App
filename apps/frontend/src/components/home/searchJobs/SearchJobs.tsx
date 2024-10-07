@@ -35,7 +35,7 @@ export const SearchJobs = (): JSX.Element => {
         console.log(data);
     };
     return (
-        <div className="w-full border-2 border-stone-200 flex justify-center items-center rounded-2xl h-18 bg-white">
+        <div className="w-full border-[1px] border-black flex justify-center items-center rounded-2xl h-18 bg-white">
             <div className="w-[100%] flex items-center justify-between ">
                 {/*Search Skills*/}
                 <div className="w-[50%] px-[-10px] ">
@@ -47,12 +47,12 @@ export const SearchJobs = (): JSX.Element => {
                 </div>
 
                 {/*Select  Experience*/}
-                <div className="w-[20%] border-l-2 border-r-2 border-stone-200">
+                <div className="w-[20%] border-l-[1px] border-r-[1px] border-stone-300">
                     <Dropdown border={border} placeHolder="Select Experience" />
                 </div>
 
                 {/*Search Location*/}
-                <div className="w-[20%] border-r-2 border-stone-200">
+                <div className="w-[20%] border-r-[1px] border-stone-300">
                     <AutoCompleteComponent
                         border={border}
                         displayLens
@@ -61,7 +61,7 @@ export const SearchJobs = (): JSX.Element => {
                 </div>
 
                 <div className="w-[10%]">
-                    <Button className=" px-4 text-center py-2 border-2 rounded-3xl w-full text-white bg-slate-800">
+                    <Button className=" px-4 text-center py-2 border-[1px] rounded-3xl w-full text-white bg-slate-800">
                         Search
                     </Button>
                 </div>
