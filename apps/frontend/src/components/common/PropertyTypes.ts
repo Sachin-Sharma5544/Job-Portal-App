@@ -9,3 +9,5 @@ export interface AutocompleteProps {
     displayLens?: boolean;
     border: TextFieldProps;
 }
+
+export type DropdownProps = Omit<AutocompleteProps, "displayLens">;

@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import AutoCompleteComponent from "../../common/autocomplete/Autocomplete";
 import { Dropdown } from "../../common/dropdown/Dropdown";
-import { type TextFieldProps } from "../../common/autocomplete/AutocompleteTypes";
+import { type TextFieldProps } from "../../common/PropertyTypes";
 
 const border: TextFieldProps = {
     border: "none",
@@ -48,7 +48,7 @@ export const SearchJobs = (): JSX.Element => {
 
                 {/*Select  Experience*/}
                 <div className="w-[20%] border-l-2 border-r-2 border-stone-200">
-                    <Dropdown placeholder="Select Experience" />
+                    <Dropdown border={border} placeHolder="Select Experience" />
                 </div>
 
                 {/*Search Location*/}

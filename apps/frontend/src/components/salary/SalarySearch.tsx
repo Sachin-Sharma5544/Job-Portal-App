@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@repo/ui";
 import AutoCompleteComponent from "../common/autocomplete/Autocomplete";
-import { type TextFieldProps } from "../common/autocomplete/AutocompleteTypes";
+import { type TextFieldProps } from "../common/PropertyTypes";
 
 const border: TextFieldProps = {
     border: "1px solid black",
@@ -11,17 +11,19 @@ const border: TextFieldProps = {
 
 export const SearchSalary = (): JSX.Element => {
     return (
-        <div className="py-10 bg-white rounded-lg rounded-tr-3xl">
+        <div className="py-7 bg-white rounded-lg rounded-tr-3xl">
             <div className="flex justify-evenly items-center">
                 <div className="w-[40%]">
                     <AutoCompleteComponent
                         border={border}
+                        displayLens
                         placeHolder="Job Titile"
                     />
                 </div>
                 <div className="w-[40%]">
                     <AutoCompleteComponent
                         border={border}
+                        displayLens
                         placeHolder="Location"
                     />
                 </div>

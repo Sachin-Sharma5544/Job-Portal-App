@@ -4,10 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
-import {
-    type AutocompleteProps,
-    type TextFieldProps,
-} from "./AutocompleteTypes";
+import { type AutocompleteProps, type TextFieldProps } from "../PropertyTypes";
 
 const options = ["Option 1", "Option 2"];
 
