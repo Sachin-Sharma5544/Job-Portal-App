@@ -100,7 +100,7 @@ export const SalaryBrowse = (): JSX.Element => {
                     <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] pr-2">
                         {companies.map((company) => (
                             <Card
-                                classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] "
+                                classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900"
                                 key={company._id}
                             >
                                 <>
