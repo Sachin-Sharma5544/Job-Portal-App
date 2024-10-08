@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     Button,
     AutoCompleteComponent,
@@ -13,50 +13,64 @@ const border: TextFieldProps = {
     focusedBorder: "none",
 };
 
+interface Location {
+    place_id: string;
+    display_place: string;
+    display_address: string;
+    lat: string;
+    lon: string;
+    address: {
+        name: string;
+        county: string;
+        state: string;
+        postcode: string;
+        country: string;
+        country_code: string;
+    };
+}
+
 export const SearchJobs = (): JSX.Element => {
     const [place, setPlace] = useState<string>("");
-    const [placeValue, setPlaceValue] = useState<string>("");
-    const [placeOptions, setPlaceOptions] = useState([]);
+    const [placeValue, setPlaceValue] = useState<unknown>(null);
+    const [placeOptions, setPlaceOptions] = useState<string[]>([]);
 
     const handleLocation = async (
         value: string
     ): Promise<string[] | undefined> => {
-        setPlace(value);
-        if (!value) return;
+        if (!value) {
+            setPlaceOptions([]);
+            return;
+        }
 
         const URL = `https://us1.locationiq.com/v1/autocomplete`;
 
         const options = {
             headers: { accept: "application/json" },
             params: {
-                q: place,
+                q: value,
                 countrycodes: "in",
                 tag: "place:city",
                 key: "pk.840ec05a9928bfaf432fde14f71fdf7f",
             },
         };
 
-        const data = await axios.get(URL, options);
-        // if (Array.isArray(data)) {
-        //     const placeArray = data.map((item) => item.display_place);
-        //     console.log(">>>>> place array", placeArray);
-        //     setPlaceOptions(placeArray);
-        // }
-        return data;
+        const data = await axios.get<Location[]>(URL, options);
+        if (Array.isArray(data.data)) {
+            const placeArray = data.data.map(
+                (item: Location) => item.display_place
+            );
+            setPlaceOptions(placeArray);
+        }
     };
 
-    const handlePlaceChange = async (value: string): void => {
+    const handlePlaceInputChange = (value: string): void => {
         setPlace(value);
-
-        const data = await handleLocation(value);
-        const placeArray = data.data.map((item) => item.display_place);
-        setPlaceOptions(placeArray);
-        console.log("Place Array", placeArray);
+        void handleLocation(value);
     };
 
-    useEffect(() => {
-        void handleLocation("lu");
-    }, []);
+    const handlePlaceChange = (value: unknown): void => {
+        setPlaceValue(value);
+    };
 
     return (
         <div className="w-full border-[1px] border-black flex justify-center items-center rounded-2xl h-18 bg-white">
@@ -81,7 +95,8 @@ export const SearchJobs = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
-                        handleInputChange={handlePlaceChange}
+                        handleInputChange={handlePlaceInputChange}
+                        handleValueChange={handlePlaceChange}
                         inputValue={place}
                         options={placeOptions}
                         placeHolder="Search Location"

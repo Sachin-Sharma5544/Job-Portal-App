@@ -17,13 +17,11 @@ export interface AutocompleteProps {
     displayLens?: boolean;
     border: TextFieldProps;
     inputValue?: string;
-    value?: string;
+    value?: unknown;
     options: unknown[];
     handleInputChange?: (a: string) => void;
     handleValueChange?: (a: unknown) => void;
 }
-
-const options = ["Option 1", "Option 2"];
 
 const StyledAutocomplete = styled(Autocomplete)({
     width: "100%",
@@ -72,6 +70,7 @@ export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
                     props.handleInputChange(newInputValue);
                 }
             }}
+            open={props.options.length > 0 && props.value === null}
             options={props.options}
             popupIcon={props.displayLens ? <StyledSearchIcon /> : null}
             renderInput={(params) => {
