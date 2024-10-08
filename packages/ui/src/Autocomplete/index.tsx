@@ -11,10 +11,16 @@ export interface TextFieldProps {
     focusedBorder: string;
 }
 export interface AutocompleteProps {
-    placeHolder: string;
+    id?: string;
+    placeHolder?: string;
     className?: string;
     displayLens?: boolean;
     border: TextFieldProps;
+    inputValue?: string;
+    value?: string;
+    options: unknown[];
+    handleInputChange?: (a: string) => void;
+    handleValueChange?: (a: unknown) => void;
 }
 
 const options = ["Option 1", "Option 2"];
@@ -52,20 +58,21 @@ const StyledTextField = styled(TextField)<TextFieldProps>((property) => ({
 }));
 
 export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
-    const [value, setValue] = React.useState<unknown>(null);
-    const [inputValue, setInputValue] = React.useState("");
-
     return (
         <StyledAutocomplete
-            id="controllable-states-demo"
-            inputValue={inputValue}
-            onChange={(event: any, newValue: unknown) => {
-                setValue(newValue);
+            id={props.id}
+            inputValue={props.inputValue}
+            onChange={(event, newValue) => {
+                if (props.handleValueChange) {
+                    props.handleValueChange(newValue);
+                }
             }}
             onInputChange={(event, newInputValue) => {
-                setInputValue(newInputValue);
+                if (props.handleInputChange) {
+                    props.handleInputChange(newInputValue);
+                }
             }}
-            options={options}
+            options={props.options}
             popupIcon={props.displayLens ? <StyledSearchIcon /> : null}
             renderInput={(params) => {
                 return (
@@ -78,7 +85,7 @@ export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
                     />
                 );
             }}
-            value={value}
+            value={props.value}
         />
     );
 }

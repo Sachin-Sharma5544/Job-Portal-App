@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { Button, AutoCompleteComponent, Dropdown } from "@repo/ui";
+import React, { useEffect, useState } from "react";
+import {
+    Button,
+    AutoCompleteComponent,
+    Dropdown,
+    type TextFieldProps,
+} from "@repo/ui";
 import axios from "axios";
-import { type TextFieldProps } from "../../common/PropertyTypes";
 
 const border: TextFieldProps = {
     border: "none",
@@ -10,26 +14,50 @@ const border: TextFieldProps = {
 };
 
 export const SearchJobs = (): JSX.Element => {
-    const [location, setLocation] = useState<string>("");
-    const [values, setValue] = useState<number | string>("");
+    const [place, setPlace] = useState<string>("");
+    const [placeValue, setPlaceValue] = useState<string>("");
+    const [placeOptions, setPlaceOptions] = useState([]);
 
     const handleLocation = async (
-        e: React.ChangeEvent<HTMLInputElement>
-    ): Promise<void> => {
-        const { value } = e.target;
-        setLocation(value);
+        value: string
+    ): Promise<string[] | undefined> => {
+        setPlace(value);
         if (!value) return;
 
-        const URL = `https://us1.locationiq.com/v1/autocomplete?q=${value}&countrycodes=in&tag=place%3Acity&key=pk.840ec05a9928bfaf432fde14f71fdf7f`;
+        const URL = `https://us1.locationiq.com/v1/autocomplete`;
 
         const options = {
             headers: { accept: "application/json" },
+            params: {
+                q: place,
+                countrycodes: "in",
+                tag: "place:city",
+                key: "pk.840ec05a9928bfaf432fde14f71fdf7f",
+            },
         };
 
         const data = await axios.get(URL, options);
-
-        console.log(data);
+        // if (Array.isArray(data)) {
+        //     const placeArray = data.map((item) => item.display_place);
+        //     console.log(">>>>> place array", placeArray);
+        //     setPlaceOptions(placeArray);
+        // }
+        return data;
     };
+
+    const handlePlaceChange = async (value: string): void => {
+        setPlace(value);
+
+        const data = await handleLocation(value);
+        const placeArray = data.data.map((item) => item.display_place);
+        setPlaceOptions(placeArray);
+        console.log("Place Array", placeArray);
+    };
+
+    useEffect(() => {
+        void handleLocation("lu");
+    }, []);
+
     return (
         <div className="w-full border-[1px] border-black flex justify-center items-center rounded-2xl h-18 bg-white">
             <div className="w-[100%] flex items-center justify-between ">
@@ -38,6 +66,7 @@ export const SearchJobs = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
+                        options={[]}
                         placeHolder="Enter Skills / Designations / Companies"
                     />
                 </div>
@@ -52,7 +81,11 @@ export const SearchJobs = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
+                        handleInputChange={handlePlaceChange}
+                        inputValue={place}
+                        options={placeOptions}
                         placeHolder="Search Location"
+                        value={placeValue}
                     />
                 </div>
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, AutoCompleteComponent } from "@repo/ui";
-import { type TextFieldProps } from "../common/PropertyTypes";
+import { Button, AutoCompleteComponent, type TextFieldProps } from "@repo/ui";
 
 const border: TextFieldProps = {
     border: "1px solid black",
@@ -16,6 +15,7 @@ export const SearchSalary = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
+                        options={[]}
                         placeHolder="Job Titile"
                     />
                 </div>
@@ -23,6 +23,7 @@ export const SearchSalary = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
+                        options={[]}
                         placeHolder="Location"
                     />
                 </div>

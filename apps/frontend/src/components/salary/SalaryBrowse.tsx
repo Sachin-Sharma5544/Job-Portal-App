@@ -1,7 +1,11 @@
 import React from "react";
-import { HeaderElement, LinkReactRouter, Dropdown, Card } from "@repo/ui";
-import { companyPath } from "@repo/constants";
-import { type DropdownProps } from "../common/PropertyTypes";
+import {
+    HeaderElement,
+    LinkReactRouter,
+    Dropdown,
+    Card,
+    type DropdownProps,
+} from "@repo/ui";
 
 const border: DropdownProps["border"] = {
     border: "1px solid black",
