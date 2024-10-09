@@ -1,7 +1,6 @@
-import React, { useState, isValidElement } from "react";
+import React, { isValidElement } from "react";
 import { styled } from "@mui/material/styles";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select, { type SelectChangeEvent } from "@mui/material/Select";
 
 export interface DropdownFieldProps {
     border: string;
@@ -12,6 +11,9 @@ export interface DropdownProps {
     placeHolder: string;
     className?: string;
     border: DropdownFieldProps;
+    menuoptions?: () => React.ReactNode;
+    value?: unknown;
+    handleDropdownChange: (a: SelectChangeEvent<unknown>) => void;
 }
 
 const StyledDropdown = styled(Select)<DropdownFieldProps>((property) => ({
@@ -33,7 +35,6 @@ const StyledSpan = styled("span")({
 });
 
 export function Dropdown(props: DropdownProps): JSX.Element {
-    const [value, setValue] = useState<unknown>("");
     return (
         <StyledDropdown
             border={props.border.border}
@@ -42,7 +43,7 @@ export function Dropdown(props: DropdownProps): JSX.Element {
             focusedBorder={props.border.focusedBorder}
             hoverBorder={props.border.hoverBorder}
             onChange={(e) => {
-                setValue(e.target.value);
+                props.handleDropdownChange(e);
             }}
             renderValue={(selected: unknown): JSX.Element | string => {
                 if (typeof selected === "string") {
@@ -60,11 +61,9 @@ export function Dropdown(props: DropdownProps): JSX.Element {
                 // Default case, return empty string or some fallback
                 return "";
             }}
-            value={value}
+            value={props.value}
         >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {props.menuoptions ? props.menuoptions() : null}
         </StyledDropdown>
     );
 }

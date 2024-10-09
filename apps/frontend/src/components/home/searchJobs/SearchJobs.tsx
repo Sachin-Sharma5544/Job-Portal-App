@@ -5,7 +5,10 @@ import {
     Dropdown,
     type TextFieldProps,
 } from "@repo/ui";
-import axios from "axios";
+import { EXPERIENCE } from "@repo/constants";
+import MenuItem from "@mui/material/MenuItem";
+import { type SelectChangeEvent } from "@mui/material/Select";
+import { locationInstance } from "../../../axios";
 
 const border: TextFieldProps = {
     border: "none",
@@ -33,6 +36,25 @@ export const SearchJobs = (): JSX.Element => {
     const [place, setPlace] = useState<string>("");
     const [placeValue, setPlaceValue] = useState<unknown>(null);
     const [placeOptions, setPlaceOptions] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [experience, setExperience] = useState<string>("");
+
+    const getExperienceOptions = (): React.ReactNode => {
+        return EXPERIENCE.map(
+            (option: { id: number; value: string; text: string }) => {
+                return (
+                    <MenuItem key={option.id} value={option.value}>
+                        {option.text}
+                    </MenuItem>
+                );
+            }
+        );
+    };
+
+    const handleExperienceChange = (e: SelectChangeEvent<unknown>): void => {
+        console.log(e.target.value);
+        setExperience(e.target.value as string);
+    };
 
     const handleLocation = async (
         value: string
@@ -41,26 +63,15 @@ export const SearchJobs = (): JSX.Element => {
             setPlaceOptions([]);
             return;
         }
-
-        const URL = `https://us1.locationiq.com/v1/autocomplete`;
-
-        const options = {
-            headers: { accept: "application/json" },
-            params: {
-                q: value,
-                countrycodes: "in",
-                tag: "place:city",
-                key: "pk.840ec05a9928bfaf432fde14f71fdf7f",
-            },
-        };
-
-        const data = await axios.get<Location[]>(URL, options);
+        setLoading(true);
+        const data = await locationInstance(value).get<Location[]>("");
         if (Array.isArray(data.data)) {
             const placeArray = data.data.map(
                 (item: Location) => item.display_place
             );
             setPlaceOptions(placeArray);
         }
+        setLoading(false);
     };
 
     const handlePlaceInputChange = (value: string): void => {
@@ -87,7 +98,13 @@ export const SearchJobs = (): JSX.Element => {
 
                 {/*Select  Experience*/}
                 <div className="w-[20%] border-l-[1px] border-r-[1px] border-stone-300">
-                    <Dropdown border={border} placeHolder="Select Experience" />
+                    <Dropdown
+                        border={border}
+                        handleDropdownChange={handleExperienceChange}
+                        menuoptions={getExperienceOptions}
+                        placeHolder="Select Experience"
+                        value={experience}
+                    />
                 </div>
 
                 {/*Search Location*/}
@@ -98,6 +115,7 @@ export const SearchJobs = (): JSX.Element => {
                         handleInputChange={handlePlaceInputChange}
                         handleValueChange={handlePlaceChange}
                         inputValue={place}
+                        loading={loading}
                         options={placeOptions}
                         placeHolder="Search Location"
                         value={placeValue}
