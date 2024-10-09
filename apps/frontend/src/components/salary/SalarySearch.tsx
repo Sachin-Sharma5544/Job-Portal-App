@@ -28,6 +28,7 @@ export const SearchSalary = (): JSX.Element => {
     const [inputLocation, setInputLocation] = useState<string>("");
     const [selectedLocation, setSelectedLocation] = useState<unknown>(null);
     const [locationOptions, setLocationOptions] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleLocation = async (
         value: string
@@ -36,7 +37,7 @@ export const SearchSalary = (): JSX.Element => {
             setLocationOptions([]);
             return;
         }
-
+        setLoading(true);
         const data = await locationInstance(value).get<Location[]>("");
         if (Array.isArray(data.data)) {
             const placeArray = data.data.map(
@@ -44,6 +45,8 @@ export const SearchSalary = (): JSX.Element => {
             );
             setLocationOptions(placeArray);
         }
+
+        setLoading(false);
     };
 
     const handleInputLocationChange = (value: string): void => {
@@ -72,6 +75,7 @@ export const SearchSalary = (): JSX.Element => {
                         handleInputChange={handleInputLocationChange}
                         handleValueChange={handleSelectedLocationChange}
                         inputValue={inputLocation}
+                        loading={loading}
                         options={locationOptions}
                         placeHolder="Location"
                         value={selectedLocation}

@@ -21,6 +21,7 @@ export interface AutocompleteProps {
     options: unknown[];
     handleInputChange?: (a: string) => void;
     handleValueChange?: (a: unknown) => void;
+    loading?: boolean;
 }
 
 const StyledAutocomplete = styled(Autocomplete)({
@@ -81,8 +82,44 @@ export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
                         focusedBorder={props.border.focusedBorder}
                         hoverBorder={props.border.hoverBorder}
                         placeholder={props.placeHolder}
+                        slotProps={{
+                            input: {
+                                ...params.InputProps,
+                                endAdornment: (
+                                    <>
+                                        {props.loading ? (
+                                            <CircularProgress
+                                                color="inherit"
+                                                size={20}
+                                            />
+                                        ) : null}
+                                        {params.InputProps.endAdornment}
+                                    </>
+                                ),
+                            },
+                        }}
                     />
                 );
+            }}
+            slotProps={{
+                textField: {
+                    border: props.border.border,
+                    focusedBorder: props.border.focusedBorder,
+                    hoverBorder: props.border.hoverBorder,
+                    placeholder: props.placeHolder,
+                    InputProps: {
+                        endAdornment: (
+                            <>
+                                {props.loading ? (
+                                    <CircularProgress
+                                        color="inherit"
+                                        size={20}
+                                    />
+                                ) : null}
+                            </>
+                        ),
+                    },
+                },
             }}
             value={props.value}
         />
