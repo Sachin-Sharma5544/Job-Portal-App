@@ -7,6 +7,7 @@ import {
 } from "@repo/ui";
 import { EXPERIENCE } from "@repo/constants";
 import MenuItem from "@mui/material/MenuItem";
+import { type SelectChangeEvent } from "@mui/material/Select";
 import { locationInstance } from "../../../axios";
 
 const border: TextFieldProps = {
@@ -36,21 +37,23 @@ export const SearchJobs = (): JSX.Element => {
     const [placeValue, setPlaceValue] = useState<unknown>(null);
     const [placeOptions, setPlaceOptions] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [experience, setExperience] = useState<string>("");
 
     const getExperienceOptions = (): React.ReactNode => {
-        return (
-            <>
-                {EXPERIENCE.map(
-                    (option: { id: number; value: string; text: string }) => {
-                        return (
-                            <MenuItem key={option.id} value={option.value}>
-                                {option.text}
-                            </MenuItem>
-                        );
-                    }
-                )}
-            </>
+        return EXPERIENCE.map(
+            (option: { id: number; value: string; text: string }) => {
+                return (
+                    <MenuItem key={option.id} value={option.value}>
+                        {option.text}
+                    </MenuItem>
+                );
+            }
         );
+    };
+
+    const handleExperienceChange = (e: SelectChangeEvent<unknown>): void => {
+        console.log(e.target.value);
+        setExperience(e.target.value as string);
     };
 
     const handleLocation = async (
@@ -97,8 +100,10 @@ export const SearchJobs = (): JSX.Element => {
                 <div className="w-[20%] border-l-[1px] border-r-[1px] border-stone-300">
                     <Dropdown
                         border={border}
+                        handleDropdownChange={handleExperienceChange}
                         menuoptions={getExperienceOptions}
                         placeHolder="Select Experience"
+                        value={experience}
                     />
                 </div>
 
