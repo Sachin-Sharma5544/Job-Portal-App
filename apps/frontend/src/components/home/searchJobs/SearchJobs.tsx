@@ -5,7 +5,7 @@ import {
     Dropdown,
     type TextFieldProps,
 } from "@repo/ui";
-import axios from "axios";
+import { locationInstance } from "../../../axios";
 
 const border: TextFieldProps = {
     border: "none",
@@ -42,19 +42,7 @@ export const SearchJobs = (): JSX.Element => {
             return;
         }
 
-        const URL = `https://us1.locationiq.com/v1/autocomplete`;
-
-        const options = {
-            headers: { accept: "application/json" },
-            params: {
-                q: value,
-                countrycodes: "in",
-                tag: "place:city",
-                key: "pk.840ec05a9928bfaf432fde14f71fdf7f",
-            },
-        };
-
-        const data = await axios.get<Location[]>(URL, options);
+        const data = await locationInstance(value).get<Location[]>("");
         if (Array.isArray(data.data)) {
             const placeArray = data.data.map(
                 (item: Location) => item.display_place

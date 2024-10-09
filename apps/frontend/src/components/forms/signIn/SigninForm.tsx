@@ -126,7 +126,7 @@ export function SigninForm(): JSX.Element {
         password: string
     ): Promise<void> => {
         try {
-            const response = await axiosAuthInstance.post(loginPath, {
+            const response = await axiosAuthInstance().post(loginPath, {
                 email,
                 password,
             });
