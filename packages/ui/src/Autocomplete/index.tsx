@@ -101,26 +101,6 @@ export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
                     />
                 );
             }}
-            slotProps={{
-                textField: {
-                    border: props.border.border,
-                    focusedBorder: props.border.focusedBorder,
-                    hoverBorder: props.border.hoverBorder,
-                    placeholder: props.placeHolder,
-                    InputProps: {
-                        endAdornment: (
-                            <>
-                                {props.loading ? (
-                                    <CircularProgress
-                                        color="inherit"
-                                        size={20}
-                                    />
-                                ) : null}
-                            </>
-                        ),
-                    },
-                },
-            }}
             value={props.value}
         />
     );

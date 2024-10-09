@@ -5,6 +5,8 @@ import {
     Dropdown,
     type TextFieldProps,
 } from "@repo/ui";
+import { EXPERIENCE } from "@repo/constants";
+import MenuItem from "@mui/material/MenuItem";
 import { locationInstance } from "../../../axios";
 
 const border: TextFieldProps = {
@@ -34,6 +36,22 @@ export const SearchJobs = (): JSX.Element => {
     const [placeValue, setPlaceValue] = useState<unknown>(null);
     const [placeOptions, setPlaceOptions] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+
+    const getExperienceOptions = (): React.ReactNode => {
+        return (
+            <>
+                {EXPERIENCE.map(
+                    (option: { id: number; value: string; text: string }) => {
+                        return (
+                            <MenuItem key={option.id} value={option.value}>
+                                {option.text}
+                            </MenuItem>
+                        );
+                    }
+                )}
+            </>
+        );
+    };
 
     const handleLocation = async (
         value: string
@@ -77,7 +95,11 @@ export const SearchJobs = (): JSX.Element => {
 
                 {/*Select  Experience*/}
                 <div className="w-[20%] border-l-[1px] border-r-[1px] border-stone-300">
-                    <Dropdown border={border} placeHolder="Select Experience" />
+                    <Dropdown
+                        border={border}
+                        menuoptions={getExperienceOptions}
+                        placeHolder="Select Experience"
+                    />
                 </div>
 
                 {/*Search Location*/}

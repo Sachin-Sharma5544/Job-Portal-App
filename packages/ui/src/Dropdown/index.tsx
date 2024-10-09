@@ -12,6 +12,7 @@ export interface DropdownProps {
     placeHolder: string;
     className?: string;
     border: DropdownFieldProps;
+    menuoptions?: () => React.ReactNode;
 }
 
 const StyledDropdown = styled(Select)<DropdownFieldProps>((property) => ({
@@ -62,9 +63,7 @@ export function Dropdown(props: DropdownProps): JSX.Element {
             }}
             value={value}
         >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            {props.menuoptions ? props.menuoptions() : null}
         </StyledDropdown>
     );
 }
