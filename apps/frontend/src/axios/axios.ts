@@ -16,6 +16,7 @@ export const locationInstance = (queryLocation: string): AxiosInstance => {
         baseURL: locationUrl,
         headers: { accept: "application/json" },
         params: {
+            q: queryLocation,
             countrycodes: "in",
             tag: "place:city",
             key: "pk.840ec05a9928bfaf432fde14f71fdf7f",
