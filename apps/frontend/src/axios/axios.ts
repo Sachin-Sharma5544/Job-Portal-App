@@ -1,13 +1,29 @@
 import axios, { type AxiosInstance } from "axios";
 import { API, AUTH, PORT } from "@repo/constants";
 
+const getBackendUrl = (): string => {
+    return `http://localhost:${PORT}${API}`;
+};
+
 export const axiosAuthInstance = (): AxiosInstance => {
-    const authUrl = `http://localhost:${PORT}${API}${AUTH}`;
+    const authUrl = `${getBackendUrl()}${AUTH}`;
     const axiosAuth = axios.create({
         baseURL: authUrl,
         headers: { accept: "application/json" },
     });
     return axiosAuth;
+};
+
+export const axiosPublicInstance = (query: unknown): AxiosInstance => {
+    const url = getBackendUrl();
+    const axiosPublic = axios.create({
+        baseURL: url,
+        headers: { accept: "application/json" },
+        params: {
+            q: query,
+        },
+    });
+    return axiosPublic;
 };
 
 export const locationInstance = (queryLocation: string): AxiosInstance => {
