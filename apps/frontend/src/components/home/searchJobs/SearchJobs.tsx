@@ -52,7 +52,6 @@ export const SearchJobs = (): JSX.Element => {
     };
 
     const handleExperienceChange = (e: SelectChangeEvent<unknown>): void => {
-        console.log(e.target.value);
         setExperience(e.target.value as string);
     };
 

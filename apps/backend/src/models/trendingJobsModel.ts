@@ -1,4 +1,7 @@
-import { model, Schema } from "@repo/database";
+import { mongooseSchema, mongooseModel } from "@repo/database";
+
+const Schema = mongooseSchema();
+const model = mongooseModel();
 
 const trendingJobsSchema = new Schema({
     jobName: { type: String, required: true },

@@ -1,4 +1,7 @@
-import { Schema, model } from "@repo/database";
+import { mongooseSchema, mongooseModel } from "@repo/database";
+
+const Schema = mongooseSchema();
+const model = mongooseModel();
 
 const userSchema = new Schema(
     {
