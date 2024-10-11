@@ -5,6 +5,7 @@ import {
     Dropdown,
     type TextFieldProps,
 } from "@repo/ui";
+import { type AxiosResponse } from "axios";
 import { EXPERIENCE } from "@repo/constants";
 import MenuItem from "@mui/material/MenuItem";
 import { type SelectChangeEvent } from "@mui/material/Select";
@@ -32,6 +33,14 @@ interface Location {
     };
 }
 
+interface Suggestion {
+    jobs: { suggestion: string }[];
+}
+
+interface SuggestionResponse extends AxiosResponse {
+    data: Suggestion;
+}
+
 export const SearchJobs = (): JSX.Element => {
     const [place, setPlace] = useState<string>("");
     const [placeValue, setPlaceValue] = useState<unknown>(null);
@@ -55,26 +64,27 @@ export const SearchJobs = (): JSX.Element => {
         );
     };
 
-    const handleSkillsInputChange = async (value: string): Promise<void> => {
-        setSkills(value);
-
+    const fetchSkillsSuggestion = async (value: string): Promise<void> => {
         if (!value) {
             setSkillsOptions([]);
             return;
         }
 
         setLoadingSkills(true);
-        const data = await axiosPublicInstance(value).get("/jobs/job-text");
+        const { data }: SuggestionResponse =
+            await axiosPublicInstance(value).get<Suggestion>("/jobs/job-text");
 
-        console.log("Response Data", data);
-
-        if (Array.isArray(data.data.jobs)) {
-            const skillsArray = data.data.jobs.map(
-                (item: Location) => item.suggestion
-            );
+        if (Array.isArray(data.jobs)) {
+            const skillsArray = data.jobs.map((item) => item.suggestion);
             setSkillsOptions(skillsArray);
         }
         setLoadingSkills(false);
+    };
+
+    const handleSkillsInputChange = (value: string): void => {
+        setSkills(value);
+
+        void fetchSkillsSuggestion(value);
     };
 
     const handleSkillsChange = (value: unknown): void => {
@@ -85,7 +95,7 @@ export const SearchJobs = (): JSX.Element => {
         setExperience(e.target.value as string);
     };
 
-    const handleLocation = async (
+    const fetchLocation = async (
         value: string
     ): Promise<string[] | undefined> => {
         if (!value) {
@@ -105,7 +115,7 @@ export const SearchJobs = (): JSX.Element => {
 
     const handlePlaceInputChange = (value: string): void => {
         setPlace(value);
-        void handleLocation(value);
+        void fetchLocation(value);
     };
 
     const handlePlaceChange = (value: unknown): void => {
