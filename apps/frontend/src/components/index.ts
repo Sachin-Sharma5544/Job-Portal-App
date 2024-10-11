@@ -8,3 +8,4 @@ export * from "./company/IndustryTypeSlider";
 export * from "./salary/SalaryHeading";
 export * from "./salary/SalarySearch";
 export * from "./salary/SalaryBrowse";
+export * from "./jobs/JobsCard";
