@@ -11,3 +11,4 @@ export * from "./Card";
 export * from "./CardSlider";
 export * from "./Autocomplete";
 export * from "./Dropdown";
+export * from "./CardWrapper";
