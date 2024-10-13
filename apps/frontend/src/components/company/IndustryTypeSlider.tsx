@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardSlider } from "@repo/ui";
 import { PORT } from "@repo/constants";
@@ -46,7 +46,7 @@ const IndustryTypeSlider = (props: IndustryTypeSliderProps): JSX.Element => {
         return () => {
             setIndustryType([]);
         };
-    }, [selectedCard]);
+    }, []);
 
     const showCardCount = (count: number | null): string => {
         if (!count) return "";
