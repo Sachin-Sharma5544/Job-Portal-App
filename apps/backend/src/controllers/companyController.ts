@@ -18,9 +18,16 @@ export const getCompaniesByType = async (
     res: Response
 ): Promise<void> => {
     try {
-        const companies = await CompanyModel.find({});
+        const { type } = req.params;
+
+        const companies = await CompanyModel.find({
+            $or: [
+                { companyType: { $regex: new RegExp(type, "i") } },
+                { industry: { $regex: new RegExp(type, "i") } },
+            ],
+        });
         res.status(200).send({ company: companies });
     } catch (error) {
-        res.status(200).send({ error });
+        res.status(400).send({ error });
     }
 };
