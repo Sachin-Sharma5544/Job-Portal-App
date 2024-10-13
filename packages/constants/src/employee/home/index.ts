@@ -14,3 +14,12 @@ export const TRENDING_JOBS = {
     SUPPLY_CHAIN: "Supply Chain",
     HEALTHCARE: "Health Care",
 };
+
+export const EXPERIENCE = [
+    { id: 1, value: "00-02 Years", text: "00-02 Years" },
+    { id: 2, value: "02-05 Years", text: "02-05 Years" },
+    { id: 3, value: "03-08 Years", text: "03-08 Years" },
+    { id: 4, value: "08-12 Years", text: "08-12 Years" },
+    { id: 5, value: "12-15 Years", text: "12-15 Years" },
+    { id: 6, value: "15 + Years", text: " 15+ Years" },
+];

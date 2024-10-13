@@ -13,7 +13,7 @@ export function BrandLogo(props: BrandLogoProps): JSX.Element {
                 <span className="text-sky-400">{WISE}</span>
             </div>
 
-            <div className="h-5 mx-8">
+            <div className="h-5">
                 <svg
                     className="h-full"
                     fill={props.bagFill}

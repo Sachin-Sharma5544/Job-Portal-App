@@ -1,5 +1,9 @@
 import React from "react";
-import { SearchJobs, Heading, TrendingJobs } from "../components";
+import {
+    SearchJobs,
+    HomeHeading as Heading,
+    TrendingJobs,
+} from "../components";
 
 export const HomePage = (): JSX.Element => {
     return (

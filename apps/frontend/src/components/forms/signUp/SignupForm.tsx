@@ -10,7 +10,7 @@ export const SignupForm = (): JSX.Element => {
         password: string,
         confirmPassword: string | undefined
     ): Promise<void> => {
-        const data = await axiosAuthInstance.post("/signup", {
+        const data = await axiosAuthInstance().post("/signup", {
             email,
             password,
         });
@@ -24,5 +24,4 @@ export const SignupForm = (): JSX.Element => {
             roleType={JOB_SEEKERS}
         />
     );
-    // return <div>Sign Up Form</div>;
 };
