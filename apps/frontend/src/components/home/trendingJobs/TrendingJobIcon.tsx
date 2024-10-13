@@ -3,15 +3,17 @@ import { TRENDING_JOBS } from "@repo/constants";
 
 interface TrendingJobIconProps {
     companyName: string;
+    classes: string;
 }
 
 const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
+    const styleClass = `w-6 h-6 ${props.classes}`;
     switch (props.companyName) {
         case TRENDING_JOBS.HEALTHCARE:
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800"
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -32,7 +34,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -53,7 +55,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -74,7 +76,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800"
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -94,7 +96,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -115,7 +117,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -136,7 +138,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -156,7 +158,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -176,7 +178,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -197,7 +199,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800 "
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"
@@ -218,7 +220,7 @@ const TrendingJobIcon = (props: TrendingJobIconProps): JSX.Element => {
             return (
                 <svg
                     aria-hidden="true"
-                    className="w-6 h-6 text-gray-800"
+                    className={styleClass}
                     fill="none"
                     height="24"
                     viewBox="0 0 24 24"

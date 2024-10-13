@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-    WORK,
-    WISE,
     ALREADY_MEMBER,
     NOT_MEMBER,
     CREATE_ACCOUNT,
