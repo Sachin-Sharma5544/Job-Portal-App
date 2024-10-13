@@ -20,19 +20,27 @@ interface ResponseData extends AxiosResponse {
     data: CompanyList;
 }
 
-const CompanyList = (): JSX.Element => {
+interface CompanyListProps {
+    industryType: string | null;
+}
+
+const CompanyList = (props: CompanyListProps): JSX.Element => {
     const [companies, setCompanies] = useState<Company[]>([]);
+
+    const { industryType } = props;
+
     useEffect(() => {
         const fetchCompanyList = async (): Promise<void> => {
-            const response: ResponseData = await axios.get(
-                `http://localhost:${PORT}/api/companies`
-            );
+            const url = industryType
+                ? `http://localhost:${PORT}/api/companies/${industryType}`
+                : `http://localhost:${PORT}/api/companies`;
+            const response: ResponseData = await axios.get(url);
 
             setCompanies(response.data.company);
         };
 
         void fetchCompanyList();
-    }, []);
+    }, [industryType]);
     return (
         <div>
             <p className="pt-5">Showing {companies.length} companies</p>

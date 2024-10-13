@@ -1,9 +1,23 @@
 import React from "react";
 import { Card, CardWrapper } from "@repo/ui";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { type RootState } from "../../redux/store";
 
 export const JobsCard = (): JSX.Element => {
     const { job } = useParams();
+
+    const trendingJobs = useSelector(
+        (state: RootState) => state.trendingJobs.jobs
+    );
+
+    const getSelectedJobName = (): string => {
+        const selectedJob = trendingJobs.find(
+            (item) => item.jobName.toLowerCase() === job?.toLowerCase()
+        );
+        return selectedJob?.jobName;
+    };
+
     const jobs = [
         {
             title: "Account Manager",
@@ -325,12 +339,12 @@ export const JobsCard = (): JSX.Element => {
     return (
         <div>
             <div>
-                <div className=" pt-20 pb-5">
+                <div className=" pt-10 pb-5">
                     <h1 className="text-3xl font-bold">
                         Top
                         {/* {job ? job[0].toUpperCase() + job.slice(1) : ""}{" "} */}
-                        {` ${job} `}
-                        companies hiring now
+                        {` ${getSelectedJobName()} `}
+                        Jobs
                     </h1>
                 </div>
                 <div className="">
