@@ -4,6 +4,7 @@ import {
     LinkReactRouter,
     Dropdown,
     Card,
+    CardWrapper,
     type DropdownProps,
 } from "@repo/ui";
 
@@ -98,35 +99,33 @@ export const SalaryBrowse = (): JSX.Element => {
             <div>
                 <p className="pt-5">Showing {companies.length} companies</p>
                 {/* Card Container for companies*/}
-                <div className="overflow-scroll ">
-                    <div className="max-h-[760px] py-2 flex flex-wrap justify-start gap-x-[98px] pr-2">
-                        {companies.map((company) => (
-                            <Card
-                                classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900"
-                                key={company._id}
-                            >
-                                <>
-                                    <h2 className="text-xl font-semibold">
-                                        {company.companyName}
-                                    </h2>
-                                    <div className="">
-                                        <div className="w-[250px] flex justify-stretch my-4 text-blue-500">
-                                            <p className="border-neutral-300 ">
-                                                {company.companyType}
-                                            </p>
-                                        </div>
-                                        <LinkReactRouter
-                                            className="underline"
-                                            to=""
-                                        >
-                                            View Jobs
-                                        </LinkReactRouter>
+                <CardWrapper>
+                    {companies.map((company) => (
+                        <Card
+                            classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900"
+                            key={company._id}
+                        >
+                            <>
+                                <h2 className="text-xl font-semibold">
+                                    {company.companyName}
+                                </h2>
+                                <div className="">
+                                    <div className="w-[250px] flex justify-stretch my-4 text-blue-500">
+                                        <p className="border-neutral-300 ">
+                                            {company.companyType}
+                                        </p>
                                     </div>
-                                </>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
+                                    <LinkReactRouter
+                                        className="underline"
+                                        to=""
+                                    >
+                                        View Jobs
+                                    </LinkReactRouter>
+                                </div>
+                            </>
+                        </Card>
+                    ))}
+                </CardWrapper>
                 <div className="h-[20px]" />
             </div>
         </>

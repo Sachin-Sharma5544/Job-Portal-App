@@ -11,12 +11,11 @@ export const TrendingJobs = (): JSX.Element => {
     );
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(fetchTrendingJobsRequest());
     }, [dispatch]);
-
-    const navigate = useNavigate();
 
     const handleIconClick = (jobName: string): void => {
         navigate(`/trending-jobs/${jobName.toLowerCase()}`);

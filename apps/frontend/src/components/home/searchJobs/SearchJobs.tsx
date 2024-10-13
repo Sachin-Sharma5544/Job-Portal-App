@@ -5,10 +5,11 @@ import {
     Dropdown,
     type TextFieldProps,
 } from "@repo/ui";
+import { type AxiosResponse } from "axios";
 import { EXPERIENCE } from "@repo/constants";
 import MenuItem from "@mui/material/MenuItem";
 import { type SelectChangeEvent } from "@mui/material/Select";
-import { locationInstance } from "../../../axios";
+import { locationInstance, axiosPublicInstance } from "../../../axios";
 
 const border: TextFieldProps = {
     border: "none",
@@ -32,12 +33,24 @@ interface Location {
     };
 }
 
+interface Suggestion {
+    jobs: { suggestion: string }[];
+}
+
+interface SuggestionResponse extends AxiosResponse {
+    data: Suggestion;
+}
+
 export const SearchJobs = (): JSX.Element => {
     const [place, setPlace] = useState<string>("");
     const [placeValue, setPlaceValue] = useState<unknown>(null);
     const [placeOptions, setPlaceOptions] = useState<string[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loadingPlace, setLoadingPlace] = useState<boolean>(false);
     const [experience, setExperience] = useState<string>("");
+    const [skills, setSkills] = useState<string>("");
+    const [skillsValue, setSkillsValue] = useState<unknown>(null);
+    const [skillsOptions, setSkillsOptions] = useState<string[]>([]);
+    const [loadingSkills, setLoadingSkills] = useState<boolean>(false);
 
     const getExperienceOptions = (): React.ReactNode => {
         return EXPERIENCE.map(
@@ -51,19 +64,45 @@ export const SearchJobs = (): JSX.Element => {
         );
     };
 
+    const fetchSkillsSuggestion = async (value: string): Promise<void> => {
+        if (!value) {
+            setSkillsOptions([]);
+            return;
+        }
+
+        setLoadingSkills(true);
+        const { data }: SuggestionResponse =
+            await axiosPublicInstance(value).get<Suggestion>("/jobs/job-text");
+
+        if (Array.isArray(data.jobs)) {
+            const skillsArray = data.jobs.map((item) => item.suggestion);
+            setSkillsOptions(skillsArray);
+        }
+        setLoadingSkills(false);
+    };
+
+    const handleSkillsInputChange = (value: string): void => {
+        setSkills(value);
+
+        void fetchSkillsSuggestion(value);
+    };
+
+    const handleSkillsChange = (value: unknown): void => {
+        setSkillsValue(value);
+    };
+
     const handleExperienceChange = (e: SelectChangeEvent<unknown>): void => {
-        console.log(e.target.value);
         setExperience(e.target.value as string);
     };
 
-    const handleLocation = async (
+    const fetchLocation = async (
         value: string
     ): Promise<string[] | undefined> => {
         if (!value) {
             setPlaceOptions([]);
             return;
         }
-        setLoading(true);
+        setLoadingPlace(true);
         const data = await locationInstance(value).get<Location[]>("");
         if (Array.isArray(data.data)) {
             const placeArray = data.data.map(
@@ -71,12 +110,12 @@ export const SearchJobs = (): JSX.Element => {
             );
             setPlaceOptions(placeArray);
         }
-        setLoading(false);
+        setLoadingPlace(false);
     };
 
     const handlePlaceInputChange = (value: string): void => {
         setPlace(value);
-        void handleLocation(value);
+        void fetchLocation(value);
     };
 
     const handlePlaceChange = (value: unknown): void => {
@@ -91,8 +130,13 @@ export const SearchJobs = (): JSX.Element => {
                     <AutoCompleteComponent
                         border={border}
                         displayLens
-                        options={[]}
+                        handleInputChange={handleSkillsInputChange}
+                        handleValueChange={handleSkillsChange}
+                        inputValue={skills}
+                        loading={loadingSkills}
+                        options={skillsOptions}
                         placeHolder="Enter Skills / Designations / Companies"
+                        value={skillsValue}
                     />
                 </div>
 
@@ -115,7 +159,7 @@ export const SearchJobs = (): JSX.Element => {
                         handleInputChange={handlePlaceInputChange}
                         handleValueChange={handlePlaceChange}
                         inputValue={place}
-                        loading={loading}
+                        loading={loadingPlace}
                         options={placeOptions}
                         placeHolder="Search Location"
                         value={placeValue}

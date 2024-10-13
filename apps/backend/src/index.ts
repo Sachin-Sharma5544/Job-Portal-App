@@ -7,6 +7,7 @@ import { createServer } from "./server";
 import { industryTypeRouter } from "./routes/industryTypeRoute";
 import { trendingJobsRouter } from "./routes/trendingJobsRoute";
 import { companyRouter } from "./routes/companyRoute";
+import { jobRouter } from "./routes/jobRoute";
 
 const server = createServer();
 const dbName = process.env.DB_NAME!;
@@ -20,6 +21,7 @@ server.use(`${API}${AUTH}`, authRouter);
 server.use(`${API}/industry-type`, industryTypeRouter);
 server.use(`${API}/trending-jobs`, trendingJobsRouter);
 server.use(`${API}/companies`, companyRouter);
+server.use(`${API}/jobs`, jobRouter);
 //Handling invalid path requests
 server.use("*", (req: Request, res: Response) => {
     res.status(422).send({ message: "Path not found" });
@@ -28,7 +30,7 @@ server.use("*", (req: Request, res: Response) => {
 connectDatabase(url)
     .then(() => {
         log("Database connected successfully");
-        server.listen(PORT, () => {
+        server.listen(5004, () => {
             log(`Server started on ${PORT}`);
         });
     })

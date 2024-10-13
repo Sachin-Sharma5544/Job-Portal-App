@@ -27,6 +27,7 @@ import {
     ProfilePage,
     CompanyPage,
     SalaryPage,
+    JobsPage,
 } from "./pages";
 import {
     AboutUs,
@@ -96,10 +97,7 @@ function App(): JSX.Element {
                         element={<TrustAndSafety />}
                         path={trustAndSafetyPath}
                     />
-                    <Route
-                        element={<h5>Trending jobs Page</h5>}
-                        path="/trending-jobs/:job"
-                    />
+                    <Route element={<JobsPage />} path="/trending-jobs/:job" />
                 </Routes>
             </Layout>
         </BrowserRouter>
