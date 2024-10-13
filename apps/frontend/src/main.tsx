@@ -14,13 +14,11 @@ if (el) {
 
     const reduxStore = setupStore();
     root.render(
-        <React.StrictMode>
-            <AuthProvider store={authStore}>
-                <Provider store={reduxStore}>
-                    <App />
-                </Provider>
-            </AuthProvider>
-        </React.StrictMode>
+        <AuthProvider store={authStore}>
+            <Provider store={reduxStore}>
+                <App />
+            </Provider>
+        </AuthProvider>
     );
 } else {
     throw new Error("Could not find root element");

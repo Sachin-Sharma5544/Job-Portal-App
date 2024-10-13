@@ -3,6 +3,7 @@ import { Card, CardWrapper } from "@repo/ui";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { type RootState } from "../../redux/store";
+import { ReviewCard } from "../common";
 
 export const JobsCard = (): JSX.Element => {
     const { job } = useParams();
@@ -13,11 +14,12 @@ export const JobsCard = (): JSX.Element => {
 
     const getSelectedJobName = (): string => {
         const selectedJob = trendingJobs.find(
-            (item) => item.jobName.toLowerCase() === job?.toLowerCase()
+            (item) => item.jobName.toLowerCase() === job.toLowerCase()
         );
         return selectedJob?.jobName;
     };
 
+    //Need to add reviews and review count in the data
     const jobs = [
         {
             title: "Account Manager",
@@ -355,13 +357,19 @@ export const JobsCard = (): JSX.Element => {
             <CardWrapper>
                 {jobs.map((jobItem) => (
                     <Card
-                        classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900 sm:w-[490px] md:w-[440px] lg:w-[520px] 2xl:max-w-[520px]"
+                        classes="my-4 max-h-60 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900 sm:w-[490px] md:w-[440px] lg:w-[520px] 2xl:max-w-[520px]"
                         key={jobItem.title}
                     >
                         <>
                             <h2 className="text-xl font-semibold">
                                 {jobItem.title}
                             </h2>
+                            <div className="text-sm text-neutral-500 py-1">
+                                <span className="text-neutral-700 ">
+                                    {jobItem.company}{" "}
+                                </span>
+                                <ReviewCard count={150} rating={1.2} />
+                            </div>
                             <div className="flex justify-start gap-4 pb-2 pt-2 text-neutral-500">
                                 <div>Exp: 3-5 years</div>
                                 <div>Sal: Not Disclosed</div>
