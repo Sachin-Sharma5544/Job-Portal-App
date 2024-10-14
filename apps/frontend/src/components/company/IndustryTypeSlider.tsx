@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardSlider } from "@repo/ui";
 import { PORT } from "@repo/constants";
@@ -67,7 +67,7 @@ const IndustryTypeSlider = (props: IndustryTypeSliderProps): JSX.Element => {
                 {industryType.map((item) => (
                     <Card
                         classes={`min-w-[220px] max-w-[240px] min-h-[100px] max-h-[110px] relative ${
-                            selectedCard === item
+                            selectedCard._id === item._id
                                 ? "border-[1px] border-black"
                                 : ""
                         }`}
