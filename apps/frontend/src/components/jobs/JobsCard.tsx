@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { Card, CardSlider, CardWrapper } from "@repo/ui";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { type RootState } from "../../redux/store";
 import { ReviewCard } from "../common";
 
 export const JobsCard = (): JSX.Element => {
     const { job } = useParams();
-    const [selectedCard, setSelectedCard] = useState({
-        _id: null,
-        jobName: null,
-    });
 
     const trendingJobs = useSelector(
         (state: RootState) => state.trendingJobs.jobs
@@ -21,10 +17,6 @@ export const JobsCard = (): JSX.Element => {
             (item) => item.jobName.toLowerCase() === job.toLowerCase()
         );
         return selectedJob?.jobName;
-    };
-
-    const handleCardClick = (tJob): void => {
-        setSelectedCard({ _id: tJob._id, jobName: tJob.jobName });
     };
 
     //Need to add reviews and review count in the data
@@ -348,34 +340,6 @@ export const JobsCard = (): JSX.Element => {
 
     return (
         <div>
-            <CardSlider>
-                {trendingJobs.map((tJob) => (
-                    <Card
-                        classes={`min-w-[220px] min-h-24 flex items-center justify-center relative ${
-                            selectedCard._id === tJob._id
-                                ? "border-[1px] border-black"
-                                : ""
-                        }`}
-                        clickHandler={() => {
-                            handleCardClick(tJob);
-                        }}
-                        key={tJob._id}
-                    >
-                        <>
-                            <h1 className="text-xl font-bold">
-                                {tJob.jobName}
-                            </h1>
-                            {selectedCard._id === tJob._id ? (
-                                <input
-                                    checked={tJob._id === selectedCard._id}
-                                    className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
-                                    type="checkbox"
-                                />
-                            ) : null}
-                        </>
-                    </Card>
-                ))}
-            </CardSlider>
             <div>
                 <div className=" pt-10 pb-5">
                     <h1 className="text-3xl font-bold">
