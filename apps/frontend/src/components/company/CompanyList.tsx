@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardWrapper } from "@repo/ui";
 import { PORT } from "@repo/constants";
-import { ReviewCard } from "../common";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { ReviewCard } from "../common";
+import { pageClickLocation } from "../../redux/slices/clickLocationSlice";
 
 interface Company {
     _id: string;
@@ -30,6 +32,7 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
     const [companies, setCompanies] = useState<Company[]>([]);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const { industryType } = props;
 
@@ -45,6 +48,11 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
 
         void fetchCompanyList();
     }, [industryType]);
+
+    const handleCardClick = (companyName: string): void => {
+        navigate(`/company/${companyName}`);
+        dispatch(pageClickLocation("Company"));
+    };
     return (
         <div>
             <p className="pt-5">Showing {companies.length} companies</p>
@@ -54,7 +62,7 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
                     <Card
                         classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900"
                         clickHandler={() => {
-                            navigate(`/company/${company.companyName}`);
+                            handleCardClick(company.companyName);
                         }}
                         key={company._id}
                     >

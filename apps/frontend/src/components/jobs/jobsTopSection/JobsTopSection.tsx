@@ -59,8 +59,8 @@ export const JobsTopSection = (
                     ))}
                 </CardSlider>
             );
-        case "Test":
-        case "test":
+        case "Company":
+        case "company":
             return <div>My Company</div>;
         default:
             return null;
