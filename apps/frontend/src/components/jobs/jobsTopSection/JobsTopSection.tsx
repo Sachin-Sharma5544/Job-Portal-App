@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Card, CardSlider } from "@repo/ui";
 import { useSelector } from "react-redux";
+import { type RootState } from "../../../redux/store";
 
 interface JobsTopSectionProps {
-    fromWhere: string;
+    fromWhere?: string;
 }
 
 export const JobsTopSection = (
     props: JobsTopSectionProps
 ): JSX.Element | null => {
-    const { fromWhere } = props;
+    const pageClickLocation = useSelector(
+        (state: RootState) => state.pageClickLocation.clickLocation
+    );
     const [selectedCard, setSelectedCard] = useState({
         _id: null,
         jobName: null,
@@ -18,10 +21,12 @@ export const JobsTopSection = (
         (state: RootState) => state.trendingJobs.jobs
     );
 
-    const handleCardClick = (tJob): void => {
+    console.log("Page Click location", pageClickLocation);
+
+    const handleCardClick = (tJob: any): void => {
         setSelectedCard({ _id: tJob._id, jobName: tJob.jobName });
     };
-    switch (fromWhere) {
+    switch (pageClickLocation) {
         case "Home":
         case "home":
             return (

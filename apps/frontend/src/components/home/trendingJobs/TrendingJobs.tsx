@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { fetchTrendingJobsRequest } from "../../../redux/slices/trendingJobsSlice";
+import { pageClickLocation } from "../../../redux/slices/clickLocationSlice";
 import TrendingJobIcon from "./TrendingJobIcon";
 
 export const TrendingJobs = (): JSX.Element => {
@@ -19,6 +20,7 @@ export const TrendingJobs = (): JSX.Element => {
 
     const handleIconClick = (jobName: string): void => {
         navigate(`/trending-jobs/${jobName.toLowerCase()}`);
+        dispatch(pageClickLocation("Home"));
     };
 
     return (

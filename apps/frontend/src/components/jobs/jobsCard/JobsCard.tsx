@@ -8,8 +8,6 @@ import { ReviewCard } from "../../common";
 export const JobsCard = (): JSX.Element => {
     const param = useParams();
 
-    console.log(param, ">>>>>>>>>>");
-
     const trendingJobs = useSelector(
         (state: RootState) => state.trendingJobs.jobs
     );
