@@ -70,12 +70,12 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
                             <h2 className="text-xl font-semibold">
                                 {company.companyName}
                             </h2>
-                            <div className=" text-neutral-500">
-                                <div className="w-[500px] flex justify-stretch gap-6 my-4 ">
+                            <div className=" text-neutral-500 text-sm">
+                                <div className="w-[500px] flex justify-stretch gap-3 my-4 ">
                                     <p className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl">
                                         {company.companyType}
                                     </p>
-                                    <p className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl">
+                                    <p className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl ">
                                         {company.industry}
                                     </p>
                                 </div>

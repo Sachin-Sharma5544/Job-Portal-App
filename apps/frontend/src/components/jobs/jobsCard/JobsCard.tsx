@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
+import { getSelectedJobName } from "../utils/jobUtils";
 
 export const JobsCard = (): JSX.Element => {
     const param = useParams();
@@ -11,20 +12,6 @@ export const JobsCard = (): JSX.Element => {
     const trendingJobs = useSelector(
         (state: RootState) => state.trendingJobs.jobs
     );
-
-    const getSelectedJobName = (): string => {
-        if (param.job) {
-            const selectedJob = trendingJobs.find(
-                (item) => item.jobName.toLowerCase() === param.job.toLowerCase()
-            );
-            return `Trending ${selectedJob?.jobName} Jobs`;
-        }
-
-        if (param.company) {
-            return `${param.company} Company Jobs`;
-        }
-        return "";
-    };
 
     //Need to add reviews and review count in the data
     const jobs = [
@@ -351,7 +338,7 @@ export const JobsCard = (): JSX.Element => {
                 <div className=" pt-10 pb-5">
                     <h1 className="text-3xl font-bold">
                         {/* {job ? job[0].toUpperCase() + job.slice(1) : ""}{" "} */}
-                        {` ${getSelectedJobName()} `}
+                        {` ${getSelectedJobName(trendingJobs, param)} `}
                     </h1>
                 </div>
                 <div className="">
