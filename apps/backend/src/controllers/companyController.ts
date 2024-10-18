@@ -7,6 +7,7 @@ export const getAllCompanies = async (
 ): Promise<void> => {
     try {
         const companies = await CompanyModel.find({});
+        console.log("Companies List", companies);
         res.status(200).send({ company: companies });
     } catch (error) {
         res.status(200).send({ error });
@@ -29,5 +30,18 @@ export const getCompaniesByType = async (
         res.status(200).send({ company: companies });
     } catch (error) {
         res.status(400).send({ error });
+    }
+};
+
+export const postMultipleCompanies = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { data } = req.body;
+    try {
+        const companies = await CompanyModel.insertMany(data);
+        res.status(200).send({ companies });
+    } catch (error) {
+        res.status(200).send({ error });
     }
 };
