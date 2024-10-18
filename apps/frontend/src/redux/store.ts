@@ -2,13 +2,13 @@ import { configureStore, type Store, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware, { type SagaMiddleware } from "redux-saga";
 import authReducer from "./slices/authSlice";
 import trendingJobsReducer from "./slices/trendingJobsSlice";
-import pageClickLocationReducer from "./slices/clickLocationSlice";
+import userActionReducer from "./slices/userActionSlice";
 import { rootSaga } from "./sagas/rootSaga";
 
 const rootReducer = combineReducers({
     auth: authReducer,
     trendingJobs: trendingJobsReducer,
-    pageClickLocation: pageClickLocationReducer,
+    userAction: userActionReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -3,19 +3,16 @@ import { Card, CardSlider, Button } from "@repo/ui";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
-import { getSelectedCompanyName } from "../utils/jobUtils";
 import { ReviewCard } from "../../common";
 
-interface JobsTopSectionProps {
-    fromWhere?: string;
-}
-
-export const JobsTopSection = (
-    props: JobsTopSectionProps
-): JSX.Element | null => {
+export const JobsTopSection = (): JSX.Element | null => {
     const params = useParams();
     const pageClickLocation = useSelector(
-        (state: RootState) => state.pageClickLocation.clickLocation
+        (state: RootState) => state.userAction.clickLocation
+    );
+
+    const selectedCompany = useSelector(
+        (state: RootState) => state.userAction.selectedCompany
     );
     const [selectedCard, setSelectedCard] = useState({
         _id: null,
@@ -81,31 +78,36 @@ export const JobsTopSection = (
                             </div>
                             <div className="h-36 w-full">
                                 <h1 className="text-2xl font-bold pb-2">
-                                    {params.company}
+                                    {selectedCompany && selectedCompany.name}
                                 </h1>
                                 <div>
                                     {" "}
-                                    <ReviewCard count={50} rating={1.2} />
+                                    <ReviewCard
+                                        count={selectedCompany?.reviewsCount}
+                                        rating={selectedCompany?.rating}
+                                    />
                                 </div>
                                 <div className=" text-neutral-500 text-sm">
                                     <div className="flex justify-stretch gap-2 my-4 ">
-                                        <p
-                                            className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap"
-                                            title="company ytysuhkjbnmas"
-                                        >
-                                            company
-                                        </p>
-                                        <p
-                                            className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap"
-                                            title=" industry"
-                                        >
-                                            industry
-                                        </p>
+                                        {selectedCompany?.tagsOrder?.map(
+                                            (tag: string) => (
+                                                <p
+                                                    className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap"
+                                                    title={
+                                                        selectedCompany.tags[
+                                                            tag
+                                                        ]
+                                                    }
+                                                >
+                                                    {selectedCompany.tags[tag]}
+                                                </p>
+                                            )
+                                        )}
                                     </div>
                                 </div>
                             </div>
                             <div className="h-36 text-right w-full">
-                                <Button className="inline-block border-2 w-[8rem] py-2 rounded-full text-xl font-bold text-white border-blue-500 bg-blue-500">
+                                <Button className="inline-block border-2 w-[8rem] py-2 rounded-full text-xl font-bold text-white border-blue-500 bg-blue-500  hover:border-blue-700 hover:bg-blue-700">
                                     Follow
                                 </Button>
                             </div>

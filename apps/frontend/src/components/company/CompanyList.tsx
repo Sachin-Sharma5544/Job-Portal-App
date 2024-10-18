@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { type Company } from "@repo/datatypes";
 import { ReviewCard } from "../common";
-import { pageClickLocation } from "../../redux/slices/clickLocationSlice";
+import {
+    pageClickLocation,
+    setSelectedCompany,
+} from "../../redux/slices/userActionSlice";
 
 interface CompanyList {
     company: Company[];
@@ -40,9 +43,10 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
         void fetchCompanyList();
     }, [industryType]);
 
-    const handleCardClick = (companyName: string): void => {
-        navigate(`/company/${companyName}`);
+    const handleCardClick = (company: Company): void => {
+        navigate(`/company/${company.name}`);
         dispatch(pageClickLocation("Company"));
+        dispatch(setSelectedCompany(company));
     };
     return (
         <div>
@@ -53,7 +57,7 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
                     <Card
                         classes="my-4 max-h-40 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900"
                         clickHandler={() => {
-                            handleCardClick(company.name);
+                            handleCardClick(company);
                         }}
                         key={company._id}
                     >
