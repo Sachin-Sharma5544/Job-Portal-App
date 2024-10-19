@@ -7,7 +7,6 @@ export const getAllCompanies = async (
 ): Promise<void> => {
     try {
         const companies = await CompanyModel.find({});
-        console.log("Companies List", companies);
         res.status(200).send({ company: companies });
     } catch (error) {
         res.status(200).send({ error });

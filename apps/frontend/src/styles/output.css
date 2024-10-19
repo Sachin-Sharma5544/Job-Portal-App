@@ -703,6 +703,9 @@ video {
 .max-w-\[240px\] {
   max-width: 240px;
 }
+.max-w-\[96px\] {
+  max-width: 96px;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1268,6 +1271,14 @@ video {
 }
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+.hover\:border-blue-700:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(29 78 216 / var(--tw-border-opacity));
+}
+.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 .hover\:bg-indigo-600:hover {
   --tw-bg-opacity: 1;
