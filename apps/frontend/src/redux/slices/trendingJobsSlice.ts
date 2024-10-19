@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+// This needs to be updated as per the data of jobs as its structure to be changed
+interface Jobs {
+    jobs: [];
+}
+
+const initialState: Jobs = {
     jobs: [],
 };
 
@@ -11,7 +16,7 @@ export const trendingJobsSlice = createSlice({
         fetchTrendingJobsRequest: (state) => {
             return state;
         },
-        fetchTrendingJobsSuccess: (state, action) => {
+        fetchTrendingJobsSuccess: (state, action: PayloadAction<[]>) => {
             state.jobs = action.payload;
         },
         fetchTrendingJobsFailure: (state) => {

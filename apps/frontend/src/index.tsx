@@ -98,6 +98,7 @@ function App(): JSX.Element {
                         path={trustAndSafetyPath}
                     />
                     <Route element={<JobsPage />} path="/trending-jobs/:job" />
+                    <Route element={<JobsPage />} path="/company/:company" />
                 </Routes>
             </Layout>
         </BrowserRouter>

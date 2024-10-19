@@ -1,8 +1,8 @@
 import React from "react";
 
 interface ReviewCardProps {
-    rating: number;
-    count: number;
+    rating: number | undefined | null;
+    count: number | undefined | null;
 }
 
 export const ReviewCard = (props: ReviewCardProps): JSX.Element => {

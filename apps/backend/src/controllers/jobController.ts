@@ -1,4 +1,5 @@
 import { type Request, type Response } from "express";
+import { type Jobs } from "@repo/datatypes";
 import { Job } from "../models/jobsModel";
 
 export const getJobTextSuggestions = async (
@@ -16,5 +17,19 @@ export const getJobTextSuggestions = async (
         res.status(200).send({ jobs: suggestions });
     } catch (error) {
         res.status(400).send({ error });
+    }
+};
+
+export const postMultipleJobs = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { data }: { data: Jobs[] } = req.body;
+
+    try {
+        const jobs = await Job.insertMany(data);
+        res.status(200).send({ jobs });
+    } catch (error) {
+        res.status(200).send({ error });
     }
 };
