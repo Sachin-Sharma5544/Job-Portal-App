@@ -2,10 +2,10 @@ import { takeLatest, call, put } from "redux-saga/effects";
 import axios, { type AxiosResponse } from "axios";
 import { PORT } from "@repo/constants";
 import {
-    fetchTrendingJobsRequest,
-    fetchTrendingJobsSuccess,
-    fetchTrendingJobsFailure,
-} from "../../slices/trendingJobsSlice";
+    fetchJobsTypeRequest,
+    fetchJobsTypeSuccess,
+    fetchJobsTypeFailure,
+} from "../../slices/jobsSlice";
 
 interface TrendingJob {
     _id: string;
@@ -30,12 +30,12 @@ const fetchTrendingJobsApi = async (): Promise<TrendingJob[]> => {
 function* trendingJobsSaga(): Generator {
     try {
         const trendingJobs = yield call(fetchTrendingJobsApi); // Call the API
-        yield put(fetchTrendingJobsSuccess(trendingJobs)); // Dispatch success action
+        yield put(fetchJobsTypeSuccess(trendingJobs)); // Dispatch success action
     } catch (error) {
-        yield put(fetchTrendingJobsFailure()); // Dispatch failure action
+        yield put(fetchJobsTypeFailure()); // Dispatch failure action
     }
 }
 
 export function* watchFetchTrendingJobs(): Generator {
-    yield takeLatest(fetchTrendingJobsRequest, trendingJobsSaga);
+    yield takeLatest(fetchJobsTypeRequest, trendingJobsSaga);
 }
