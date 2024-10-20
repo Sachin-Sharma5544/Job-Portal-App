@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardSlider, Button } from "@repo/ui";
 import { useSelector } from "react-redux";
+import { type JobsType } from "@repo/datatypes";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 
@@ -8,18 +9,22 @@ export const JobsTopSection = (): JSX.Element | null => {
     const pageClickLocation = useSelector(
         (state: RootState) => state.userAction.clickLocation
     );
-
     const selectedCompany = useSelector(
         (state: RootState) => state.userAction.selectedCompany
     );
-    const [selectedCard, setSelectedCard] = useState({
-        _id: null,
-        jobName: null,
-    });
+    const selectedJobType = useSelector(
+        (state: RootState) => state.userAction.selectedJobType
+    );
+    const [selectedCard, setSelectedCard] = useState<JobsType | null>(
+        selectedJobType
+    );
+
+    useEffect(() => {}, [selectedJobType]);
+
     const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
 
-    const handleCardClick = (tJob: unknown): void => {
-        setSelectedCard({ _id: tJob._id, jobName: tJob.jobName });
+    const handleCardClick = (clickedJobType: JobsType): void => {
+        setSelectedCard(clickedJobType);
     };
     switch (pageClickLocation) {
         case "Home":
@@ -27,34 +32,37 @@ export const JobsTopSection = (): JSX.Element | null => {
             return (
                 <CardSlider>
                     <>
-                        {jobsType.map((tJob: unknown) => (
-                            <Card
-                                classes={`min-w-[220px] min-h-24 flex items-center justify-center relative ${
-                                    selectedCard._id === tJob._id
-                                        ? "border-[1px] border-black"
-                                        : ""
-                                }`}
-                                clickHandler={() => {
-                                    handleCardClick(tJob);
-                                }}
-                                key={tJob._id}
-                            >
-                                <>
-                                    <h1 className="text-xl font-bold">
-                                        {tJob.jobName}
-                                    </h1>
-                                    {selectedCard._id === tJob._id ? (
-                                        <input
-                                            checked={
-                                                tJob._id === selectedCard._id
-                                            }
-                                            className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
-                                            type="checkbox"
-                                        />
-                                    ) : null}
-                                </>
-                            </Card>
-                        ))}
+                        {jobsType.map(
+                            (tJob: { _id: string; jobName: string }) => (
+                                <Card
+                                    classes={`min-w-[220px] min-h-24 flex items-center justify-center relative ${
+                                        selectedCard?._id === tJob._id
+                                            ? "border-[1px] border-black"
+                                            : ""
+                                    }`}
+                                    clickHandler={() => {
+                                        handleCardClick(tJob);
+                                    }}
+                                    key={tJob._id}
+                                >
+                                    <>
+                                        <h1 className="text-xl font-bold">
+                                            {tJob.jobName}
+                                        </h1>
+                                        {selectedCard?._id === tJob._id ? (
+                                            <input
+                                                checked={
+                                                    selectedCard?._id ===
+                                                    tJob._id
+                                                }
+                                                className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"
+                                                type="checkbox"
+                                            />
+                                        ) : null}
+                                    </>
+                                </Card>
+                            )
+                        )}
                     </>
                 </CardSlider>
             );
