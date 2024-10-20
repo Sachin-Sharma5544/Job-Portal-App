@@ -46,7 +46,7 @@ export const getJobs = async (req: Request, res: Response): Promise<void> => {
             },
             {
                 $project: {
-                    company: 1, // Include fields you need in the final result
+                    // Include fields you need in the final result
                     title: 1,
                     description: 1,
                     location: 1,
@@ -54,10 +54,13 @@ export const getJobs = async (req: Request, res: Response): Promise<void> => {
                     skillsAndTags: 1,
 
                     //company fields
-                    "companyDetails.name": 1,
-                    "companyDetails.tags": 1,
-                    "companyDetails.rating": 1,
-                    "companyDetails.reviewsCount": 1,
+                    company: {
+                        _id: "$companyDetails._id",
+                        name: "$companyDetails.name",
+                        tags: "$companyDetails.tags",
+                        rating: "$companyDetails.rating",
+                        reviewsCount: "$companyDetails.reviewsCount",
+                    },
                 },
             },
         ]);
