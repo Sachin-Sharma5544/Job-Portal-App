@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardWrapper } from "@repo/ui";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -8,8 +8,10 @@ import { getSelectedJobName } from "../utils/jobUtils";
 
 export const JobsCard = (): JSX.Element => {
     const param = useParams();
-
     const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
+    const jobs = useSelector((state: RootState) => state.jobs.jobs);
+
+    useEffect(() => {}, []);
 
     return (
         <div>
@@ -21,12 +23,12 @@ export const JobsCard = (): JSX.Element => {
                     </h1>
                 </div>
                 <div className="">
-                    <p className="pb-5">Showing {jobsType.length} jobs</p>
+                    <p className="pb-5">Showing {jobs.length} jobs</p>
                 </div>
             </div>
 
             <CardWrapper>
-                {jobsType.map((jobItem) => (
+                {jobs.map((jobItem) => (
                     <Card
                         classes="my-4 max-h-60 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900 sm:w-[490px] md:w-[440px] lg:w-[520px] 2xl:max-w-[520px]"
                         key={jobItem.title}

@@ -97,7 +97,7 @@ function App(): JSX.Element {
                         element={<TrustAndSafety />}
                         path={trustAndSafetyPath}
                     />
-                    <Route element={<JobsPage />} path="/trending-jobs/:job" />
+                    <Route element={<JobsPage />} path="/jobs/:job" />
                     <Route element={<JobsPage />} path="/company/:company" />
                 </Routes>
             </Layout>
