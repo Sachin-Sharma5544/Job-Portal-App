@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { fetchTrendingJobsRequest } from "../../../redux/slices/trendingJobsSlice";
 import { pageClickLocation } from "../../../redux/slices/userActionSlice";
-import TrendingJobIcon from "./TrendingJobIcon";
+import TrendingJobIcon from "./jobTypesIcon";
 
 export const TrendingJobs = (): JSX.Element => {
     const trendingJobs = useSelector(
