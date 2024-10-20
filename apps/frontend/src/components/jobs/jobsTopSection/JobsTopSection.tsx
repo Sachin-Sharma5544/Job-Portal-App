@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Card, CardSlider, Button } from "@repo/ui";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 
 export const JobsTopSection = (): JSX.Element | null => {
-    const params = useParams();
     const pageClickLocation = useSelector(
         (state: RootState) => state.userAction.clickLocation
     );
@@ -18,9 +16,7 @@ export const JobsTopSection = (): JSX.Element | null => {
         _id: null,
         jobName: null,
     });
-    const trendingJobs = useSelector(
-        (state: RootState) => state.trendingJobs.jobs
-    );
+    const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
 
     const handleCardClick = (tJob: unknown): void => {
         setSelectedCard({ _id: tJob._id, jobName: tJob.jobName });
@@ -31,7 +27,7 @@ export const JobsTopSection = (): JSX.Element | null => {
             return (
                 <CardSlider>
                     <>
-                        {trendingJobs.map((tJob: unknown) => (
+                        {jobsType.map((tJob: unknown) => (
                             <Card
                                 classes={`min-w-[220px] min-h-24 flex items-center justify-center relative ${
                                     selectedCard._id === tJob._id
@@ -78,7 +74,7 @@ export const JobsTopSection = (): JSX.Element | null => {
                             </div>
                             <div className="h-36 w-full">
                                 <h1 className="text-2xl font-bold pb-2">
-                                    {selectedCompany && selectedCompany.name}
+                                    {selectedCompany?.name}
                                 </h1>
                                 <div>
                                     {" "}
@@ -90,11 +86,12 @@ export const JobsTopSection = (): JSX.Element | null => {
                                 <div className=" text-neutral-500 text-sm">
                                     <div className="flex justify-stretch gap-2 my-4 ">
                                         {selectedCompany?.tagsOrder?.map(
-                                            (tag: string) => (
+                                            (tag: string | undefined) => (
                                                 <p
                                                     className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap"
+                                                    key={tag}
                                                     title={
-                                                        selectedCompany.tags[
+                                                        selectedCompany?.tags[
                                                             tag
                                                         ]
                                                     }

@@ -2,20 +2,18 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
-import { fetchTrendingJobsRequest } from "../../../redux/slices/trendingJobsSlice";
+import { fetchJobsTypeRequest } from "../../../redux/slices/jobsSlice";
 import { pageClickLocation } from "../../../redux/slices/userActionSlice";
 import TrendingJobIcon from "./jobTypesIcon";
 
 export const TrendingJobs = (): JSX.Element => {
-    const trendingJobs = useSelector(
-        (state: RootState) => state.trendingJobs.jobs
-    );
+    const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(fetchTrendingJobsRequest());
+        dispatch(fetchJobsTypeRequest());
     }, [dispatch]);
 
     const handleIconClick = (jobName: string): void => {
@@ -27,7 +25,7 @@ export const TrendingJobs = (): JSX.Element => {
         <>
             <h1 className="text-2xl mt-10 mb-10 font-bold">Job Types</h1>
             <ul className="flex justify-around flex-wrap">
-                {trendingJobs.map((job: { _id: string; jobName: string }) => (
+                {jobsType.map((job: { _id: string; jobName: string }) => (
                     <button
                         className="w-40 h-16 border-[1px] border-zinc-300 bg-zinc-100 mb-5 mr-2 rounded-lg  hover:scale-105 hover:cursor-pointer"
                         key={job._id}
