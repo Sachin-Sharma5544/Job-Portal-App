@@ -57,7 +57,6 @@ const StyledTextField = styled(TextField)<TextFieldProps>((property) => ({
 }));
 
 export function AutoCompleteComponent(props: AutocompleteProps): JSX.Element {
-    console.log("Options>>>>", props.options);
     return (
         <StyledAutocomplete
             id={props.id}
