@@ -1,6 +1,7 @@
 import { Router } from "express";
+import { handleRequest } from "../hocFunctions/routeRequestHandler";
 import { getTrendingJobs } from "../controllers/trendingJobsController";
 
-export const trendingJobsRouter: Router = Router();
+export const jobTypesRouter: Router = Router();
 
-trendingJobsRouter.get("/", getTrendingJobs);
+jobTypesRouter.get("/", handleRequest(getTrendingJobs));
