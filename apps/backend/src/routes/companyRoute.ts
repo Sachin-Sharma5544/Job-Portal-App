@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { handleRequest } from "../hocFunctions/routeRequestHandler";
 import {
     getAllCompanies,
     getCompaniesByType,
@@ -6,6 +7,6 @@ import {
 } from "../controllers/companyController";
 
 export const companyRouter: Router = Router();
-companyRouter.get("/", getAllCompanies);
-companyRouter.get("/:type", getCompaniesByType);
-companyRouter.post("/", postMultipleCompanies);
+companyRouter.get("/", handleRequest(getAllCompanies));
+companyRouter.get("/:type", handleRequest(getCompaniesByType));
+companyRouter.post("/", handleRequest(postMultipleCompanies));
