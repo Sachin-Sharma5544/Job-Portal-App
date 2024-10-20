@@ -25,7 +25,7 @@ export const TrendingJobs = (): JSX.Element => {
 
     return (
         <>
-            <h1 className="text-2xl mt-10 mb-10 font-bold">Trending Jobs</h1>
+            <h1 className="text-2xl mt-10 mb-10 font-bold">Job Types</h1>
             <ul className="flex justify-around flex-wrap">
                 {trendingJobs.map((job: { _id: string; jobName: string }) => (
                     <button
