@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+//Jobs Schema
 export const jobsSchema = z.object({
     _id: z.string().optional(),
     company: z.string(),
@@ -20,3 +21,11 @@ export const jobsSchema = z.object({
 });
 
 export type Jobs = z.infer<typeof jobsSchema>;
+
+//Jobs type schema
+export const jobsType = z.object({
+    _id: z.string(),
+    jobName: z.string(),
+});
+
+export type JobsType = z.infer<typeof jobsType>;
