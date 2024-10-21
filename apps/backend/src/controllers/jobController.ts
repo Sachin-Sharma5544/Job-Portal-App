@@ -80,9 +80,10 @@ export const postMultipleJobs = async (
 
     try {
         //adding jobs to database
-        const jobs = await Job.insertMany(data);
+        const jobs = await Job.create(data);
 
         //Updating company jobs
+
         await Promise.all(
             jobs.map((job) =>
                 CompanyModel.findByIdAndUpdate(job.company, {
@@ -92,6 +93,28 @@ export const postMultipleJobs = async (
         );
 
         res.status(200).send({ jobs });
+    } catch (error) {
+        res.status(200).send({ error });
+    }
+};
+
+export const postSingleJob = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { data }: { data: Jobs } = req.body;
+
+    try {
+        //adding jobs to database
+        const job = await Job.create(data);
+
+        //Updating company jobs
+
+        await CompanyModel.findByIdAndUpdate(job.company, {
+            $push: { jobs: job._id },
+        });
+
+        res.status(200).send({ job });
     } catch (error) {
         res.status(200).send({ error });
     }
