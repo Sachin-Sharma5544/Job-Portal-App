@@ -39,10 +39,32 @@ export const getJobs = async (req: Request, res: Response): Promise<void> => {
             },
             {
                 $match: {
-                    "companyDetails.tags.businessType": {
-                        $regex: jobType,
-                        $options: "i",
-                    },
+                    $or: [
+                        {
+                            "companyDetails.tags.businessType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.ownershipType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.employerType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.primaryIndustry": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                    ],
                 },
             },
             {
@@ -53,6 +75,7 @@ export const getJobs = async (req: Request, res: Response): Promise<void> => {
                     location: 1,
                     salary: 1,
                     skillsAndTags: 1,
+                    experience: 1,
 
                     //company fields
                     company: {

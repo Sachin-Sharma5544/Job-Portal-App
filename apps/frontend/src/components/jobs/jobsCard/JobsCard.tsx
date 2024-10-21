@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
 import { Card, CardWrapper } from "@repo/ui";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { getSelectedJobName } from "../utils/jobUtils";
+import { fetchJobsRequest } from "../../../redux/slices/jobsSlice";
 
 export const JobsCard = (): JSX.Element => {
     const param = useParams();
     const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
     const jobs = useSelector((state: RootState) => state.jobs.jobs);
+    const selectedJobtype = useSelector(
+        (state: RootState) => state.userAction.selectedJobType
+    );
 
-    useEffect(() => {}, []);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchJobsRequest(selectedJobtype));
+    }, [dispatch, selectedJobtype]);
 
     return (
         <div>
@@ -28,28 +36,36 @@ export const JobsCard = (): JSX.Element => {
             </div>
 
             <CardWrapper>
-                {jobs.map((jobItem) => (
+                {jobs.map((job) => (
                     <Card
                         classes="my-4 max-h-60 sm:max-w-[490px] md:max-w-[440px] lg:max-w-[485px] shadow-slate-900 sm:w-[490px] md:w-[440px] lg:w-[520px] 2xl:max-w-[520px]"
-                        key={jobItem.title}
+                        key={job.title}
                     >
                         <>
                             <h2 className="text-xl font-semibold">
-                                {jobItem.title}
+                                {job.title}
                             </h2>
                             <div className="text-sm text-neutral-500 py-1">
                                 <span className="text-neutral-700 ">
-                                    {jobItem.company}{" "}
+                                    {job.company.name}{" "}
                                 </span>
-                                <ReviewCard count={150} rating={1.2} />
+                                <ReviewCard
+                                    count={job.company.reviewsCount}
+                                    rating={job.company.rating}
+                                />
                             </div>
                             <div className="flex justify-start gap-4 pb-2 pt-2 text-neutral-500">
-                                <div>Exp: 3-5 years</div>
-                                <div>Sal: Not Disclosed</div>
-                                <div>Location: Mumbai</div>
+                                <div>
+                                    Exp: {job.experience.min} -{" "}
+                                    {job.experience.max} years
+                                </div>
+                                <div>
+                                    Sal: {job.salary.min} - {job.salary.max}
+                                </div>
+                                <div>Location: {job.location}</div>
                             </div>
                             <div className="text-neutral-500">
-                                {jobItem.description}{" "}
+                                {job.description}{" "}
                             </div>
                         </>
                     </Card>
