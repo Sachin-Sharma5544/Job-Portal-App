@@ -9,6 +9,7 @@
                 "max": 10
             },
             "location": "Bangalore, Karnataka",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 1500000,
@@ -32,6 +33,7 @@
                 "max": 6
             },
             "location": "Hyderabad, Telangana",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 800000,
@@ -49,6 +51,7 @@
                 "max": 8
             },
             "location": "Mumbai, Maharashtra",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 1200000,
@@ -72,6 +75,7 @@
                 "max": 5
             },
             "location": "Chennai, Tamil Nadu",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 1000000,
@@ -94,6 +98,7 @@
                 "max": 4
             },
             "location": "Delhi, India",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 600000,
@@ -117,6 +122,7 @@
                 "max": 7
             },
             "location": "Pune, Maharashtra",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 900000,
@@ -140,6 +146,7 @@
                 "max": 10
             },
             "location": "Noida, Uttar Pradesh",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 1400000,
@@ -157,6 +164,7 @@
                 "max": 6
             },
             "location": "Ahmedabad, Gujarat",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 700000,
@@ -174,6 +182,7 @@
                 "max": 12
             },
             "location": "Kolkata, West Bengal",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 1800000,
@@ -197,6 +206,7 @@
                 "max": 3
             },
             "location": "Gurgaon, Haryana",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 400000,
@@ -211,7 +221,7 @@
             "title": "Junior QA Engineer"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87ed",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "We are looking for an experienced general physician to join our hospital.",
             "experience": {
@@ -219,6 +229,7 @@
                 "max": 10
             },
             "location": "Delhi, India",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 1200000,
@@ -233,7 +244,7 @@
             "title": "General Physician"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87ee",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Seeking an orthopedic surgeon with extensive experience in joint replacement surgeries.",
             "experience": {
@@ -241,6 +252,7 @@
                 "max": 15
             },
             "location": "Bangalore, Karnataka",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 2000000,
@@ -255,7 +267,7 @@
             "title": "Orthopedic Surgeon"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87ef",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Hiring a radiologist for diagnostic imaging services.",
             "experience": {
@@ -263,6 +275,7 @@
                 "max": 7
             },
             "location": "Chennai, Tamil Nadu",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 1500000,
@@ -277,7 +290,7 @@
             "title": "Radiologist"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87f0",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Looking for a skilled nurse with experience in patient care and ICU management.",
             "experience": {
@@ -285,6 +298,7 @@
                 "max": 5
             },
             "location": "Hyderabad, Telangana",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 500000,
@@ -299,7 +313,7 @@
             "title": "Registered Nurse"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87f1",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Seeking a dentist for a well-established dental clinic.",
             "experience": {
@@ -307,6 +321,7 @@
                 "max": 8
             },
             "location": "Pune, Maharashtra",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 700000,
@@ -321,7 +336,7 @@
             "title": "Dentist"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87f2",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Hiring a laboratory technician for diagnostic testing and lab management.",
             "experience": {
@@ -329,6 +344,7 @@
                 "max": 5
             },
             "location": "Mumbai, Maharashtra",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 400000,
@@ -343,7 +359,7 @@
             "title": "Laboratory Technician"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87f3",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "We are looking for an experienced pharmacist to work in our pharmacy.",
             "experience": {
@@ -351,6 +367,7 @@
                 "max": 8
             },
             "location": "Kolkata, West Bengal",
+            "isActive": true,
             "isSaved": false,
             "salary": {
                 "min": 600000,
@@ -365,7 +382,7 @@
             "title": "Pharmacist"
         },
         {
-            "company": "652d9f8b4f1c2c001c9b87f4",
+            "company": "67123df3addb66805fd3e411",
             "currency": "INR",
             "description": "Pediatrician with strong expertise in child health and developmental disorders.",
             "experience": {
@@ -373,6 +390,7 @@
                 "max": 12
             },
             "location": "Ahmedabad, Gujarat",
+            "isActive": true,
             "isSaved": true,
             "salary": {
                 "min": 1400000,
