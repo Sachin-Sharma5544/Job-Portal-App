@@ -6,6 +6,7 @@ import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { getSelectedJobName } from "../utils/jobUtils";
 import { fetchJobsRequest } from "../../../redux/slices/jobsSlice";
+import JobCardIcon from "../icon/JobCardIcon";
 
 export const JobsCard = (): JSX.Element => {
     const param = useParams();
@@ -54,15 +55,24 @@ export const JobsCard = (): JSX.Element => {
                                     rating={job.company.rating}
                                 />
                             </div>
-                            <div className="flex justify-start gap-4 pb-2 pt-2 text-neutral-500">
-                                <div>
-                                    Exp: {job.experience.min} -{" "}
-                                    {job.experience.max} years
+                            <div className="flex justify-start items-center gap-4 pb-2 pt-2 text-neutral-800 text-xs">
+                                <div className="flex justify-center items-center gap-2">
+                                    <JobCardIcon iconType="Experience" />
+                                    <span>
+                                        {job.experience.min} -{" "}
+                                        {job.experience.max} years
+                                    </span>
                                 </div>
-                                <div>
-                                    Sal: {job.salary.min} - {job.salary.max}
+                                <div className="flex justify-center items-center gap-2">
+                                    <JobCardIcon iconType="Salary" />
+                                    <span>
+                                        {job.salary.min} -{job.salary.max}
+                                    </span>
                                 </div>
-                                <div>Location: {job.location}</div>
+                                <div className="flex justify-center items-center gap-2">
+                                    <JobCardIcon iconType="Location" />
+                                    <span>{job.location}</span>
+                                </div>
                             </div>
                             <div className="text-neutral-500">
                                 {job.description}{" "}
