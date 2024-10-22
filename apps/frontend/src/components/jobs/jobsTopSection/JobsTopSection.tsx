@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Card, CardSlider, Button } from "@repo/ui";
 import { useSelector, useDispatch } from "react-redux";
 import { type JobsType } from "@repo/datatypes";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { setSelectedJobType } from "../../../redux/slices/userActionSlice";
+import { useNavigate } from "react-router-dom";
 
 export const JobsTopSection = (): JSX.Element | null => {
     const pageClickLocation = useSelector(
@@ -19,9 +20,11 @@ export const JobsTopSection = (): JSX.Element | null => {
     const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleCardClick = (clickedJobType: JobsType): void => {
         dispatch(setSelectedJobType(clickedJobType));
+        navigate(`/jobs/${clickedJobType.jobName.toLowerCase()}`);
     };
 
     switch (pageClickLocation) {
