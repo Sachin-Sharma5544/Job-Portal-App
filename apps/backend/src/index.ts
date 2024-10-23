@@ -22,6 +22,7 @@ server.use(`${API}/industry-type`, industryTypeRouter);
 server.use(`${API}/trending-jobs`, jobsTypesRouter);
 server.use(`${API}/companies`, companyRouter);
 server.use(`${API}/jobs`, jobRouter);
+
 //Handling invalid path requests
 server.use("*", (req: Request, res: Response) => {
     res.status(422).send({ message: "Path not found" });
