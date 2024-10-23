@@ -1,6 +1,7 @@
 import { all, fork } from "redux-saga/effects";
-import { watchFetchTrendingJobs } from "./trendingJobs/trendingJobsSaga";
+import { watchFetchJobsType } from "./jobsType/JobsTypeSaga";
+import { watchFetchJobs } from "./jobs/jobsSaga";
 
 export function* rootSaga(): Generator {
-    yield all([fork(watchFetchTrendingJobs)]);
+    yield all([fork(watchFetchJobsType), fork(watchFetchJobs)]);
 }
