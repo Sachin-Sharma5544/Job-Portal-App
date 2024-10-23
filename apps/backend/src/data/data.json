@@ -1,0 +1,408 @@
+{
+    "data": [
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Senior-level software engineer required with expertise in full-stack development.",
+            "experience": {
+                "min": 5,
+                "max": 10
+            },
+            "location": "Bangalore, Karnataka",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 1500000,
+                "max": 2500000
+            },
+            "skillsAndTags": [
+                "JavaScript",
+                "React",
+                "Node.js",
+                "MongoDB",
+                "AWS"
+            ],
+            "title": "Senior Software Engineer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Looking for a mid-level backend developer with expertise in Node.js and databases.",
+            "experience": {
+                "min": 3,
+                "max": 6
+            },
+            "location": "Hyderabad, Telangana",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 800000,
+                "max": 1500000
+            },
+            "skillsAndTags": ["Node.js", "Express", "MongoDB", "SQL"],
+            "title": "Backend Developer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Experienced DevOps Engineer with skills in cloud infrastructure and CI/CD pipelines.",
+            "experience": {
+                "min": 4,
+                "max": 8
+            },
+            "location": "Mumbai, Maharashtra",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 1200000,
+                "max": 2000000
+            },
+            "skillsAndTags": [
+                "AWS",
+                "Docker",
+                "Kubernetes",
+                "CI/CD",
+                "Terraform"
+            ],
+            "title": "DevOps Engineer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Hiring a data scientist with strong machine learning and data analysis experience.",
+            "experience": {
+                "min": 2,
+                "max": 5
+            },
+            "location": "Chennai, Tamil Nadu",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 1000000,
+                "max": 1800000
+            },
+            "skillsAndTags": [
+                "Python",
+                "TensorFlow",
+                "Data Analysis",
+                "Machine Learning"
+            ],
+            "title": "Data Scientist"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Hiring a UI/UX designer with expertise in Figma, Sketch, and Adobe Creative Suite.",
+            "experience": {
+                "min": 2,
+                "max": 4
+            },
+            "location": "Delhi, India",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 600000,
+                "max": 1200000
+            },
+            "skillsAndTags": [
+                "Figma",
+                "Sketch",
+                "Adobe Creative Suite",
+                "UI Design",
+                "UX Research"
+            ],
+            "title": "UI/UX Designer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e63",
+            "currency": "INR",
+            "description": "Full-stack developer required with experience in MERN stack and TypeScript.",
+            "experience": {
+                "min": 3,
+                "max": 7
+            },
+            "location": "Pune, Maharashtra",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 900000,
+                "max": 1600000
+            },
+            "skillsAndTags": [
+                "MongoDB",
+                "Express",
+                "React",
+                "Node.js",
+                "TypeScript"
+            ],
+            "title": "Full-Stack Developer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e65",
+            "currency": "INR",
+            "description": "Experienced product manager with a background in SaaS and Agile methodologies.",
+            "experience": {
+                "min": 5,
+                "max": 10
+            },
+            "location": "Noida, Uttar Pradesh",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 1400000,
+                "max": 2200000
+            },
+            "skillsAndTags": ["Product Management", "SaaS", "Agile", "Scrum"],
+            "title": "Product Manager"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e65",
+            "currency": "INR",
+            "description": "Looking for an experienced mobile app developer with expertise in Flutter and React Native.",
+            "experience": {
+                "min": 2,
+                "max": 6
+            },
+            "location": "Ahmedabad, Gujarat",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 700000,
+                "max": 1500000
+            },
+            "skillsAndTags": ["Flutter", "React Native", "Android", "iOS"],
+            "title": "Mobile App Developer"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e65",
+            "currency": "INR",
+            "description": "Hiring a cloud architect with experience in multi-cloud platforms like AWS and GCP.",
+            "experience": {
+                "min": 7,
+                "max": 12
+            },
+            "location": "Kolkata, West Bengal",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 1800000,
+                "max": 3000000
+            },
+            "skillsAndTags": [
+                "AWS",
+                "GCP",
+                "Azure",
+                "Cloud Architecture",
+                "DevOps"
+            ],
+            "title": "Cloud Architect"
+        },
+        {
+            "company": "6712262ff91a92dd1aea7e65",
+            "currency": "INR",
+            "description": "Junior QA Engineer required for manual and automated testing with Selenium.",
+            "experience": {
+                "min": 1,
+                "max": 3
+            },
+            "location": "Gurgaon, Haryana",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 400000,
+                "max": 800000
+            },
+            "skillsAndTags": [
+                "Selenium",
+                "Automation Testing",
+                "Manual Testing",
+                "Java"
+            ],
+            "title": "Junior QA Engineer"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "We are looking for an experienced general physician to join our hospital.",
+            "experience": {
+                "min": 5,
+                "max": 10
+            },
+            "location": "Delhi, India",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 1200000,
+                "max": 1800000
+            },
+            "skillsAndTags": [
+                "General Medicine",
+                "Patient Care",
+                "Diagnosis",
+                "Medical Records"
+            ],
+            "title": "General Physician"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Seeking an orthopedic surgeon with extensive experience in joint replacement surgeries.",
+            "experience": {
+                "min": 8,
+                "max": 15
+            },
+            "location": "Bangalore, Karnataka",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 2000000,
+                "max": 3000000
+            },
+            "skillsAndTags": [
+                "Orthopedics",
+                "Joint Replacement",
+                "Surgery",
+                "Patient Care"
+            ],
+            "title": "Orthopedic Surgeon"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Hiring a radiologist for diagnostic imaging services.",
+            "experience": {
+                "min": 3,
+                "max": 7
+            },
+            "location": "Chennai, Tamil Nadu",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 1500000,
+                "max": 2200000
+            },
+            "skillsAndTags": [
+                "Radiology",
+                "Diagnostic Imaging",
+                "CT Scan",
+                "MRI"
+            ],
+            "title": "Radiologist"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Looking for a skilled nurse with experience in patient care and ICU management.",
+            "experience": {
+                "min": 2,
+                "max": 5
+            },
+            "location": "Hyderabad, Telangana",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 500000,
+                "max": 1000000
+            },
+            "skillsAndTags": [
+                "Nursing",
+                "Patient Care",
+                "ICU Management",
+                "Emergency Care"
+            ],
+            "title": "Registered Nurse"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Seeking a dentist for a well-established dental clinic.",
+            "experience": {
+                "min": 3,
+                "max": 8
+            },
+            "location": "Pune, Maharashtra",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 700000,
+                "max": 1200000
+            },
+            "skillsAndTags": [
+                "Dentistry",
+                "Oral Surgery",
+                "Patient Care",
+                "Orthodontics"
+            ],
+            "title": "Dentist"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Hiring a laboratory technician for diagnostic testing and lab management.",
+            "experience": {
+                "min": 2,
+                "max": 5
+            },
+            "location": "Mumbai, Maharashtra",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 400000,
+                "max": 900000
+            },
+            "skillsAndTags": [
+                "Lab Technician",
+                "Diagnostic Testing",
+                "Blood Work",
+                "Lab Management"
+            ],
+            "title": "Laboratory Technician"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "We are looking for an experienced pharmacist to work in our pharmacy.",
+            "experience": {
+                "min": 4,
+                "max": 8
+            },
+            "location": "Kolkata, West Bengal",
+            "isActive": true,
+            "isSaved": false,
+            "salary": {
+                "min": 600000,
+                "max": 1200000
+            },
+            "skillsAndTags": [
+                "Pharmacy",
+                "Medication Dispensing",
+                "Customer Service",
+                "Inventory Management"
+            ],
+            "title": "Pharmacist"
+        },
+        {
+            "company": "67123df3addb66805fd3e411",
+            "currency": "INR",
+            "description": "Pediatrician with strong expertise in child health and developmental disorders.",
+            "experience": {
+                "min": 5,
+                "max": 12
+            },
+            "location": "Ahmedabad, Gujarat",
+            "isActive": true,
+            "isSaved": true,
+            "salary": {
+                "min": 1400000,
+                "max": 2000000
+            },
+            "skillsAndTags": [
+                "Pediatrics",
+                "Child Health",
+                "Developmental Disorders",
+                "Vaccination"
+            ],
+            "title": "Pediatrician"
+        }
+    ]
+}

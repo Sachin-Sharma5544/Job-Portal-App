@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Card, CardSlider, Button } from "@repo/ui";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { type JobsType } from "@repo/datatypes";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
+import { setSelectedJobType } from "../../../redux/slices/userActionSlice";
+import { useNavigate } from "react-router-dom";
 
 export const JobsTopSection = (): JSX.Element | null => {
     const pageClickLocation = useSelector(
@@ -15,17 +17,16 @@ export const JobsTopSection = (): JSX.Element | null => {
     const selectedJobType = useSelector(
         (state: RootState) => state.userAction.selectedJobType
     );
-    const [selectedCard, setSelectedCard] = useState<JobsType | null>(
-        selectedJobType
-    );
-
-    useEffect(() => {}, [selectedJobType]);
-
     const jobsType = useSelector((state: RootState) => state.jobs.jobsType);
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const handleCardClick = (clickedJobType: JobsType): void => {
-        setSelectedCard(clickedJobType);
+        dispatch(setSelectedJobType(clickedJobType));
+        navigate(`/jobs/${clickedJobType.jobName.toLowerCase()}`);
     };
+
     switch (pageClickLocation) {
         case "Home":
         case "home":
@@ -36,7 +37,7 @@ export const JobsTopSection = (): JSX.Element | null => {
                             (tJob: { _id: string; jobName: string }) => (
                                 <Card
                                     classes={`min-w-[220px] min-h-24 flex items-center justify-center relative ${
-                                        selectedCard?._id === tJob._id
+                                        selectedJobType?._id === tJob._id
                                             ? "border-[1px] border-black"
                                             : ""
                                     }`}
@@ -49,10 +50,10 @@ export const JobsTopSection = (): JSX.Element | null => {
                                         <h1 className="text-xl font-bold">
                                             {tJob.jobName}
                                         </h1>
-                                        {selectedCard?._id === tJob._id ? (
+                                        {selectedJobType?._id === tJob._id ? (
                                             <input
                                                 checked={
-                                                    selectedCard?._id ===
+                                                    selectedJobType._id ===
                                                     tJob._id
                                                 }
                                                 className="appearance-none w-3 h-3 text-black rounded-full absolute right-3 top-3 checked:bg-black checked:border-none"

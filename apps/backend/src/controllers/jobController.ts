@@ -1,6 +1,7 @@
 import { type Request, type Response } from "express";
 import { type Jobs } from "@repo/datatypes";
 import { Job } from "../models/jobsModel";
+import { CompanyModel } from "../models/companyModel";
 
 export const getJobTextSuggestions = async (
     req: Request,
@@ -38,26 +39,52 @@ export const getJobs = async (req: Request, res: Response): Promise<void> => {
             },
             {
                 $match: {
-                    "companyDetails.tags.businessType": {
-                        $regex: jobType,
-                        $options: "i",
-                    },
+                    $or: [
+                        {
+                            "companyDetails.tags.businessType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.ownershipType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.employerType": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                        {
+                            "companyDetails.tags.primaryIndustry": {
+                                $regex: jobType,
+                                $options: "i",
+                            },
+                        },
+                    ],
                 },
             },
             {
                 $project: {
-                    company: 1, // Include fields you need in the final result
+                    // Include fields you need in the final result
                     title: 1,
                     description: 1,
                     location: 1,
                     salary: 1,
                     skillsAndTags: 1,
+                    experience: 1,
 
                     //company fields
-                    "companyDetails.name": 1,
-                    "companyDetails.tags": 1,
-                    "companyDetails.rating": 1,
-                    "companyDetails.reviewsCount": 1,
+                    company: {
+                        _id: "$companyDetails._id",
+                        name: "$companyDetails.name",
+                        tags: "$companyDetails.tags",
+                        rating: "$companyDetails.rating",
+                        reviewsCount: "$companyDetails.reviewsCount",
+                    },
                 },
             },
         ]);
@@ -75,8 +102,42 @@ export const postMultipleJobs = async (
     const { data }: { data: Jobs[] } = req.body;
 
     try {
-        const jobs = await Job.insertMany(data);
+        //adding jobs to database
+        const jobs = await Job.create(data);
+
+        //Updating company jobs
+
+        await Promise.all(
+            jobs.map((job) =>
+                CompanyModel.findByIdAndUpdate(job.company, {
+                    $push: { jobs: job._id },
+                })
+            )
+        );
+
         res.status(200).send({ jobs });
+    } catch (error) {
+        res.status(200).send({ error });
+    }
+};
+
+export const postSingleJob = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    const { data }: { data: Jobs } = req.body;
+
+    try {
+        //adding jobs to database
+        const job = await Job.create(data);
+
+        //Updating company jobs
+
+        await CompanyModel.findByIdAndUpdate(job.company, {
+            $push: { jobs: job._id },
+        });
+
+        res.status(200).send({ job });
     } catch (error) {
         res.status(200).send({ error });
     }

@@ -12,6 +12,7 @@ const jobSchema = new Schema({
         max: { type: Number, required: true },
     },
     location: { type: String, required: true },
+    isActive: { type: Boolean, required: true },
     isSaved: { type: Boolean, default: false },
     salary: {
         min: { type: Number, min: 0 },
