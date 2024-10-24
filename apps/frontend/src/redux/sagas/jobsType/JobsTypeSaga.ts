@@ -25,8 +25,8 @@ const fetchJobsTypeApi = async (): Promise<JobsType[]> => {
 
 function* jobsTypeSaga(): Generator {
     try {
-        const trendingJobs = yield call(fetchJobsTypeApi); // Call the API
-        yield put(fetchJobsTypeSuccess(trendingJobs)); // Dispatch success action
+        const jobsType = yield call(fetchJobsTypeApi); // Call the API
+        yield put(fetchJobsTypeSuccess(jobsType)); // Dispatch success action
     } catch (error) {
         yield put(fetchJobsTypeFailure()); // Dispatch failure action
     }

@@ -1,4 +1,4 @@
-import { JobsType } from "@repo/datatypes";
+import { type JobsType } from "@repo/datatypes";
 
 interface ParamType {
     job?: string;
@@ -17,7 +17,7 @@ export const getSelectedJobName = (
     }
 
     if (param.company) {
-        return `${param.company} Company Jobs`;
+        return `Jobs in ${param.company}`;
     }
     return "";
 };

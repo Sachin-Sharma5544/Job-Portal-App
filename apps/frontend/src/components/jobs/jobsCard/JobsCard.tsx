@@ -5,7 +5,10 @@ import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { getSelectedJobName } from "../utils/jobUtils";
-import { fetchJobsRequest } from "../../../redux/slices/jobsSlice";
+import {
+    fetchJobsRequest,
+    fetchJobsByCompanyIdRequest,
+} from "../../../redux/slices/jobsSlice";
 import JobCardIcon from "../icon/JobCardIcon";
 
 export const JobsCard = (): JSX.Element => {
@@ -15,12 +18,31 @@ export const JobsCard = (): JSX.Element => {
     const selectedJobtype = useSelector(
         (state: RootState) => state.userAction.selectedJobType
     );
+    const selectedCompany = useSelector(
+        (state: RootState) => state.userAction.selectedCompany
+    );
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchJobsRequest(selectedJobtype));
-    }, [dispatch, selectedJobtype]);
+        if (param.job) {
+            dispatch(
+                fetchJobsRequest({
+                    jobsType: selectedJobtype?.jobName,
+                    companyId: null,
+                })
+            );
+        }
+
+        if (param.company) {
+            dispatch(
+                fetchJobsRequest({
+                    jobsType: null,
+                    companyId: selectedCompany?._id,
+                })
+            );
+        }
+    }, [dispatch, param]);
 
     return (
         <div>

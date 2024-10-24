@@ -10,6 +10,7 @@ import {
     pageClickLocation,
     setSelectedCompany,
 } from "../../redux/slices/userActionSlice";
+import { fetchJobsRequest } from "../../redux/slices/jobsSlice";
 
 interface CompanyList {
     company: Company[];
@@ -47,6 +48,7 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
         navigate(`/company/${company.name}`);
         dispatch(pageClickLocation("Company"));
         dispatch(setSelectedCompany(company));
+        // dispatch(fetchJobsRequest(company));
     };
     return (
         <div>

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { handleRequest } from "../hocFunctions/routeRequestHandler";
 import {
     getJobs,
+    getJobsByCompany,
     getJobTextSuggestions,
     postMultipleJobs,
     postSingleJob,
@@ -10,7 +11,8 @@ import {
 export const jobRouter = Router();
 
 jobRouter.get("/job-text", handleRequest(getJobTextSuggestions));
-jobRouter.get("/get-jobs", handleRequest(getJobs));
+jobRouter.get("/", handleRequest(getJobs));
+jobRouter.get("/:companyId", handleRequest(getJobsByCompany));
 
 jobRouter.post("/", handleRequest(postMultipleJobs));
 jobRouter.post("/add-job", handleRequest(postSingleJob));
