@@ -5,10 +5,7 @@ import { useParams } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { getSelectedJobName } from "../utils/jobUtils";
-import {
-    fetchJobsRequest,
-    fetchJobsByCompanyIdRequest,
-} from "../../../redux/slices/jobsSlice";
+import { fetchJobsRequest } from "../../../redux/slices/jobsSlice";
 import JobCardIcon from "../icon/JobCardIcon";
 
 export const JobsCard = (): JSX.Element => {
@@ -42,7 +39,7 @@ export const JobsCard = (): JSX.Element => {
                 })
             );
         }
-    }, [dispatch, param]);
+    }, [dispatch, param, selectedCompany?._id, selectedJobtype?.jobName]);
 
     return (
         <div>

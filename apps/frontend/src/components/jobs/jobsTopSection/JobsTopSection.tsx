@@ -2,10 +2,16 @@ import React from "react";
 import { Card, CardSlider, Button } from "@repo/ui";
 import { useSelector, useDispatch } from "react-redux";
 import { type JobsType } from "@repo/datatypes";
+import { useNavigate } from "react-router-dom";
 import { type RootState } from "../../../redux/store";
 import { ReviewCard } from "../../common";
 import { setSelectedJobType } from "../../../redux/slices/userActionSlice";
-import { useNavigate } from "react-router-dom";
+
+type TagType =
+    | "businessType"
+    | "ownershipType"
+    | "employerType"
+    | "primaryIndustry";
 
 export const JobsTopSection = (): JSX.Element | null => {
     const pageClickLocation = useSelector(
@@ -95,12 +101,12 @@ export const JobsTopSection = (): JSX.Element | null => {
                                 <div className=" text-neutral-500 text-sm">
                                     <div className="flex justify-stretch gap-2 my-4 ">
                                         {selectedCompany?.tagsOrder?.map(
-                                            (tag: string | undefined) => (
+                                            (tag: TagType) => (
                                                 <p
                                                     className="border-[2px] border-neutral-300 px-[12px] py-[2px] rounded-xl max-w-[120px] overflow-hidden text-ellipsis whitespace-nowrap"
                                                     key={tag}
                                                     title={
-                                                        selectedCompany?.tags[
+                                                        selectedCompany.tags[
                                                             tag
                                                         ]
                                                     }
