@@ -25,9 +25,8 @@ export const jobsSlice = createSlice({
         fetchJobsTypeFailure: (state) => {
             state.jobsType = [];
         },
-        fetchJobsRequest: (state, action) => {
-            return state;
-        },
+        fetchJobsRequest: (state, action) => {},
+        fetchJobsByCompanyIdRequest: (state, action) => {},
         fetchJobsSuccess: (state, action: PayloadAction<Jobs[]>) => {
             state.jobs = action.payload;
         },
@@ -44,5 +43,6 @@ export const {
     fetchJobsRequest,
     fetchJobsSuccess,
     fetchJobsFailure,
+    fetchJobsByCompanyIdRequest,
 } = jobsSlice.actions;
 export default jobsSlice.reducer;
