@@ -96,8 +96,19 @@ export const JobsCard = (): JSX.Element => {
                                     <span>{job.location}</span>
                                 </div>
                             </div>
-                            <div className="text-neutral-500">
+                            <div className="text-neutral-500 text-[13px]">
                                 {job.description}{" "}
+                            </div>
+
+                            <div className="pt-3 text-neutral-700 text-[10px] flex items-center gap-2">
+                                {job.skillsAndTags.map((skills, index, arr) => (
+                                    <>
+                                        <span className="">{skills} </span>
+                                        {index !== arr.length - 1 ? (
+                                            <div className="inline-block h-1 w-1 bg-neutral-700 rounded-full " />
+                                        ) : null}
+                                    </>
+                                ))}
                             </div>
                         </>
                     </Card>
