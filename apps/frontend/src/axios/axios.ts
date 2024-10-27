@@ -1,12 +1,12 @@
 import axios, { type AxiosInstance } from "axios";
-import { API, AUTH, PORT } from "@repo/constants";
+import { NAVIGATION_PATHS, PORT } from "@repo/constants";
 
 const getBackendUrl = (): string => {
-    return `http://localhost:${PORT}${API}`;
+    return `http://localhost:${PORT}${NAVIGATION_PATHS.api}`;
 };
 
 export const axiosAuthInstance = (): AxiosInstance => {
-    const authUrl = `${getBackendUrl()}${AUTH}`;
+    const authUrl = `${getBackendUrl()}${NAVIGATION_PATHS.auth}`;
     const axiosAuth = axios.create({
         baseURL: authUrl,
         headers: { accept: "application/json" },

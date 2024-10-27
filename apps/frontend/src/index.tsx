@@ -1,22 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./styles.css";
-import {
-    homePath,
-    companyPath,
-    salaryPath,
-    loginPath,
-    signupPath,
-    profliePath,
-    aboutUsPath,
-    careersPath,
-    employersHomePath,
-    fraudAlertPath,
-    privacyPolicyPath,
-    reportIssuePath,
-    termsPath,
-    trustAndSafetyPath,
-} from "@repo/constants";
+import { NAVIGATION_PATHS, FOOTER_PATHS } from "@repo/constants";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
@@ -56,9 +41,18 @@ function App(): JSX.Element {
         <BrowserRouter>
             <Layout>
                 <Routes>
-                    <Route element={<HomePage />} path={homePath} />
-                    <Route element={<CompanyPage />} path={companyPath} />
-                    <Route element={<SalaryPage />} path={salaryPath} />
+                    <Route
+                        element={<HomePage />}
+                        path={NAVIGATION_PATHS.home}
+                    />
+                    <Route
+                        element={<CompanyPage />}
+                        path={NAVIGATION_PATHS.company}
+                    />
+                    <Route
+                        element={<SalaryPage />}
+                        path={NAVIGATION_PATHS.salary}
+                    />
                     <Route
                         element={
                             !isAuthenticated() ? (
@@ -67,35 +61,47 @@ function App(): JSX.Element {
                                 <ProfilePage />
                             )
                         }
-                        path={loginPath}
+                        path={NAVIGATION_PATHS.login}
                     />
-                    <Route element={<SignUpPage />} path={signupPath} />
+                    <Route
+                        element={<SignUpPage />}
+                        path={NAVIGATION_PATHS.signup}
+                    />
                     <Route
                         element={
                             isAuthenticated() ? (
                                 <ProfilePage />
                             ) : (
-                                <Navigate to={loginPath} />
+                                <Navigate to={NAVIGATION_PATHS.login} />
                             )
                         }
-                        path={profliePath}
+                        path={NAVIGATION_PATHS.proflie}
                     />
-                    <Route element={<AboutUs />} path={aboutUsPath} />
-                    <Route element={<Careers />} path={careersPath} />
+                    <Route element={<AboutUs />} path={FOOTER_PATHS.aboutUs} />
+                    <Route element={<Careers />} path={FOOTER_PATHS.careers} />
                     <Route
                         element={<EmployersHome />}
-                        path={employersHomePath}
+                        path={FOOTER_PATHS.employersHome}
                     />
-                    <Route element={<FraudAlert />} path={fraudAlertPath} />
+                    <Route
+                        element={<FraudAlert />}
+                        path={FOOTER_PATHS.fraudAlert}
+                    />
                     <Route
                         element={<PrivacyPolicy />}
-                        path={privacyPolicyPath}
+                        path={FOOTER_PATHS.privacyPolicy}
                     />
-                    <Route element={<ReportIssue />} path={reportIssuePath} />
-                    <Route element={<TermsAndConditions />} path={termsPath} />
+                    <Route
+                        element={<ReportIssue />}
+                        path={FOOTER_PATHS.reportIssue}
+                    />
+                    <Route
+                        element={<TermsAndConditions />}
+                        path={FOOTER_PATHS.terms}
+                    />
                     <Route
                         element={<TrustAndSafety />}
-                        path={trustAndSafetyPath}
+                        path={FOOTER_PATHS.trustAndSafety}
                     />
                     <Route element={<JobsPage />} path="/jobs/:job" />
                     <Route element={<JobsPage />} path="/company/:company" />

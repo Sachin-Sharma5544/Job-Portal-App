@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardSlider } from "@repo/ui";
-import { PORT } from "@repo/constants";
+import { PORT, NAVIGATION_PATHS } from "@repo/constants";
 
 interface Industry {
     _id: string | null;
@@ -32,7 +32,7 @@ const IndustryTypeSlider = (props: IndustryTypeSliderProps): JSX.Element => {
         const fetchIndustryData = async (): Promise<void> => {
             try {
                 const { data }: ResData = await axios.get(
-                    `http://localhost:${PORT}/api/industry-type`
+                    `http://localhost:${PORT}${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.industryType}`
                 );
 
                 setIndustryType(data.industryType);

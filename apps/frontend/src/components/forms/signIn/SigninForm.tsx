@@ -2,8 +2,7 @@ import React from "react";
 import {
     JOB_SEEKERS,
     LOGIN_BUTTON_TEXT,
-    loginPath,
-    profliePath,
+    NAVIGATION_PATHS,
 } from "@repo/constants";
 import { AuthForm } from "@repo/ui";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
@@ -126,10 +125,13 @@ export function SigninForm(): JSX.Element {
         password: string
     ): Promise<void> => {
         try {
-            const response = await axiosAuthInstance().post(loginPath, {
-                email,
-                password,
-            });
+            const response = await axiosAuthInstance().post(
+                NAVIGATION_PATHS.login,
+                {
+                    email,
+                    password,
+                }
+            );
 
             signIn({
                 auth: {
@@ -141,7 +143,7 @@ export function SigninForm(): JSX.Element {
 
             dispatch(loginSuccess());
 
-            navigate(profliePath);
+            navigate(NAVIGATION_PATHS.proflie);
         } catch (error: any) {
             console.log("error from backedn", error.response);
         }

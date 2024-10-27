@@ -6,17 +6,11 @@ import {
     COMPANY,
     SALARY,
     LOGIN,
-    homePath,
-    companyPath,
-    salaryPath,
-    loginPath,
-    employerPath,
     EMPLOYERS,
     SIGN_OUT,
     PROFILE,
-    profliePath,
     SIGNUP,
-    signupPath,
+    NAVIGATION_PATHS,
 } from "@repo/constants";
 import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useSelector, useDispatch } from "react-redux";
@@ -44,23 +38,35 @@ export const Navbar = (): JSX.Element => {
             <div className="h-full m-0 p-0 flex items-center justify-between">
                 <div className="h-full flex text-xs">
                     <div className="flex">
-                        <LinkReactRouter className="flex" to={homePath}>
+                        <LinkReactRouter
+                            className="flex"
+                            to={NAVIGATION_PATHS.home}
+                        >
                             <BrandLogo bagFill="white" />
                         </LinkReactRouter>
                     </div>
                     <div className="flex px-5 text-[14px]">
                         <div className="text-white">
-                            <LinkReactRouter className="" to={homePath}>
+                            <LinkReactRouter
+                                className=""
+                                to={NAVIGATION_PATHS.home}
+                            >
                                 {HOME}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-4" to={companyPath}>
+                            <LinkReactRouter
+                                className="pl-4"
+                                to={NAVIGATION_PATHS.company}
+                            >
                                 {COMPANY}
                             </LinkReactRouter>
                         </div>
                         <div className="text-white">
-                            <LinkReactRouter className="pl-4" to={salaryPath}>
+                            <LinkReactRouter
+                                className="pl-4"
+                                to={NAVIGATION_PATHS.salary}
+                            >
                                 {SALARY}
                             </LinkReactRouter>
                         </div>
@@ -68,7 +74,7 @@ export const Navbar = (): JSX.Element => {
                             {isAuth ? (
                                 <LinkReactRouter
                                     className="pl-4"
-                                    to={profliePath}
+                                    to={NAVIGATION_PATHS.proflie}
                                 >
                                     {PROFILE}
                                 </LinkReactRouter>
@@ -81,7 +87,10 @@ export const Navbar = (): JSX.Element => {
                     <div className="flex text-[14px]">
                         {!isAuth ? (
                             <div className="text-white">
-                                <LinkReactRouter className="" to={loginPath}>
+                                <LinkReactRouter
+                                    className=""
+                                    to={NAVIGATION_PATHS.login}
+                                >
                                     {LOGIN}
                                 </LinkReactRouter>
                             </div>
@@ -91,7 +100,7 @@ export const Navbar = (): JSX.Element => {
                             <div className="text-white">
                                 <LinkReactRouter
                                     className="pl-4"
-                                    to={signupPath}
+                                    to={NAVIGATION_PATHS.signup}
                                 >
                                     {SIGNUP}
                                 </LinkReactRouter>
@@ -101,7 +110,7 @@ export const Navbar = (): JSX.Element => {
                             <div className="text-white">
                                 <LinkReactRouter
                                     className="pl-4"
-                                    to={employerPath}
+                                    to={NAVIGATION_PATHS.employer}
                                 >
                                     {EMPLOYERS}
                                 </LinkReactRouter>

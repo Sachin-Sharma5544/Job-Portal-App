@@ -4,10 +4,9 @@ import {
     NOT_MEMBER,
     CREATE_ACCOUNT,
     LOGIN_ACCOUNT,
-    loginPath,
-    signupPath,
     LOGIN_LINK_TEXT,
     REGISTER_LINK_TEXT,
+    NAVIGATION_PATHS,
 } from "@repo/constants";
 import { Button } from "../Button";
 import { TextField } from "../InputWithLabelField";
@@ -107,7 +106,11 @@ export function AuthForm(props: AuthFormProps): JSX.Element {
                     {props.isSignup ? ALREADY_MEMBER : NOT_MEMBER}{" "}
                     <LinkReactRouter
                         className="font-semibold text-indigo-500 hover:text-indigo-600"
-                        to={props.isSignup ? loginPath : signupPath}
+                        to={
+                            props.isSignup
+                                ? NAVIGATION_PATHS.login
+                                : NAVIGATION_PATHS.signup
+                        }
                     >
                         {props.isSignup ? LOGIN_LINK_TEXT : REGISTER_LINK_TEXT}
                     </LinkReactRouter>

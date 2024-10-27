@@ -1,7 +1,7 @@
 import { log } from "@repo/logger";
 import { connectDatabase } from "@repo/database";
 import { type Request, type Response } from "express";
-import { loginPath, signupPath, API, AUTH, PORT } from "@repo/constants";
+import { NAVIGATION_PATHS, PORT } from "@repo/constants";
 import { authRouter } from "./routes/authRoute";
 import { createServer } from "./server";
 import { industryTypeRouter } from "./routes/industryTypeRoute";
@@ -17,11 +17,20 @@ const url = process.env
     .replace("${MONGO_PASSWORD}", process.env.MONGO_PASSWORD!)
     .replace("${DB_NAME}", process.env.DB_NAME!);
 
-server.use(`${API}${AUTH}`, authRouter);
-server.use(`${API}/industry-type`, industryTypeRouter);
-server.use(`${API}/trending-jobs`, jobsTypesRouter);
-server.use(`${API}/companies`, companyRouter);
-server.use(`${API}/jobs`, jobRouter);
+server.use(`${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.auth}`, authRouter);
+server.use(
+    `${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.industryType}`,
+    industryTypeRouter
+);
+server.use(
+    `${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.jobsType}`,
+    jobsTypesRouter
+);
+server.use(
+    `${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.companies}`,
+    companyRouter
+);
+server.use(`${NAVIGATION_PATHS.api}${NAVIGATION_PATHS.jobs}`, jobRouter);
 
 //Handling invalid path requests
 server.use("*", (req: Request, res: Response) => {

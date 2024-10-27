@@ -10,7 +10,6 @@ import {
     pageClickLocation,
     setSelectedCompany,
 } from "../../redux/slices/userActionSlice";
-import { fetchJobsRequest } from "../../redux/slices/jobsSlice";
 
 interface CompanyList {
     company: Company[];
