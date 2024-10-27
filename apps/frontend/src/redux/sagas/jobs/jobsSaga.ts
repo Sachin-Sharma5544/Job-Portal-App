@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios, { type AxiosResponse } from "axios";
-import { type JobsType, type Jobs, type Company } from "@repo/datatypes";
+import { type JobsType, type Jobs } from "@repo/datatypes";
+import { REQUEST_BASE_URL, NAVIGATION_PATHS } from "@repo/constants";
 import {
     fetchJobsRequest,
     fetchJobsByCompanyIdRequest,
@@ -35,7 +36,7 @@ const fetchJobsApi = async (payload: JobsPayload): Promise<Jobs[]> => {
     };
 
     const response: ResponseData = await axios.get(
-        "http://localhost:5004/api/jobs/",
+        `${REQUEST_BASE_URL.url}${NAVIGATION_PATHS.jobs}`,
         options
     );
 

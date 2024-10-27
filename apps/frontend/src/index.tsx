@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./styles.css";
-import { NAVIGATION_PATHS, FOOTER_PATHS } from "@repo/constants";
+import { NAVIGATION_PATHS, FOOTER_PATHS, PATH_PARAMS } from "@repo/constants";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "./layout/appLayout/AppLayout";
@@ -103,8 +103,14 @@ function App(): JSX.Element {
                         element={<TrustAndSafety />}
                         path={FOOTER_PATHS.trustAndSafety}
                     />
-                    <Route element={<JobsPage />} path="/jobs/:job" />
-                    <Route element={<JobsPage />} path="/company/:company" />
+                    <Route
+                        element={<JobsPage />}
+                        path={`${NAVIGATION_PATHS.jobs}${PATH_PARAMS.job}`}
+                    />
+                    <Route
+                        element={<JobsPage />}
+                        path={`${NAVIGATION_PATHS.company}${PATH_PARAMS.company}`}
+                    />
                 </Routes>
             </Layout>
         </BrowserRouter>

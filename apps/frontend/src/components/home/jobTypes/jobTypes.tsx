@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { NAVIGATION_PATHS } from "@repo/constants";
 import { type JobsType } from "@repo/datatypes";
 import { type RootState } from "../../../redux/store";
 import { fetchJobsTypeRequest } from "../../../redux/slices/jobsSlice";
@@ -21,7 +22,11 @@ export const TrendingJobs = (): JSX.Element => {
     }, [dispatch]);
 
     const handleIconClick = (jobType: JobsType): void => {
-        navigate(`/jobs/${jobType.jobName.toLowerCase()}`);
+        navigate(
+            `${NAVIGATION_PATHS.jobs}${
+                NAVIGATION_PATHS.home
+            }${jobType.jobName.toLowerCase()}`
+        );
         dispatch(pageClickLocation("Home"));
         dispatch(setSelectedJobType(jobType));
     };

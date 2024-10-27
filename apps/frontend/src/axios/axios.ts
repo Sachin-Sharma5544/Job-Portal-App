@@ -1,12 +1,12 @@
 import axios, { type AxiosInstance } from "axios";
-import { NAVIGATION_PATHS, PORT } from "@repo/constants";
-
-const getBackendUrl = (): string => {
-    return `http://localhost:${PORT}${NAVIGATION_PATHS.api}`;
-};
+import {
+    NAVIGATION_PATHS,
+    REQUEST_BASE_URL,
+    LOCATION_BASE_URL,
+} from "@repo/constants";
 
 export const axiosAuthInstance = (): AxiosInstance => {
-    const authUrl = `${getBackendUrl()}${NAVIGATION_PATHS.auth}`;
+    const authUrl = `${REQUEST_BASE_URL.url}${NAVIGATION_PATHS.auth}`;
     const axiosAuth = axios.create({
         baseURL: authUrl,
         headers: { accept: "application/json" },
@@ -15,9 +15,8 @@ export const axiosAuthInstance = (): AxiosInstance => {
 };
 
 export const axiosPublicInstance = (query: unknown): AxiosInstance => {
-    const url = getBackendUrl();
     const axiosPublic = axios.create({
-        baseURL: url,
+        baseURL: REQUEST_BASE_URL.url,
         headers: { accept: "application/json" },
         params: {
             q: query,
@@ -27,9 +26,8 @@ export const axiosPublicInstance = (query: unknown): AxiosInstance => {
 };
 
 export const locationInstance = (queryLocation: string): AxiosInstance => {
-    const locationUrl = `https://us1.locationiq.com/v1/autocomplete`;
     const axiosLocation = axios.create({
-        baseURL: locationUrl,
+        baseURL: LOCATION_BASE_URL.url,
         headers: { accept: "application/json" },
         params: {
             q: queryLocation,

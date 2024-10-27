@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios, { type AxiosResponse } from "axios";
 import { Card, CardWrapper } from "@repo/ui";
-import { PORT } from "@repo/constants";
+import { NAVIGATION_PATHS, REQUEST_BASE_URL } from "@repo/constants";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { type Company } from "@repo/datatypes";
@@ -34,8 +34,8 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
     useEffect(() => {
         const fetchCompanyList = async (): Promise<void> => {
             const url = industryType
-                ? `http://localhost:${PORT}/api/companies/${industryType}`
-                : `http://localhost:${PORT}/api/companies`;
+                ? `${REQUEST_BASE_URL.url}${NAVIGATION_PATHS.companies}${NAVIGATION_PATHS.home}${industryType}`
+                : `${REQUEST_BASE_URL.url}${NAVIGATION_PATHS.companies}`;
             const response: ResponseData = await axios.get(url);
             setCompanies(response.data.company);
         };
@@ -44,10 +44,11 @@ const CompanyList = (props: CompanyListProps): JSX.Element => {
     }, [industryType]);
 
     const handleCardClick = (company: Company): void => {
-        navigate(`/company/${company.name}`);
+        navigate(
+            `${NAVIGATION_PATHS.company}${NAVIGATION_PATHS.home}${company.name}`
+        );
         dispatch(pageClickLocation("Company"));
         dispatch(setSelectedCompany(company));
-        // dispatch(fetchJobsRequest(company));
     };
     return (
         <div>

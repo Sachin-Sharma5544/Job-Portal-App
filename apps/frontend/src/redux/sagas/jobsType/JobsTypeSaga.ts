@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import axios, { type AxiosResponse } from "axios";
-import { PORT } from "@repo/constants";
+import { REQUEST_BASE_URL, NAVIGATION_PATHS } from "@repo/constants";
 import { type JobsType } from "@repo/datatypes";
 import {
     fetchJobsTypeRequest,
@@ -18,7 +18,7 @@ interface ResponseData extends AxiosResponse {
 
 const fetchJobsTypeApi = async (): Promise<JobsType[]> => {
     const response: ResponseData = await axios.get<JobsArray>(
-        `http://localhost:${PORT}/api/trending-jobs`
+        `${REQUEST_BASE_URL.url}${NAVIGATION_PATHS.jobsType}`
     );
     return response.data.trendingJobs;
 };
